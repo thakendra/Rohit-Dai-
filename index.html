@@ -59,6 +59,8 @@
   .hero-content {
     position: relative; z-index: 2;
     padding: clamp(40px,6vw,80px);
+    /* FIX: use padding-bottom only, remove top padding to eliminate gap */
+    padding-top: 0;
     padding-bottom: clamp(48px,8vw,80px);
     width: 100%;
   }
@@ -129,7 +131,7 @@
   }
   .stat-l {
     font-family: 'Bebas Neue', sans-serif;
-    font-size: clamp(1 rem,1.2vw,0.7rem);
+    font-size: clamp(1rem,1.2vw,0.7rem);
     letter-spacing: 0.2em;
     text-transform: uppercase;
     color: #000000;
@@ -427,16 +429,45 @@
     .icons-bar { grid-template-columns: 1fr; }
     .iitem { border-right: none; border-bottom: 1px solid rgba(74,140,63,0.2); }
     .iitem:last-child { border-bottom: none; }
+
+    /* FIX: Journey label left-align on mobile, no extra spacing */
     .label { justify-content: flex-start; }
+    .label::before { display: none; }
     .label::after { display: none; }
     h2.sec-title { text-align: left; }
-    .sec-sub { text-align: left; }
+    .sec-sub { text-align: left; margin-left: 0; }
+
     .slide-card { width: clamp(200px, 70vw, 280px); }
+
+    /* FIX: Hero mobile — ensure bg image shows and content sits at bottom */
+    .hero {
+      min-height: 100svh;
+      min-height: 100vh;
+    }
+    .hero-img {
+      /* Force background image to render on mobile */
+      background-attachment: scroll;
+      background-position: center top;
+      background-size: cover;
+    }
+    .hero-content {
+      padding: 24px 24px 48px;
+      padding-top: 0;
+    }
+    .hero-name {
+      font-size: clamp(3.5rem, 18vw, 6rem);
+    }
+    .hero-eyebrow {
+      font-size: 0.75rem;
+    }
   }
+
   @media (max-width: 480px) {
-    .hero-name { font-size: clamp(3.5rem,18vw,6rem); }
     .share-imgs { grid-template-columns: 1fr; }
     .simg:first-child { aspect-ratio: 16/9; }
+
+    /* Extra small screens — keep hero name big but contained */
+    .hero-name { font-size: clamp(3rem, 20vw, 5rem); }
   }
 </style>
 </head>
@@ -468,7 +499,7 @@
     <div class="slider-track" id="sliderTrack">
       <!-- Original cards -->
       <div class="slide-card">
-        <img src="pictures/2016.png" alt="2016">
+        <img src="pictures/2016-a.png" alt="2016">
         <div class="slide-overlay">
           <div class="slide-year">2016</div>
           <div class="slide-line"></div>
@@ -476,7 +507,7 @@
         </div>
       </div>
       <div class="slide-card">
-        <img src="pictures/2017.jpg" alt="2017">
+        <img src="pictures/2017.png" alt="2017">
         <div class="slide-overlay">
           <div class="slide-year">2017</div>
           <div class="slide-line"></div>
@@ -484,7 +515,7 @@
         </div>
       </div>
       <div class="slide-card">
-        <img src="pictures/2018.jpg" alt="2018">
+        <img src="pictures/2018.png" alt="2018">
         <div class="slide-overlay">
           <div class="slide-year">2018</div>
           <div class="slide-line"></div>
@@ -492,7 +523,7 @@
         </div>
       </div>
       <div class="slide-card">
-        <img src="pictures/2019.jpg" alt="2019">
+        <img src="pictures/2019.png" alt="2019">
         <div class="slide-overlay">
           <div class="slide-year">2019</div>
           <div class="slide-line"></div>
@@ -500,15 +531,31 @@
         </div>
       </div>
       <div class="slide-card">
-        <img src="pictures/2020.jpg" alt="2020">
+        <img src="pictures/2019-a.png" alt="2019">
         <div class="slide-overlay">
-          <div class="slide-year">2020</div>
+          <div class="slide-year">2019</div>
           <div class="slide-line"></div>
           <div class="slide-caption">Resilience &amp; Renewal</div>
         </div>
       </div>
       <div class="slide-card">
-        <img src="pictures/2021.jpg" alt="2021">
+        <img src="pictures/2019-b.png" alt="2019">
+        <div class="slide-overlay">
+          <div class="slide-year">2019</div>
+          <div class="slide-line"></div>
+          <div class="slide-caption">Resilience &amp; Renewal</div>
+        </div>
+      </div>
+      <div class="slide-card">
+        <img src="pictures/2019-c.png" alt="2019">
+        <div class="slide-overlay">
+          <div class="slide-year">2019</div>
+          <div class="slide-line"></div>
+          <div class="slide-caption">Resilience &amp; Renewal</div>
+        </div>
+      </div>
+      <div class="slide-card">
+        <img src="pictures/2021-a.png" alt="2021">
         <div class="slide-overlay">
           <div class="slide-year">2021</div>
           <div class="slide-line"></div>
@@ -516,7 +563,39 @@
         </div>
       </div>
       <div class="slide-card">
-        <img src="pictures/2022.jpg" alt="2022">
+        <img src="pictures/2021-b.png" alt="2021">
+        <div class="slide-overlay">
+          <div class="slide-year">2021</div>
+          <div class="slide-line"></div>
+          <div class="slide-caption">International Youth Day · Empowerment</div>
+        </div>
+      </div>
+      <div class="slide-card">
+        <img src="pictures/2021-b.png" alt="2021">
+        <div class="slide-overlay">
+          <div class="slide-year">2021</div>
+          <div class="slide-line"></div>
+          <div class="slide-caption">International Youth Day · Empowerment</div>
+        </div>
+      </div>
+      <div class="slide-card">
+        <img src="pictures/2022-a.png" alt="2022">
+        <div class="slide-overlay">
+          <div class="slide-year">2022</div>
+          <div class="slide-line"></div>
+          <div class="slide-caption">Breakthrough · National Program</div>
+        </div>
+      </div>
+        <div class="slide-card">
+        <img src="pictures/2022-b.png" alt="2022">
+        <div class="slide-overlay">
+          <div class="slide-year">2022</div>
+          <div class="slide-line"></div>
+          <div class="slide-caption">Breakthrough · National Program</div>
+        </div>
+      </div>
+        <div class="slide-card">
+        <img src="pictures/2022-c.png" alt="2022">
         <div class="slide-overlay">
           <div class="slide-year">2022</div>
           <div class="slide-line"></div>
@@ -524,7 +603,7 @@
         </div>
       </div>
       <div class="slide-card">
-        <img src="pictures/2023.jpg" alt="2023">
+        <img src="pictures/2023-a.png" alt="2023">
         <div class="slide-overlay">
           <div class="slide-year">2023</div>
           <div class="slide-line"></div>
@@ -532,7 +611,7 @@
         </div>
       </div>
       <div class="slide-card">
-        <img src="pictures/2024.jpg" alt="2024">
+        <img src="pictures/2024-a.png" alt="2024">
         <div class="slide-overlay">
           <div class="slide-year">2024</div>
           <div class="slide-line"></div>
@@ -540,25 +619,18 @@
         </div>
       </div>
       <div class="slide-card">
-        <img src="pictures/2025.jpg" alt="2025">
+        <img src="pictures/2025.png" alt="2025">
         <div class="slide-overlay">
           <div class="slide-year">2025</div>
           <div class="slide-line"></div>
           <div class="slide-caption">Human Rights Awareness · Schools</div>
         </div>
       </div>
-      <div class="slide-card">
-        <img src="pictures/2026.jpg" alt="2026">
-        <div class="slide-overlay">
-          <div class="slide-year">2026</div>
-          <div class="slide-line"></div>
-          <div class="slide-caption">The Journey Continues</div>
-        </div>
-      </div>
+    
 
       <!-- Duplicated for seamless loop -->
       <div class="slide-card">
-        <img src="pictures/2016.jpg" alt="2016">
+        <img src="pictures/2016-a.png" alt="2016">
         <div class="slide-overlay">
           <div class="slide-year">2016</div>
           <div class="slide-line"></div>
@@ -566,7 +638,15 @@
         </div>
       </div>
       <div class="slide-card">
-        <img src="pictures/2017.jpg" alt="2017">
+        <img src="pictures/2017.png" alt="2017">
+        <div class="slide-overlay">
+          <div class="slide-year">2017</div>
+          <div class="slide-line"></div>
+          <div class="slide-caption">Struggle · National Program</div>
+        </div>
+      </div>
+       <div class="slide-card">
+        <img src="pictures/2017-a.png" alt="2017">
         <div class="slide-overlay">
           <div class="slide-year">2017</div>
           <div class="slide-line"></div>
@@ -574,7 +654,15 @@
         </div>
       </div>
       <div class="slide-card">
-        <img src="pictures/2018.jpg" alt="2018">
+        <img src="pictures/2018.png" alt="2018">
+        <div class="slide-overlay">
+          <div class="slide-year">2018</div>
+          <div class="slide-line"></div>
+          <div class="slide-caption">Possible · National Program</div>
+        </div>
+      </div>
+      <div class="slide-card">
+        <img src="pictures/2018-a.png" alt="2018">
         <div class="slide-overlay">
           <div class="slide-year">2018</div>
           <div class="slide-line"></div>
