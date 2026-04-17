@@ -59,7 +59,6 @@
   .hero-content {
     position: relative; z-index: 2;
     padding: clamp(40px,6vw,80px);
-    /* FIX: use padding-bottom only, remove top padding to eliminate gap */
     padding-top: 0;
     padding-bottom: clamp(48px,8vw,80px);
     width: 100%;
@@ -406,6 +405,81 @@
   }
   .iitem p { color: var(--grey); font-style:italic; font-size: clamp(0.8rem,1.5vw,0.9rem); }
 
+  /* ── SOCIAL MEDIA SECTION ── */
+  .social-section {
+    background: var(--dark2);
+    padding: clamp(60px,8vw,100px) clamp(24px,6vw,80px);
+    text-align: center;
+    border-top: 1px solid rgba(74,140,63,0.15);
+  }
+  .social-section .label { justify-content: center; }
+  .social-links {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: clamp(16px, 4vw, 40px);
+    flex-wrap: wrap;
+    margin-top: clamp(32px, 4vw, 56px);
+  }
+  .social-link {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+    text-decoration: none;
+    color: var(--grey);
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(0.6rem, 1.2vw, 0.75rem);
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    transition: color 0.3s, transform 0.3s;
+  }
+  .social-link:hover { color: var(--green-bright); transform: translateY(-4px); }
+  .social-icon {
+    width: clamp(52px, 8vw, 72px);
+    height: clamp(52px, 8vw, 72px);
+    border: 1px solid rgba(74,140,63,0.3);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: border-color 0.3s, background 0.3s;
+  }
+  .social-link:hover .social-icon {
+    border-color: var(--green-bright);
+    background: rgba(109,191,94,0.08);
+  }
+  .social-icon svg { width: 24px; height: 24px; }
+
+  /* ── FOOTER ── */
+  .site-footer {
+    background: var(--dark);
+    border-top: 1px solid rgba(74,140,63,0.12);
+    padding: clamp(24px,3vw,36px) clamp(24px,6vw,80px);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+  .footer-copy {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: clamp(0.78rem, 1.4vw, 0.88rem);
+    color: rgba(109,191,94,0.5);
+  }
+  .footer-designed {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(0.6rem, 1.2vw, 0.72rem);
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: rgba(109,191,94,0.35);
+  }
+  .footer-designed span {
+    color: var(--gold);
+    opacity: 0.7;
+  }
+
   /* ── ANIMATIONS ── */
   @keyframes fadeUp {
     from { opacity:0; transform:translateY(28px); }
@@ -430,7 +504,6 @@
     .iitem { border-right: none; border-bottom: 1px solid rgba(74,140,63,0.2); }
     .iitem:last-child { border-bottom: none; }
 
-    /* FIX: Journey label left-align on mobile, no extra spacing */
     .label { justify-content: flex-start; }
     .label::before { display: none; }
     .label::after { display: none; }
@@ -439,34 +512,67 @@
 
     .slide-card { width: clamp(200px, 70vw, 280px); }
 
-    /* FIX: Hero mobile — ensure bg image shows and content sits at bottom */
+    /* ── HERO MOBILE FIX ── */
     .hero {
       min-height: 100svh;
       min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      align-items: stretch;
     }
+
+    /* Make the photo fully visible on mobile */
     .hero-img {
-      /* Force background image to render on mobile */
-      background-attachment: scroll;
-      background-position: center top;
+      position: absolute;
+      inset: 0;
+      background-image: url('Rohit Malla.webp');
       background-size: cover;
+      background-position: center top; /* show face/upper body */
+      background-attachment: scroll;
+      transform: none !important;
+      animation: none !important;
+      will-change: auto;
     }
+
+    /* Stronger gradient so text is readable, but top stays visible */
+    .hero-img::after {
+      background: linear-gradient(
+        to top,
+        rgba(7,13,7,0.97) 0%,
+        rgba(7,13,7,0.75) 35%,
+        rgba(7,13,7,0.15) 65%,
+        transparent 100%
+      );
+    }
+
+    /* Content hugs the bottom — no top gap */
     .hero-content {
+      position: relative;
+      z-index: 2;
       padding: 24px 24px 48px;
       padding-top: 0;
+      margin-top: auto; /* pushes content to bottom */
     }
+
     .hero-name {
       font-size: clamp(3.5rem, 18vw, 6rem);
     }
     .hero-eyebrow {
       font-size: 0.75rem;
+      margin-bottom: 12px; /* tighter gap above name */
+    }
+
+    /* Footer on mobile */
+    .site-footer {
+      flex-direction: column;
+      text-align: center;
     }
   }
 
   @media (max-width: 480px) {
     .share-imgs { grid-template-columns: 1fr; }
     .simg:first-child { aspect-ratio: 16/9; }
-
-    /* Extra small screens — keep hero name big but contained */
     .hero-name { font-size: clamp(3rem, 20vw, 5rem); }
   }
 </style>
@@ -626,7 +732,6 @@
           <div class="slide-caption">Human Rights Awareness · Schools</div>
         </div>
       </div>
-    
 
       <!-- Duplicated for seamless loop -->
       <div class="slide-card">
@@ -775,6 +880,76 @@
     <p>Stories and frameworks that create lasting transformation</p>
   </div>
 </div>
+
+<!-- SOCIAL MEDIA -->
+<section class="social-section reveal">
+  <div class="label">Connect</div>
+  <h2 class="sec-title">Follow the Journey</h2>
+  <p class="sec-sub">Stay inspired — follow Rohit Malla on social media for daily motivation, program updates, and leadership insights.</p>
+
+  <div class="social-links">
+    <!-- Facebook -->
+    <a href="https://facebook.com/rohitmalla" target="_blank" rel="noopener" class="social-link">
+      <div class="social-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#6dbf5e" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/>
+        </svg>
+      </div>
+      Facebook
+    </a>
+
+    <!-- Instagram -->
+    <a href="https://instagram.com/rohitmalla" target="_blank" rel="noopener" class="social-link">
+      <div class="social-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#6dbf5e" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+          <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
+          <circle cx="12" cy="12" r="4"/>
+          <circle cx="17.5" cy="6.5" r="0.5" fill="#6dbf5e"/>
+        </svg>
+      </div>
+      Instagram
+    </a>
+
+    <!-- YouTube -->
+    <a href="https://youtube.com/@rohitmalla" target="_blank" rel="noopener" class="social-link">
+      <div class="social-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#6dbf5e" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M22.54 6.42a2.78 2.78 0 0 0-1.95-1.96C18.88 4 12 4 12 4s-6.88 0-8.59.46A2.78 2.78 0 0 0 1.46 6.42 29 29 0 0 0 1 12a29 29 0 0 0 .46 5.58A2.78 2.78 0 0 0 3.41 19.6C5.12 20 12 20 12 20s6.88 0 8.59-.46a2.78 2.78 0 0 0 1.95-1.95A29 29 0 0 0 23 12a29 29 0 0 0-.46-5.58z"/>
+          <polygon points="9.75 15.02 15.5 12 9.75 8.98 9.75 15.02" fill="#6dbf5e" stroke="none"/>
+        </svg>
+      </div>
+      YouTube
+    </a>
+
+    <!-- LinkedIn -->
+    <a href="https://linkedin.com/in/rohitmalla" target="_blank" rel="noopener" class="social-link">
+      <div class="social-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#6dbf5e" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/>
+          <rect x="2" y="9" width="4" height="12"/>
+          <circle cx="4" cy="4" r="2"/>
+        </svg>
+      </div>
+      LinkedIn
+    </a>
+
+    <!-- TikTok -->
+    <a href="https://tiktok.com/@rohitmalla" target="_blank" rel="noopener" class="social-link">
+      <div class="social-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#6dbf5e" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M9 12a4 4 0 1 0 4 4V4a5 5 0 0 0 5 5"/>
+        </svg>
+      </div>
+      TikTok
+    </a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="site-footer">
+  <div class="footer-copy">© 2025 Rohit Malla. All rights reserved.</div>
+  <div class="footer-designed">Designed by <span>Thakendra Khadka</span></div>
+</footer>
 
 <script>
   const obs = new IntersectionObserver(entries => {
