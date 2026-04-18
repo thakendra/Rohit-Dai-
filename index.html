@@ -60,12 +60,28 @@
     filter: brightness(0.52) saturate(0.8); z-index: 0;
   }
   .rm-ov-top { position: absolute; top: 0; left: 0; right: 0; height: 28%; background: linear-gradient(to bottom, var(--green-900) 0%, transparent 100%); z-index: 1; }
-  .rm-ov-bottom { position: absolute; bottom: 0; left: 0; right: 0; height: 85%; background: linear-gradient(to top, rgba(10,31,14,0.98) 0%, rgba(10,31,14,0.85) 40%, rgba(10,31,14,0.20) 100%); z-index: 1; }
+
+  /* CHANGED: ultra-smooth bottom overlay — many stops, no perceptible edge */
+  .rm-ov-bottom {
+    position: absolute; bottom: 0; left: 0; right: 0; height: 100%;
+    background: linear-gradient(
+      to top,
+      rgba(10,31,14,1.00)  0%,
+      rgba(10,31,14,0.97)  8%,
+      rgba(10,31,14,0.90) 16%,
+      rgba(10,31,14,0.78) 26%,
+      rgba(10,31,14,0.60) 36%,
+      rgba(10,31,14,0.40) 48%,
+      rgba(10,31,14,0.22) 60%,
+      rgba(10,31,14,0.09) 72%,
+      rgba(10,31,14,0.02) 84%,
+      rgba(10,31,14,0.00) 100%
+    );
+    z-index: 1;
+  }
+
   .rm-ov-glow { position: absolute; inset: 0; background: radial-gradient(ellipse at 75% 50%, rgba(38,122,54,0.13) 0%, transparent 55%); z-index: 1; }
-  .rm-topbar { position: absolute; top: 0; left: 0; width: 100%; z-index: 10; display: flex; align-items: center; justify-content: space-between; padding: clamp(16px,4vw,36px) clamp(20px,5.5vw,60px); }
-  .rm-brand { display: flex; align-items: center; gap: 10px; }
-  .rm-brand__line { width: clamp(24px,4vw,34px); height: 2px; background: var(--green-accent); flex-shrink: 0; }
-  .rm-brand__text { font-family: 'Bebas Neue', sans-serif; font-size: clamp(12px,2.5vw,15px); letter-spacing: 0.25em; color: var(--white-60); }
+  .rm-topbar { position: absolute; top: 0; left: 0; width: 100%; z-index: 10; display: flex; align-items: center; justify-content: flex-end; padding: clamp(16px,4vw,36px) clamp(20px,5.5vw,60px); }
   .rm-since { display: flex; flex-direction: column; align-items: center; border: 1px solid var(--white-30); border-radius: 4px; padding: clamp(5px,1.2vw,9px) clamp(10px,2vw,16px); backdrop-filter: blur(8px); background: rgba(10,31,14,0.48); }
   .rm-since__label { font-size: clamp(7px,1.2vw,9px); letter-spacing: 0.2em; text-transform: uppercase; color: var(--white-60); }
   .rm-since__year  { font-family: 'Bebas Neue', sans-serif; font-size: clamp(18px,4vw,28px); line-height: 1; color: var(--gold-light); letter-spacing: 0.05em; }
@@ -73,7 +89,10 @@
   .rm-scroll__line { width: 1px; height: clamp(30px,5vw,48px); background: linear-gradient(to bottom, transparent, var(--white)); animation: rmscroll 2s ease-in-out infinite; }
   @keyframes rmscroll { 0%,100% { opacity:0; transform:scaleY(0); transform-origin:top; } 40%,65% { opacity:1; transform:scaleY(1); } }
   .rm-scroll__text { font-size:8px; letter-spacing:0.25em; text-transform:uppercase; color:var(--white); writing-mode:vertical-lr; transform:rotate(180deg); }
-  .rm-hero__content { position: relative; z-index: 5; padding: clamp(24px,5vw,40px) clamp(20px,6vw,80px); width: 100%; margin-top: 40px; }
+
+  /* CHANGED: reduced margin-top to push content higher */
+  .rm-hero__content { position: relative; z-index: 5; padding: clamp(24px,5vw,40px) clamp(20px,6vw,80px); width: 100%; margin-top: 0; }
+
   .rm-eyebrow { display:flex; align-items:center; gap:10px; margin-bottom:clamp(10px,2vw,16px); }
   .rm-eyebrow__dot { width:clamp(6px,1vw,8px); height:clamp(6px,1vw,8px); border-radius:50%; background:var(--green-accent); flex-shrink:0; animation:rmpulse 2.2s ease-in-out infinite; }
   @keyframes rmpulse { 0%,100% { opacity:1; transform:scale(1); box-shadow:0 0 0 0 rgba(74,222,128,0.4); } 50% { opacity:0.5; transform:scale(1.4); box-shadow:0 0 10px 4px rgba(74,222,128,0.1); } }
@@ -82,17 +101,67 @@
   .rm-name span { display:block; color:var(--gold-light); }
   .rm-role { font-family:'Bebas Neue',sans-serif; font-size:clamp(15px,3.5vw,22px); letter-spacing:0.15em; color:var(--white-85); margin-bottom:clamp(16px,3vw,24px); text-transform:uppercase; }
   .rm-divider { width:clamp(40px,8vw,60px); height:2px; background:linear-gradient(to right,var(--green-accent),transparent); margin-bottom:clamp(16px,3vw,24px); }
-  .rm-bio { font-size:clamp(14px,2.8vw,16px); line-height:1.65; color:var(--white-85); font-weight:300; max-width:min(100%,480px); text-shadow:0 1px 4px rgba(0,0,0,0.4); }
-  .rm-bio strong { color:var(--white); font-weight:600; }
+
+  /* ══ QUOTE + SIGNATURE BLOCK — CHANGED: stacked column layout ══ */
+  .rm-quote-block {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: clamp(14px, 2vw, 22px);
+    max-width: min(100%, 480px);
+  }
+  .rm-quote {
+    width: 100%;
+  }
+  .rm-quote__text {
+    font-size: clamp(14px,2.6vw,17px);
+    line-height: 1.6;
+    color: var(--white-85);
+    font-weight: 300;
+    font-style: italic;
+    text-shadow: 0 1px 4px rgba(0,0,0,0.5);
+    position: relative;
+    padding-left: clamp(14px,2vw,20px);
+    border-left: 2px solid var(--green-accent);
+  }
+  /* CHANGED: signature now below quote, aligned left, no translateY offset */
+  .rm-signature {
+    width: clamp(80px, 14vw, 130px);
+    opacity: 0.82;
+    mix-blend-mode: screen;
+    filter: drop-shadow(0 0 6px rgba(255,255,255,0.25));
+    margin-left: clamp(14px,2vw,20px); /* align with quote text (matches padding-left) */
+  }
 
   @media (max-width:480px) { .rm-scroll { display:none; } }
   @media (max-width:359px) { .rm-name { font-size:48px; } }
   @media (min-width:768px) {
     .rm-hero__photo { object-position:58% 18%; }
     .rm-hero__content { max-width:680px; }
-    .rm-bio { font-size:16px; line-height:1.8; }
+    .rm-quote__text { font-size:16px; line-height:1.75; }
     .rm-scroll { display:flex; }
-    .rm-ov-bottom { background:linear-gradient(to right,rgba(10,31,14,0.98) 0%,rgba(10,31,14,0.7) 50%,transparent 100%); }
+    /* CHANGED: desktop bottom overlay — also ultra-smooth, no sharp band */
+    .rm-ov-bottom {
+      background:
+        linear-gradient(
+          to right,
+          rgba(10,31,14,0.97) 0%,
+          rgba(10,31,14,0.75) 35%,
+          rgba(10,31,14,0.20) 62%,
+          rgba(10,31,14,0.00) 100%
+        ),
+        linear-gradient(
+          to top,
+          rgba(10,31,14,1.00)  0%,
+          rgba(10,31,14,0.95)  8%,
+          rgba(10,31,14,0.82) 18%,
+          rgba(10,31,14,0.60) 30%,
+          rgba(10,31,14,0.35) 44%,
+          rgba(10,31,14,0.14) 58%,
+          rgba(10,31,14,0.03) 72%,
+          rgba(10,31,14,0.00) 100%
+        );
+    }
   }
   @media (min-width:1200px) { .rm-hero__content { max-width:800px; } }
 </style>
@@ -110,7 +179,6 @@
   <div class="rm-ov-bottom"></div>
   <div class="rm-scroll"><span class="rm-scroll__text">Scroll</span><div class="rm-scroll__line"></div></div>
   <div class="rm-topbar">
-    <div class="rm-brand"><div class="rm-brand__line"></div><span class="rm-brand__text">Right Path</span></div>
     <div class="rm-since"><span class="rm-since__label">Since</span><span class="rm-since__year">2016</span></div>
   </div>
   <div class="rm-hero__content">
@@ -118,16 +186,27 @@
     <h1 class="rm-name">Rohit<span>Malla</span></h1>
     <p class="rm-role">Youth · Policy · Leadership</p>
     <div class="rm-divider"></div>
-    <p class="rm-bio">Transforming lives through <strong>leadership, resilience &amp; purpose</strong> — from Kathmandu to communities across Nepal and beyond.</p>
+    <!-- CHANGED: quote on top, signature stacked below -->
+    <div class="rm-quote-block">
+      <div class="rm-quote">
+        <p class="rm-quote__text">
+          <span class="line-1">"Leadership is not about competition,</span><br>
+          <span class="line-2">it's about collaboration."</span>
+        </p>
+      </div>
+      <img class="rm-signature" src="White Sign.png" alt="Rohit Malla signature"/>
+    </div>
   </div>
 </section>
+
+
 
 <style>
   :root {
     --dark: #070d07;
     --dark2: #0d150d;
     --green-deep: #162416;
-    --green-accent: #4a8c3f;
+    --green-accent: #162416;
     --green-bright: #6dbf5e;
     --gold: #c9a84c;
     --white: #4a8c3f;
@@ -518,16 +597,13 @@
     .icons-bar { grid-template-columns:1fr; }
     .iitem { border-right:none; border-bottom:1px solid rgba(74,140,63,0.2); }
     .iitem:last-child { border-bottom:none; }
-    /* All labels centered on mobile */
     .label { justify-content:center; }
     .label::before,.label::after { display:flex; max-width:30px; }
-    /* All section titles & subtitles centered */
     h2.sec-title { text-align:center; }
     .sec-sub { text-align:center; margin-left:auto; margin-right:auto; }
     .slide-card { width:clamp(200px,70vw,280px); }
     .site-footer { flex-direction:column; text-align:center; }
     #cursor-dot,#cursor-ring { display:none; }
-    /* Contact buttons — side by side, compact on mobile */
     .contact-buttons {
       flex-direction: row;
       flex-wrap: nowrap;
@@ -549,7 +625,6 @@
     .contact-phone__icon svg, .contact-email__icon svg { width: 14px; height: 14px; }
     .contact-phone__label, .contact-email__label { font-size: 0.5rem; letter-spacing: 0.2em; }
     .contact-phone__number, .contact-email__address { font-size: 0.75rem; letter-spacing: 0.04em; }
-    /* Social icons — all in one row, smaller */
     .social-links {
       display: grid;
       grid-template-columns: repeat(6, 1fr);
@@ -565,19 +640,15 @@
       width: 42px; height: 42px;
     }
     .social-icon svg { width: 18px; height: 18px; }
-    /* Gallery section centered */
     .gallery-section .label { justify-content:center; }
     .gallery-section h2.sec-title { text-align:center; }
     .gallery-section .sec-sub { text-align:center; margin-left:auto; }
-    /* Shows section centered */
     .shows-section .label { justify-content:center; }
     .shows-section h2.sec-title { text-align:center; }
     .shows-section .sec-sub { text-align:center; margin-left:auto; }
-    /* Contact section centered */
     .contact-section .label { justify-content:center; }
     .contact-section h2.sec-title { text-align:center; }
     .contact-tagline { text-align:center; }
-    /* Social section centered */
     .social-section .label { justify-content:center; }
     .social-section h2.sec-title { text-align:center; }
     .social-section .sec-sub { text-align:center; }
@@ -603,8 +674,7 @@
 
 <!-- POPULAR SHOWS -->
 <section class="shows-section reveal">
-  <div class="label">Signature Programs</div>
-  <h2 class="sec-title">Popular Shows</h2>
+  <h2 class="sec-title">Signature Programs</h2>
   <p class="sec-sub">Six landmark programs that defined a movement — and transformed a generation.</p>
 
   <div class="shows-grid">
