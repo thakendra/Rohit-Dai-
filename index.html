@@ -27,28 +27,20 @@
 
   /* ══ CUSTOM CURSOR ══ */
   #cursor-dot {
-    position: fixed;
-    top: 0; left: 0;
-    width: 8px; height: 8px;
-    background: #6dbf5e;
-    border-radius: 50%;
-    pointer-events: none;
-    z-index: 99999;
+    position: fixed; top: 0; left: 0;
+    width: 8px; height: 8px; background: #6dbf5e;
+    border-radius: 50%; pointer-events: none; z-index: 99999;
     transform: translate(-50%, -50%);
     transition: width 0.25s ease, height 0.25s ease, background 0.25s ease;
     will-change: left, top;
   }
   #cursor-ring {
-    position: fixed;
-    top: 0; left: 0;
+    position: fixed; top: 0; left: 0;
     width: 36px; height: 36px;
-    border: 1.5px solid rgba(109,191,94,0.65);
-    border-radius: 50%;
-    pointer-events: none;
-    z-index: 99998;
+    border: 1.5px solid rgba(109,191,94,0.65); border-radius: 50%;
+    pointer-events: none; z-index: 99998;
     transform: translate(-50%, -50%);
-    transition: width 0.3s ease, height 0.3s ease,
-                border-color 0.3s ease, border-style 0.3s ease;
+    transition: width 0.3s ease, height 0.3s ease, border-color 0.3s ease, border-style 0.3s ease;
     will-change: left, top;
   }
   #cursor-dot.hovered  { width: 12px; height: 12px; background: #c9a84c; }
@@ -56,92 +48,37 @@
   #cursor-dot.dragging  { width: 6px; height: 6px; background: #4ade80; }
   #cursor-ring.dragging { width: 46px; height: 46px; border-color: rgba(74,222,128,0.55); border-style: dashed; }
 
-  /* ══ HERO WRAPPER ══ */
+  /* ══ HERO ══ */
   .rm-hero {
-    position: relative;
-    width: 100%;
-    height: 100svh;
-    min-height: 500px;
-    max-height: 1000px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    overflow: hidden;
+    position: relative; width: 100%; height: 100svh;
+    min-height: 500px; max-height: 1000px;
+    display: flex; flex-direction: column; justify-content: center; overflow: hidden;
   }
   .rm-hero__photo {
-    position: absolute; inset: 0;
-    width: 100%; height: 100%;
+    position: absolute; inset: 0; width: 100%; height: 100%;
     object-fit: cover; object-position: 72% center;
-    filter: brightness(0.52) saturate(0.8);
-    z-index: 0;
+    filter: brightness(0.52) saturate(0.8); z-index: 0;
   }
-  .rm-ov-top {
-    position: absolute; top: 0; left: 0; right: 0; height: 28%;
-    background: linear-gradient(to bottom, var(--green-900) 0%, transparent 100%);
-    z-index: 1;
-  }
-  .rm-ov-bottom {
-    position: absolute; bottom: 0; left: 0; right: 0; height: 85%;
-    background: linear-gradient(to top, rgba(10,31,14,0.98) 0%, rgba(10,31,14,0.85) 40%, rgba(10,31,14,0.20) 100%);
-    z-index: 1;
-  }
-  .rm-ov-glow {
-    position: absolute; inset: 0;
-    background: radial-gradient(ellipse at 75% 50%, rgba(38,122,54,0.13) 0%, transparent 55%);
-    z-index: 1;
-  }
-  .rm-topbar {
-    position: absolute; top: 0; left: 0; width: 100%;
-    z-index: 10;
-    display: flex; align-items: center; justify-content: space-between;
-    padding: clamp(16px,4vw,36px) clamp(20px,5.5vw,60px);
-  }
+  .rm-ov-top { position: absolute; top: 0; left: 0; right: 0; height: 28%; background: linear-gradient(to bottom, var(--green-900) 0%, transparent 100%); z-index: 1; }
+  .rm-ov-bottom { position: absolute; bottom: 0; left: 0; right: 0; height: 85%; background: linear-gradient(to top, rgba(10,31,14,0.98) 0%, rgba(10,31,14,0.85) 40%, rgba(10,31,14,0.20) 100%); z-index: 1; }
+  .rm-ov-glow { position: absolute; inset: 0; background: radial-gradient(ellipse at 75% 50%, rgba(38,122,54,0.13) 0%, transparent 55%); z-index: 1; }
+  .rm-topbar { position: absolute; top: 0; left: 0; width: 100%; z-index: 10; display: flex; align-items: center; justify-content: space-between; padding: clamp(16px,4vw,36px) clamp(20px,5.5vw,60px); }
   .rm-brand { display: flex; align-items: center; gap: 10px; }
   .rm-brand__line { width: clamp(24px,4vw,34px); height: 2px; background: var(--green-accent); flex-shrink: 0; }
   .rm-brand__text { font-family: 'Bebas Neue', sans-serif; font-size: clamp(12px,2.5vw,15px); letter-spacing: 0.25em; color: var(--white-60); }
-  .rm-since {
-    display: flex; flex-direction: column; align-items: center;
-    border: 1px solid var(--white-30); border-radius: 4px;
-    padding: clamp(5px,1.2vw,9px) clamp(10px,2vw,16px);
-    backdrop-filter: blur(8px); background: rgba(10,31,14,0.48);
-  }
+  .rm-since { display: flex; flex-direction: column; align-items: center; border: 1px solid var(--white-30); border-radius: 4px; padding: clamp(5px,1.2vw,9px) clamp(10px,2vw,16px); backdrop-filter: blur(8px); background: rgba(10,31,14,0.48); }
   .rm-since__label { font-size: clamp(7px,1.2vw,9px); letter-spacing: 0.2em; text-transform: uppercase; color: var(--white-60); }
   .rm-since__year  { font-family: 'Bebas Neue', sans-serif; font-size: clamp(18px,4vw,28px); line-height: 1; color: var(--gold-light); letter-spacing: 0.05em; }
-  .rm-scroll {
-    position: absolute; bottom: 40px; right: clamp(16px,4vw,44px);
-    z-index: 6; display: flex; flex-direction: column; align-items: center; gap: 8px; opacity: 0.45;
-  }
-  .rm-scroll__line {
-    width: 1px; height: clamp(30px,5vw,48px);
-    background: linear-gradient(to bottom, transparent, var(--white));
-    animation: rmscroll 2s ease-in-out infinite;
-  }
-  @keyframes rmscroll {
-    0%,100% { opacity:0; transform:scaleY(0); transform-origin:top; }
-    40%,65%  { opacity:1; transform:scaleY(1); }
-  }
+  .rm-scroll { position: absolute; bottom: 40px; right: clamp(16px,4vw,44px); z-index: 6; display: flex; flex-direction: column; align-items: center; gap: 8px; opacity: 0.45; }
+  .rm-scroll__line { width: 1px; height: clamp(30px,5vw,48px); background: linear-gradient(to bottom, transparent, var(--white)); animation: rmscroll 2s ease-in-out infinite; }
+  @keyframes rmscroll { 0%,100% { opacity:0; transform:scaleY(0); transform-origin:top; } 40%,65% { opacity:1; transform:scaleY(1); } }
   .rm-scroll__text { font-size:8px; letter-spacing:0.25em; text-transform:uppercase; color:var(--white); writing-mode:vertical-lr; transform:rotate(180deg); }
-  .rm-hero__content {
-    position: relative; z-index: 5;
-    padding: clamp(24px,5vw,40px) clamp(20px,6vw,80px);
-    width: 100%; margin-top: 40px;
-  }
+  .rm-hero__content { position: relative; z-index: 5; padding: clamp(24px,5vw,40px) clamp(20px,6vw,80px); width: 100%; margin-top: 40px; }
   .rm-eyebrow { display:flex; align-items:center; gap:10px; margin-bottom:clamp(10px,2vw,16px); }
-  .rm-eyebrow__dot {
-    width:clamp(6px,1vw,8px); height:clamp(6px,1vw,8px);
-    border-radius:50%; background:var(--green-accent); flex-shrink:0;
-    animation:rmpulse 2.2s ease-in-out infinite;
-  }
-  @keyframes rmpulse {
-    0%,100% { opacity:1; transform:scale(1); box-shadow:0 0 0 0 rgba(74,222,128,0.4); }
-    50%      { opacity:0.5; transform:scale(1.4); box-shadow:0 0 10px 4px rgba(74,222,128,0.1); }
-  }
+  .rm-eyebrow__dot { width:clamp(6px,1vw,8px); height:clamp(6px,1vw,8px); border-radius:50%; background:var(--green-accent); flex-shrink:0; animation:rmpulse 2.2s ease-in-out infinite; }
+  @keyframes rmpulse { 0%,100% { opacity:1; transform:scale(1); box-shadow:0 0 0 0 rgba(74,222,128,0.4); } 50% { opacity:0.5; transform:scale(1.4); box-shadow:0 0 10px 4px rgba(74,222,128,0.1); } }
   .rm-eyebrow__text { font-size:clamp(10px,2.2vw,12px); font-weight:500; letter-spacing:0.25em; text-transform:uppercase; color:var(--green-accent); line-height:1.2; }
-  .rm-name {
-    font-family:'Bebas Neue',sans-serif; font-size:clamp(56px,15vw,120px);
-    line-height:0.95; letter-spacing:0.02em; color:var(--white);
-    margin-bottom:clamp(8px,1.5vw,12px); text-shadow:0 4px 24px rgba(0,0,0,0.6);
-  }
+  .rm-name { font-family:'Bebas Neue',sans-serif; font-size:clamp(56px,15vw,120px); line-height:0.95; letter-spacing:0.02em; color:var(--white); margin-bottom:clamp(8px,1.5vw,12px); text-shadow:0 4px 24px rgba(0,0,0,0.6); }
   .rm-name span { display:block; color:var(--gold-light); }
   .rm-role { font-family:'Bebas Neue',sans-serif; font-size:clamp(15px,3.5vw,22px); letter-spacing:0.15em; color:var(--white-85); margin-bottom:clamp(16px,3vw,24px); text-transform:uppercase; }
   .rm-divider { width:clamp(40px,8vw,60px); height:2px; background:linear-gradient(to right,var(--green-accent),transparent); margin-bottom:clamp(16px,3vw,24px); }
@@ -171,25 +108,13 @@
   <div class="rm-ov-top"></div>
   <div class="rm-ov-glow"></div>
   <div class="rm-ov-bottom"></div>
-  <div class="rm-scroll">
-    <span class="rm-scroll__text">Scroll</span>
-    <div class="rm-scroll__line"></div>
-  </div>
+  <div class="rm-scroll"><span class="rm-scroll__text">Scroll</span><div class="rm-scroll__line"></div></div>
   <div class="rm-topbar">
-    <div class="rm-brand">
-      <div class="rm-brand__line"></div>
-      <span class="rm-brand__text">Right Path</span>
-    </div>
-    <div class="rm-since">
-      <span class="rm-since__label">Since</span>
-      <span class="rm-since__year">2016</span>
-    </div>
+    <div class="rm-brand"><div class="rm-brand__line"></div><span class="rm-brand__text">Right Path</span></div>
+    <div class="rm-since"><span class="rm-since__label">Since</span><span class="rm-since__year">2016</span></div>
   </div>
   <div class="rm-hero__content">
-    <div class="rm-eyebrow">
-      <div class="rm-eyebrow__dot"></div>
-      <span class="rm-eyebrow__text">Creating Leaders Across Nepal</span>
-    </div>
+    <div class="rm-eyebrow"><div class="rm-eyebrow__dot"></div><span class="rm-eyebrow__text">Creating Leaders Across Nepal</span></div>
     <h1 class="rm-name">Rohit<span>Malla</span></h1>
     <p class="rm-role">Youth · Policy · Leadership</p>
     <div class="rm-divider"></div>
@@ -223,65 +148,206 @@
   h2.sec-title { font-family:'Bebas Neue',sans-serif; font-size:clamp(1.6rem,4vw,3rem); font-weight:400; text-align:center; margin-bottom:12px; line-height:1.1; letter-spacing:0.05em; }
   .sec-sub { text-align:center; color:var(--grey); font-style:italic; max-width:560px; margin:0 auto clamp(40px,5vw,70px); font-size:clamp(0.95rem,2vw,1.1rem); }
 
-  /* JOURNEY SLIDER */
+  /* ── JOURNEY SLIDER ── */
   .journey-section { background:var(--dark); padding:clamp(60px,8vw,120px) 0; overflow:hidden; }
   .journey-header { padding:0 clamp(24px,6vw,80px); margin-bottom:clamp(40px,5vw,64px); }
-
-  .slider-outer {
-    position:relative; width:100%; overflow:hidden;
-    cursor:none;
-    /* Prevent scroll-chain on mobile */
-    touch-action: pan-y;
-  }
-  .slider-outer::before,.slider-outer::after {
-    content:''; position:absolute; top:0; bottom:0;
-    width:clamp(40px,8vw,120px); z-index:2; pointer-events:none;
-  }
+  .slider-outer { position:relative; width:100%; overflow:hidden; cursor:none; touch-action:pan-y; }
+  .slider-outer::before,.slider-outer::after { content:''; position:absolute; top:0; bottom:0; width:clamp(40px,8vw,120px); z-index:2; pointer-events:none; }
   .slider-outer::before { left:0; background:linear-gradient(to right,var(--dark),transparent); }
   .slider-outer::after  { right:0; background:linear-gradient(to left,var(--dark),transparent); }
-
-  .slider-track {
-    display:flex; gap:20px; width:max-content;
-    animation:scrollLeft 40s linear infinite;
-    padding:0 20px;
-    user-select:none; -webkit-user-select:none;
-  }
-  .slider-track.is-dragging,
-  .slider-track:hover { animation-play-state:paused; }
-
-  @keyframes scrollLeft {
-    0%   { transform:translateX(0); }
-    100% { transform:translateX(-50%); }
-  }
-
-  .slide-card {
-    position:relative; flex-shrink:0;
-    width:clamp(260px,30vw,380px); aspect-ratio:3/4;
-    overflow:hidden; cursor:none;
-    border:1px solid rgba(74,140,63,0.15); transition:border-color 0.4s;
-  }
+  .slider-track { display:flex; gap:20px; width:max-content; animation:scrollLeft 40s linear infinite; padding:0 20px; user-select:none; -webkit-user-select:none; }
+  .slider-track.is-dragging, .slider-track:hover { animation-play-state:paused; }
+  @keyframes scrollLeft { 0% { transform:translateX(0); } 100% { transform:translateX(-50%); } }
+  .slide-card { position:relative; flex-shrink:0; width:clamp(260px,30vw,380px); aspect-ratio:3/4; overflow:hidden; cursor:none; border:1px solid rgba(74,140,63,0.15); transition:border-color 0.4s; }
   .slide-card:hover { border-color:var(--green-accent); }
-  .slide-card img {
-    width:100%; height:100%; object-fit:cover;
-    filter:brightness(0.55) saturate(0.7);
-    transition:filter 0.6s ease,transform 0.6s ease;
-    display:block; pointer-events:none;
-    -webkit-user-drag:none; user-select:none;
-  }
+  .slide-card img { width:100%; height:100%; object-fit:cover; filter:brightness(0.55) saturate(0.7); transition:filter 0.6s ease,transform 0.6s ease; display:block; pointer-events:none; -webkit-user-drag:none; user-select:none; }
   .slide-card:hover img { filter:brightness(0.75) saturate(1); transform:scale(1.05); }
-  .slide-overlay {
-    position:absolute; inset:0;
-    background:linear-gradient(to top,rgba(7,13,7,0.95) 0%,rgba(7,13,7,0.3) 50%,transparent 100%);
-    display:flex; flex-direction:column; justify-content:flex-end;
-    padding:clamp(16px,3vw,28px); pointer-events:none;
-  }
+  .slide-overlay { position:absolute; inset:0; background:linear-gradient(to top,rgba(7,13,7,0.95) 0%,rgba(7,13,7,0.3) 50%,transparent 100%); display:flex; flex-direction:column; justify-content:flex-end; padding:clamp(16px,3vw,28px); pointer-events:none; }
   .slide-year { font-family:'Bebas Neue',sans-serif; font-size:clamp(2rem,5vw,3.2rem); font-weight:400; color:var(--green-bright); line-height:1; margin-bottom:6px; letter-spacing:0.05em; text-shadow:0 0 40px rgba(109,191,94,0.4); transition:color 0.4s; }
   .slide-card:hover .slide-year { color:var(--white); }
   .slide-line { width:30px; height:1px; background:var(--green-bright); margin-bottom:10px; transition:width 0.4s; }
   .slide-card:hover .slide-line { width:50px; }
   .slide-caption { font-family:'Bebas Neue',sans-serif; font-size:clamp(0.55rem,1.2vw,0.7rem); letter-spacing:0.25em; text-transform:uppercase; color:var(--grey); line-height:1.5; }
 
-  /* ICONS */
+  /* ── POPULAR SHOWS ── */
+  .shows-section {
+    background: var(--dark2);
+    padding: clamp(60px,8vw,120px) clamp(24px,6vw,80px);
+  }
+  .shows-section .label { justify-content: center; }
+  .shows-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: clamp(16px, 2.5vw, 28px);
+  }
+  .show-card {
+    position: relative;
+    overflow: hidden;
+    border: 1px solid rgba(74,140,63,0.15);
+    transition: border-color 0.4s, transform 0.4s;
+    cursor: none;
+    background: var(--dark);
+  }
+  .show-card:hover { border-color: var(--green-bright); transform: translateY(-6px); }
+  .show-card__img {
+    position: relative;
+    aspect-ratio: 4/3;
+    overflow: hidden;
+  }
+  .show-card__img img {
+    width: 100%; height: 100%;
+    object-fit: cover;
+    filter: brightness(0.5) saturate(0.65);
+    transition: filter 0.5s ease, transform 0.5s ease;
+    display: block;
+  }
+  .show-card:hover .show-card__img img { filter: brightness(0.7) saturate(1); transform: scale(1.06); }
+  .show-card__img-overlay {
+    position: absolute; inset: 0;
+    background: linear-gradient(to top, rgba(7,13,7,0.92) 0%, transparent 60%);
+    pointer-events: none;
+  }
+  .show-card__year-badge {
+    position: absolute;
+    top: 14px; left: 14px;
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(0.7rem, 1.5vw, 0.85rem);
+    letter-spacing: 0.3em;
+    color: var(--gold);
+    background: rgba(7,13,7,0.75);
+    border: 1px solid rgba(201,168,76,0.35);
+    padding: 4px 10px;
+    backdrop-filter: blur(6px);
+  }
+  .show-card__body {
+    padding: clamp(16px, 2.5vw, 24px);
+  }
+  .show-card__name {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(1.3rem, 2.8vw, 1.9rem);
+    font-weight: 400;
+    letter-spacing: 0.06em;
+    color: var(--green-bright);
+    line-height: 1;
+    margin-bottom: 6px;
+    transition: color 0.3s;
+  }
+  .show-card:hover .show-card__name { color: #ffffff; }
+  .show-card__venue {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(0.55rem, 1.1vw, 0.68rem);
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: rgba(109,191,94,0.6);
+    margin-bottom: 10px;
+    line-height: 1.5;
+  }
+  .show-card__participants {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(0.6rem, 1.2vw, 0.72rem);
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 14px;
+  }
+  .show-card__participants::before {
+    content: '';
+    display: inline-block;
+    width: 16px; height: 1px;
+    background: var(--gold);
+    opacity: 0.6;
+  }
+  .show-card__divider {
+    width: 28px; height: 1px;
+    background: rgba(109,191,94,0.3);
+    margin-bottom: 12px;
+    transition: width 0.4s;
+  }
+  .show-card:hover .show-card__divider { width: 48px; }
+  .show-card__desc {
+    font-family: 'Inter', sans-serif;
+    font-size: clamp(0.78rem, 1.4vw, 0.88rem);
+    font-style: italic;
+    line-height: 1.7;
+    color: rgba(109,191,94,0.65);
+  }
+  .show-card__desc p { margin-bottom: 4px; }
+  .show-card__desc p:last-child { color: rgba(109,191,94,0.45); margin-bottom: 0; }
+
+  /* ── GET IN TOUCH ── */
+  .contact-section {
+    background: var(--green-deep);
+    padding: clamp(48px,7vw,96px) clamp(24px,6vw,80px);
+    text-align: center;
+    border-top: 1px solid rgba(74,140,63,0.2);
+    border-bottom: 1px solid rgba(74,140,63,0.2);
+  }
+  .contact-section .label { justify-content: center; }
+  .contact-tagline {
+    font-family: 'Inter', sans-serif;
+    font-size: clamp(0.9rem, 2vw, 1.05rem);
+    font-style: italic;
+    color: rgba(109,191,94,0.65);
+    margin-bottom: clamp(28px, 4vw, 44px);
+    font-weight: 300;
+  }
+  .contact-phone {
+    display: inline-flex;
+    align-items: center;
+    gap: 16px;
+    text-decoration: none;
+    background: rgba(74,140,63,0.08);
+    border: 1.5px solid rgba(74,140,63,0.35);
+    padding: clamp(16px,3vw,22px) clamp(28px,5vw,52px);
+    transition: background 0.3s, border-color 0.3s, transform 0.3s;
+    position: relative;
+    overflow: hidden;
+  }
+  .contact-phone::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, rgba(109,191,94,0.06), transparent);
+    opacity: 0;
+    transition: opacity 0.3s;
+  }
+  .contact-phone:hover { background: rgba(74,140,63,0.15); border-color: var(--green-bright); transform: translateY(-3px); }
+  .contact-phone:hover::before { opacity: 1; }
+  .contact-phone__icon {
+    width: clamp(36px,5vw,48px); height: clamp(36px,5vw,48px);
+    border: 1px solid rgba(109,191,94,0.4);
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
+    transition: border-color 0.3s, background 0.3s;
+  }
+  .contact-phone:hover .contact-phone__icon { border-color: var(--green-bright); background: rgba(109,191,94,0.1); }
+  .contact-phone__icon svg { width: 18px; height: 18px; }
+  .contact-phone__text { text-align: left; }
+  .contact-phone__label {
+    display: block;
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(0.55rem, 1.1vw, 0.65rem);
+    letter-spacing: 0.35em;
+    text-transform: uppercase;
+    color: rgba(109,191,94,0.5);
+    margin-bottom: 2px;
+  }
+  .contact-phone__number {
+    display: block;
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(1.6rem, 4vw, 2.6rem);
+    letter-spacing: 0.08em;
+    color: var(--green-bright);
+    line-height: 1;
+    transition: color 0.3s;
+  }
+  .contact-phone:hover .contact-phone__number { color: #ffffff; }
+
+  /* ── ICONS ── */
   .icons-bar { background:var(--green-deep); border-top:1px solid rgba(74,140,63,0.25); display:grid; grid-template-columns:repeat(3,1fr); padding:clamp(40px,5vw,70px) clamp(24px,6vw,80px); text-align:center; }
   .iitem { padding:20px; border-right:1px solid rgba(74,140,63,0.2); }
   .iitem:last-child { border-right:none; }
@@ -289,7 +355,7 @@
   .iitem h4 { font-family:'Bebas Neue',sans-serif; font-size:clamp(0.65rem,1.5vw,0.85rem); letter-spacing:0.2em; text-transform:uppercase; color:var(--green-bright); margin-bottom:8px; }
   .iitem p { color:var(--grey); font-style:italic; font-size:clamp(0.8rem,1.5vw,0.9rem); }
 
-  /* SOCIAL */
+  /* ── SOCIAL ── */
   .social-section { background:var(--dark2); padding:clamp(60px,8vw,100px) clamp(24px,6vw,80px); text-align:center; border-top:1px solid rgba(74,140,63,0.15); }
   .social-section .label { justify-content:center; }
   .social-links { display:flex; justify-content:center; align-items:center; gap:clamp(16px,4vw,40px); flex-wrap:wrap; margin-top:clamp(32px,4vw,56px); }
@@ -299,7 +365,7 @@
   .social-link:hover .social-icon { border-color:var(--green-bright); background:rgba(109,191,94,0.08); }
   .social-icon svg { width:24px; height:24px; }
 
-  /* FOOTER */
+  /* ── FOOTER ── */
   .site-footer { background:var(--dark); border-top:1px solid rgba(74,140,63,0.12); padding:clamp(24px,3vw,36px) clamp(24px,6vw,80px); display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:12px; }
   .footer-copy { font-family:'Cormorant Garamond',serif; font-style:italic; font-size:clamp(0.78rem,1.4vw,0.88rem); color:rgba(109,191,94,0.5); }
   .footer-designed { font-family:'Bebas Neue',sans-serif; font-size:clamp(0.6rem,1.2vw,0.72rem); letter-spacing:0.3em; text-transform:uppercase; color:rgba(109,191,94,0.35); }
@@ -309,6 +375,10 @@
   .reveal { opacity:0; transform:translateY(22px); transition:opacity 0.7s ease,transform 0.7s ease; }
   .reveal.visible { opacity:1; transform:translateY(0); }
 
+  /* ── MOBILE ── */
+  @media (max-width:900px) {
+    .shows-grid { grid-template-columns: repeat(2,1fr); }
+  }
   @media (max-width:700px) {
     .stats { grid-template-columns:repeat(2,1fr); }
     .stat:nth-child(2) { border-right:none; }
@@ -322,11 +392,18 @@
     .sec-sub { text-align:left; margin-left:0; }
     .slide-card { width:clamp(200px,70vw,280px); }
     .site-footer { flex-direction:column; text-align:center; }
-    /* Hide cursor on touch */
     #cursor-dot,#cursor-ring { display:none; }
+    .shows-section .label { justify-content:flex-start; }
+    .shows-section h2.sec-title { text-align:left; }
+    .shows-section .sec-sub { text-align:left; margin-left:0; }
+    .contact-section .label { justify-content:flex-start; }
+    .contact-section h2.sec-title { text-align:left; }
+  }
+  @media (max-width:560px) {
+    .shows-grid { grid-template-columns: 1fr; }
   }
   @media (hover:none) {
-    body,.slider-outer,.slide-card { cursor:auto; }
+    body,.slider-outer,.slide-card,.show-card { cursor:auto; }
     #cursor-dot,#cursor-ring { display:none; }
   }
 </style>
@@ -338,7 +415,6 @@
     <h2 class="sec-title">A Decade of Impact</h2>
     <p class="sec-sub">Drag or swipe · Hover to pause</p>
   </div>
-
   <div class="slider-outer" id="sliderOuter">
     <div class="slider-track" id="sliderTrack">
       <div class="slide-card"><img src="pictures/2016-a.png" alt="2016"><div class="slide-overlay"><div class="slide-year">2016</div><div class="slide-line"></div><div class="slide-caption">Impact Talks · National Youth Program</div></div></div>
@@ -375,6 +451,131 @@
   </div>
 </section>
 
+<!-- POPULAR SHOWS -->
+<section class="shows-section reveal">
+  <div class="label">Signature Programs</div>
+  <h2 class="sec-title">Popular Shows</h2>
+  <p class="sec-sub">Six landmark programs that defined a movement — and transformed a generation.</p>
+
+  <div class="shows-grid">
+
+    <!-- Struggle -->
+    <div class="show-card">
+      <div class="show-card__img">
+        <img src="pictures/Struggle .png" alt="Struggle">
+        <div class="show-card__img-overlay"></div>
+        <div class="show-card__year-badge">2016</div>
+      </div>
+      <div class="show-card__body">
+        <div class="show-card__name">Struggle</div>
+        <div class="show-card__venue">Rashtriya Nachghar, Jamal, Kathmandu</div>
+        <div class="show-card__participants">700+ Youth Participants</div>
+        <div class="show-card__divider"></div>
+        <div class="show-card__desc">
+          <p>A raw beginning, sharing real-life struggles</p>
+          <p>Where the journey of impact first started</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Possible -->
+    <div class="show-card">
+      <div class="show-card__img">
+        <img src="pictures/Possible .png" alt="Possible">
+        <div class="show-card__img-overlay"></div>
+        <div class="show-card__year-badge">2017</div>
+      </div>
+      <div class="show-card__body">
+        <div class="show-card__name">Possible</div>
+        <div class="show-card__venue">Rashtriya Nachghar, Jamal, Kathmandu</div>
+        <div class="show-card__participants">700+ Youth Participants</div>
+        <div class="show-card__divider"></div>
+        <div class="show-card__desc">
+          <p>Shifting mindset from doubt to possibility</p>
+          <p>Inspiring belief in what can be achieved</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Focus For Future -->
+    <div class="show-card">
+      <div class="show-card__img">
+        <img src="pictures/Focus For Future.png" alt="Focus For Future">
+        <div class="show-card__img-overlay"></div>
+        <div class="show-card__year-badge">2018</div>
+      </div>
+      <div class="show-card__body">
+        <div class="show-card__name">Focus For Future</div>
+        <div class="show-card__venue">Pragya Pratisthan, Kamaladi</div>
+        <div class="show-card__participants">1500+ Youth from Across Nepal</div>
+        <div class="show-card__divider"></div>
+        <div class="show-card__desc">
+          <p>A vision-driven gathering of young minds</p>
+          <p>Aligning goals, clarity, and national impact</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Fearless -->
+    <div class="show-card">
+      <div class="show-card__img">
+        <img src="pictures/Fearless.png" alt="Fearless">
+        <div class="show-card__img-overlay"></div>
+        <div class="show-card__year-badge">2019</div>
+      </div>
+      <div class="show-card__body">
+        <div class="show-card__name">Fearless</div>
+        <div class="show-card__venue">Bharatpur Cancer Hospital</div>
+        <div class="show-card__participants">600+ Youth Participants</div>
+        <div class="show-card__divider"></div>
+        <div class="show-card__desc">
+          <p>Speaking courage where fear once existed</p>
+          <p>Turning pain into strength and purpose</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Hustle -->
+    <div class="show-card">
+      <div class="show-card__img">
+        <img src="pictures/Hustle.png" alt="Hustle">
+        <div class="show-card__img-overlay"></div>
+        <div class="show-card__year-badge">2021</div>
+      </div>
+      <div class="show-card__body">
+        <div class="show-card__name">Hustle</div>
+        <div class="show-card__venue">Rashtriya Nachghar, Jamal, Kathmandu</div>
+        <div class="show-card__participants">700+ Youth Participants</div>
+        <div class="show-card__divider"></div>
+        <div class="show-card__desc">
+          <p>Energy, consistency, and relentless effort</p>
+          <p>Building discipline for long-term success</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Breakthrough -->
+    <div class="show-card">
+      <div class="show-card__img">
+        <img src="pictures/Breakthrough.png" alt="Breakthrough">
+        <div class="show-card__img-overlay"></div>
+        <div class="show-card__year-badge">2023</div>
+      </div>
+      <div class="show-card__body">
+        <div class="show-card__name">Breakthrough</div>
+        <div class="show-card__venue">Pragya Pratisthan, Kamaladi</div>
+        <div class="show-card__participants">1500+ Youth from Across Nepal</div>
+        <div class="show-card__divider"></div>
+        <div class="show-card__desc">
+          <p>A defining moment of growth and scale</p>
+          <p>From vision to nationwide movement</p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
 <!-- STATS -->
 <div class="stats">
   <div class="stat"><div class="stat-n">9+</div><div class="stat-l">Years of Journey</div></div>
@@ -398,6 +599,24 @@
     <h4>Inspiration</h4><p>Stories and frameworks that create lasting transformation</p>
   </div>
 </div>
+
+<!-- GET IN TOUCH -->
+<section class="contact-section reveal">
+  <div class="label">Contact</div>
+  <h2 class="sec-title">Get In Touch</h2>
+  <p class="contact-tagline">Ready to bring transformation to your school, institution, or event? Let's connect.</p>
+  <a href="tel:+9779813720099" class="contact-phone">
+    <div class="contact-phone__icon">
+      <svg viewBox="0 0 24 24" fill="none" stroke="#6dbf5e" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.42 2 2 0 0 1 3.58 1.25h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L7.91 8.8a16 16 0 0 0 6.29 6.29l1.91-1.91a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 15.5z"/>
+      </svg>
+    </div>
+    <div class="contact-phone__text">
+      <span class="contact-phone__label">Call Now</span>
+      <span class="contact-phone__number">+977 9813720099</span>
+    </div>
+  </a>
+</section>
 
 <!-- SOCIAL MEDIA -->
 <section class="social-section reveal">
@@ -440,36 +659,25 @@
   const dot  = document.getElementById('cursor-dot');
   const ring = document.getElementById('cursor-ring');
   if (!dot || !ring) return;
-  // Skip on touch-only devices
   if (window.matchMedia('(hover: none)').matches) return;
-
   let mx = 0, my = 0, rx = 0, ry = 0;
-
   document.addEventListener('mousemove', e => {
     mx = e.clientX; my = e.clientY;
-    dot.style.left = mx + 'px';
-    dot.style.top  = my + 'px';
+    dot.style.left = mx + 'px'; dot.style.top = my + 'px';
   });
-
   (function loop() {
-    rx += (mx - rx) * 0.13;
-    ry += (my - ry) * 0.13;
-    ring.style.left = rx + 'px';
-    ring.style.top  = ry + 'px';
+    rx += (mx - rx) * 0.13; ry += (my - ry) * 0.13;
+    ring.style.left = rx + 'px'; ring.style.top = ry + 'px';
     requestAnimationFrame(loop);
   })();
-
-  // Hover effect
-  document.querySelectorAll('a, button, .slide-card, .iitem').forEach(el => {
+  document.querySelectorAll('a, button, .slide-card, .show-card, .iitem').forEach(el => {
     el.addEventListener('mouseenter', () => { dot.classList.add('hovered'); ring.classList.add('hovered'); });
     el.addEventListener('mouseleave', () => { dot.classList.remove('hovered'); ring.classList.remove('hovered'); });
   });
-
-  // Dragging state
   const sliderOuter = document.getElementById('sliderOuter');
   if (sliderOuter) {
     sliderOuter.addEventListener('mousedown', () => { dot.classList.add('dragging'); ring.classList.add('dragging'); dot.classList.remove('hovered'); ring.classList.remove('hovered'); });
-    document.addEventListener('mouseup',      () => { dot.classList.remove('dragging'); ring.classList.remove('dragging'); });
+    document.addEventListener('mouseup', () => { dot.classList.remove('dragging'); ring.classList.remove('dragging'); });
   }
 })();
 
@@ -478,73 +686,47 @@
   const outer = document.getElementById('sliderOuter');
   const track = document.getElementById('sliderTrack');
   if (!outer || !track) return;
-
-  let isDragging = false;
-  let startX = 0, startTX = 0, currentTX = 0;
-  let velocity = 0, lastX = 0, lastT = 0;
-  let raf;
-
-  function getTranslateX(el) {
-    return new DOMMatrix(window.getComputedStyle(el).transform).m41;
-  }
-
+  let isDragging = false, startX = 0, startTX = 0, currentTX = 0;
+  let velocity = 0, lastX = 0, lastT = 0, raf;
+  function getTranslateX(el) { return new DOMMatrix(window.getComputedStyle(el).transform).m41; }
   function setTX(x) {
-    // Seamless wrap: only first half is "real" content
     const half = track.scrollWidth / 2;
     if (x < -half) x += half;
     if (x > 0)     x -= half;
     currentTX = x;
     track.style.transform = 'translateX(' + x + 'px)';
   }
-
   function freeze() {
     const tx = getTranslateX(track);
     track.style.animation = 'none';
-    track.style.transform  = 'translateX(' + tx + 'px)';
-    currentTX = tx;
-    return tx;
+    track.style.transform = 'translateX(' + tx + 'px)';
+    currentTX = tx; return tx;
   }
-
   function startDrag(x) {
-    cancelAnimationFrame(raf);
-    isDragging  = true;
-    startX      = x;
-    startTX     = freeze();
-    velocity    = 0; lastX = x; lastT = Date.now();
+    cancelAnimationFrame(raf); isDragging = true; startX = x;
+    startTX = freeze(); velocity = 0; lastX = x; lastT = Date.now();
     track.classList.add('is-dragging');
   }
-
   function onMove(x) {
     if (!isDragging) return;
     const now = Date.now();
-    velocity  = (x - lastX) / Math.max(now - lastT, 1);
+    velocity = (x - lastX) / Math.max(now - lastT, 1);
     lastX = x; lastT = now;
     setTX(startTX + (x - startX));
   }
-
   function endDrag() {
     if (!isDragging) return;
-    isDragging = false;
-    track.classList.remove('is-dragging');
-    let v = velocity * 15; // momentum scale
-    function coast() {
-      v *= 0.93;
-      if (Math.abs(v) < 0.4) return;
-      setTX(currentTX + v);
-      raf = requestAnimationFrame(coast);
-    }
+    isDragging = false; track.classList.remove('is-dragging');
+    let v = velocity * 15;
+    function coast() { v *= 0.93; if (Math.abs(v) < 0.4) return; setTX(currentTX + v); raf = requestAnimationFrame(coast); }
     coast();
   }
-
-  /* Mouse */
   outer.addEventListener('mousedown', e => { e.preventDefault(); startDrag(e.clientX); });
   document.addEventListener('mousemove', e => { if (isDragging) onMove(e.clientX); });
   document.addEventListener('mouseup', endDrag);
-
-  /* Touch */
   outer.addEventListener('touchstart', e => { startDrag(e.touches[0].clientX); }, { passive: true });
-  outer.addEventListener('touchmove',  e => { if (isDragging) { onMove(e.touches[0].clientX); } }, { passive: true });
-  outer.addEventListener('touchend',    endDrag);
+  outer.addEventListener('touchmove',  e => { if (isDragging) onMove(e.touches[0].clientX); }, { passive: true });
+  outer.addEventListener('touchend', endDrag);
   outer.addEventListener('touchcancel', endDrag);
 })();
 
