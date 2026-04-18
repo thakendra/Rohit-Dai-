@@ -518,22 +518,77 @@
     .icons-bar { grid-template-columns:1fr; }
     .iitem { border-right:none; border-bottom:1px solid rgba(74,140,63,0.2); }
     .iitem:last-child { border-bottom:none; }
-    .label { justify-content:flex-start; }
-    .label::before,.label::after { display:none; }
-    h2.sec-title { text-align:left; }
-    .sec-sub { text-align:left; margin-left:0; }
+    /* All labels centered on mobile */
+    .label { justify-content:center; }
+    .label::before,.label::after { display:flex; max-width:30px; }
+    /* All section titles & subtitles centered */
+    h2.sec-title { text-align:center; }
+    .sec-sub { text-align:center; margin-left:auto; margin-right:auto; }
     .slide-card { width:clamp(200px,70vw,280px); }
     .site-footer { flex-direction:column; text-align:center; }
     #cursor-dot,#cursor-ring { display:none; }
-    .shows-section .label { justify-content:flex-start; }
-    .shows-section h2.sec-title { text-align:left; }
-    .shows-section .sec-sub { text-align:left; margin-left:0; }
-    .contact-section .label { justify-content:flex-start; }
-    .contact-section h2.sec-title { text-align:left; }
-    .gallery-section .label { justify-content:flex-start; }
-    .gallery-section h2.sec-title { text-align:left; }
-    .gallery-section .sec-sub { text-align:left; margin-left:0; }
-    .contact-buttons { flex-direction: column; align-items: center; }
+    /* Contact buttons — side by side, compact on mobile */
+    .contact-buttons {
+      flex-direction: row;
+      flex-wrap: nowrap;
+      align-items: stretch;
+      justify-content: center;
+      gap: 10px;
+    }
+    .contact-phone, .contact-email {
+      flex: 1;
+      min-width: 0;
+      padding: 14px 10px;
+      gap: 8px;
+      justify-content: center;
+    }
+    .contact-phone__icon, .contact-email__icon {
+      width: 32px; height: 32px;
+      flex-shrink: 0;
+    }
+    .contact-phone__icon svg, .contact-email__icon svg { width: 14px; height: 14px; }
+    .contact-phone__label, .contact-email__label { font-size: 0.5rem; letter-spacing: 0.2em; }
+    .contact-phone__number, .contact-email__address { font-size: 0.75rem; letter-spacing: 0.04em; }
+    /* Social icons — all in one row, smaller */
+    .social-links {
+      display: grid;
+      grid-template-columns: repeat(6, 1fr);
+      gap: 8px;
+      margin-top: 24px;
+    }
+    .social-link {
+      gap: 6px;
+      font-size: 0.45rem;
+      letter-spacing: 0.15em;
+    }
+    .social-icon {
+      width: 42px; height: 42px;
+    }
+    .social-icon svg { width: 18px; height: 18px; }
+    /* Gallery section centered */
+    .gallery-section .label { justify-content:center; }
+    .gallery-section h2.sec-title { text-align:center; }
+    .gallery-section .sec-sub { text-align:center; margin-left:auto; }
+    /* Shows section centered */
+    .shows-section .label { justify-content:center; }
+    .shows-section h2.sec-title { text-align:center; }
+    .shows-section .sec-sub { text-align:center; margin-left:auto; }
+    /* Contact section centered */
+    .contact-section .label { justify-content:center; }
+    .contact-section h2.sec-title { text-align:center; }
+    .contact-tagline { text-align:center; }
+    /* Social section centered */
+    .social-section .label { justify-content:center; }
+    .social-section h2.sec-title { text-align:center; }
+    .social-section .sec-sub { text-align:center; }
+  }
+  @media (max-width:420px) {
+    .shows-grid { grid-template-columns: 1fr; }
+    .gallery-preview { grid-template-columns: repeat(2,1fr); }
+    .social-links { grid-template-columns: repeat(3,1fr); gap: 12px; }
+    .social-link { font-size: 0.5rem; }
+    .social-icon { width: 46px; height: 46px; }
+    .contact-phone__number, .contact-email__address { font-size: 0.68rem; }
   }
   @media (max-width:560px) {
     .shows-grid { grid-template-columns: 1fr; }
@@ -687,7 +742,7 @@
 
   <div class="gallery-preview">
     <div class="gallery-thumb">
-      <img src="Gallery/Rohit Malla 1.jpg" alt="Rohit Malla Gallery 1">
+      <img src="Gallery/Rohit Malla (1).jpg" alt="Rohit Malla Gallery 1">
       <div class="gallery-thumb__overlay"></div>
     </div>
     <div class="gallery-thumb">
@@ -695,10 +750,10 @@
       <div class="gallery-thumb__overlay"></div>
     </div>
     <div class="gallery-thumb">
-      <img src="Gallery/Rohit Malla 10.jpg" alt="Rohit Malla Gallery 3">
+      <img src="Gallery/Rohit Malla (3).jpg" alt="Rohit Malla Gallery 3">
       <div class="gallery-thumb__overlay"></div>
     </div>
-    <div class="gallery-thumb">alla
+    <div class="gallery-thumb">
       <img src="Gallery/Rohit Malla (4).jpg" alt="Rohit Malla Gallery 4">
       <div class="gallery-thumb__overlay"></div>
     </div>
@@ -723,6 +778,7 @@
   <div class="gallery-modal__grid" id="galleryGrid">
         <div class="gallery-modal__item"><img src="Gallery/Rohit Malla (1).jpg" alt="Rohit Malla 1" loading="lazy"></div>
         <div class="gallery-modal__item"><img src="Gallery/Rohit Malla (2).jpg" alt="Rohit Malla 2" loading="lazy"></div>
+        <div class="gallery-modal__item"><img src="Gallery/Rohit Malla (3).jpg" alt="Rohit Malla 3" loading="lazy"></div>
         <div class="gallery-modal__item"><img src="Gallery/Rohit Malla (4).jpg" alt="Rohit Malla 4" loading="lazy"></div>
         <div class="gallery-modal__item"><img src="Gallery/Rohit Malla (5).jpg" alt="Rohit Malla 5" loading="lazy"></div>
         <div class="gallery-modal__item"><img src="Gallery/Rohit Malla (6).jpg" alt="Rohit Malla 6" loading="lazy"></div>
@@ -743,6 +799,7 @@
         <div class="gallery-modal__item"><img src="Gallery/Rohit Malla (21).jpg" alt="Rohit Malla 21" loading="lazy"></div>
         <div class="gallery-modal__item"><img src="Gallery/Rohit Malla (22).jpg" alt="Rohit Malla 22" loading="lazy"></div>
         <div class="gallery-modal__item"><img src="Gallery/Rohit Malla (23).jpg" alt="Rohit Malla 23" loading="lazy"></div>
+        <div class="gallery-modal__item"><img src="Gallery/Rohit Malla (24).jpg" alt="Rohit Malla 24" loading="lazy"></div>
         <div class="gallery-modal__item"><img src="Gallery/Rohit Malla (25).jpg" alt="Rohit Malla 25" loading="lazy"></div>
         <div class="gallery-modal__item"><img src="Gallery/Rohit Malla (26).jpg" alt="Rohit Malla 26" loading="lazy"></div>
         <div class="gallery-modal__item"><img src="Gallery/Rohit Malla (27).jpg" alt="Rohit Malla 27" loading="lazy"></div>
@@ -756,9 +813,11 @@
         <div class="gallery-modal__item"><img src="Gallery/Rohit Malla (35).jpg" alt="Rohit Malla 35" loading="lazy"></div>
         <div class="gallery-modal__item"><img src="Gallery/Rohit Malla (36).jpg" alt="Rohit Malla 36" loading="lazy"></div>
         <div class="gallery-modal__item"><img src="Gallery/Rohit Malla (37).jpg" alt="Rohit Malla 37" loading="lazy"></div>
+        <div class="gallery-modal__item"><img src="Gallery/Rohit Malla (38).jpg" alt="Rohit Malla 38" loading="lazy"></div>
         <div class="gallery-modal__item"><img src="Gallery/Rohit Malla (39).jpg" alt="Rohit Malla 39" loading="lazy"></div>
         <div class="gallery-modal__item"><img src="Gallery/Rohit Malla (40).jpg" alt="Rohit Malla 40" loading="lazy"></div>
         <div class="gallery-modal__item"><img src="Gallery/Rohit Malla (41).jpg" alt="Rohit Malla 41" loading="lazy"></div>
+        <div class="gallery-modal__item"><img src="Gallery/Rohit Malla (42).jpg" alt="Rohit Malla 42" loading="lazy"></div>
         <div class="gallery-modal__item"><img src="Gallery/Rohit Malla (43).jpg" alt="Rohit Malla 43" loading="lazy"></div>
         <div class="gallery-modal__item"><img src="Gallery/Rohit Malla (44).jpg" alt="Rohit Malla 44" loading="lazy"></div>
         <div class="gallery-modal__item"><img src="Gallery/Rohit Malla (45).jpg" alt="Rohit Malla 45" loading="lazy"></div>
@@ -774,36 +833,44 @@
         <div class="gallery-modal__item"><img src="Gallery/Rohit Malla (55).jpg" alt="Rohit Malla 55" loading="lazy"></div>
         <div class="gallery-modal__item"><img src="Gallery/Rohit Malla (56).jpg" alt="Rohit Malla 56" loading="lazy"></div>
         <div class="gallery-modal__item"><img src="Gallery/Rohit Malla (57).jpg" alt="Rohit Malla 57" loading="lazy"></div>
+        <div class="gallery-modal__item"><img src="Gallery/Rohit Malla (58).jpg" alt="Rohit Malla 58" loading="lazy"></div>
         <div class="gallery-modal__item"><img src="Gallery/Rohit Malla (59).jpg" alt="Rohit Malla 59" loading="lazy"></div>
         <div class="gallery-modal__item"><img src="Gallery/Rohit Malla (60).jpg" alt="Rohit Malla 60" loading="lazy"></div>
         <div class="gallery-modal__item"><img src="Gallery/Rohit Malla (61).jpg" alt="Rohit Malla 61" loading="lazy"></div>
         <div class="gallery-modal__item"><img src="Gallery/Rohit Malla (62).jpg" alt="Rohit Malla 62" loading="lazy"></div>
         <div class="gallery-modal__item"><img src="Gallery/Rohit Malla (63).jpg" alt="Rohit Malla 63" loading="lazy"></div>
+        <div class="gallery-modal__item"><img src="Gallery/Rohit Malla (64).jpg" alt="Rohit Malla 64" loading="lazy"></div>
         <div class="gallery-modal__item"><img src="Gallery/Rohit Malla (65).jpg" alt="Rohit Malla 65" loading="lazy"></div>
         <div class="gallery-modal__item"><img src="Gallery/Rohit Malla (66).jpg" alt="Rohit Malla 66" loading="lazy"></div>
         <div class="gallery-modal__item"><img src="Gallery/Rohit Malla (67).jpg" alt="Rohit Malla 67" loading="lazy"></div>
         <div class="gallery-modal__item"><img src="Gallery/Rohit Malla (68).jpg" alt="Rohit Malla 68" loading="lazy"></div>
         <div class="gallery-modal__item"><img src="Gallery/Rohit Malla (69).jpg" alt="Rohit Malla 69" loading="lazy"></div>
         <div class="gallery-modal__item"><img src="Gallery/Rohit Malla (70).jpg" alt="Rohit Malla 70" loading="lazy"></div>
+        <div class="gallery-modal__item"><img src="Gallery/Rohit Malla (71).jpg" alt="Rohit Malla 71" loading="lazy"></div>
+        <div class="gallery-modal__item"><img src="Gallery/Rohit Malla (72).jpg" alt="Rohit Malla 72" loading="lazy"></div>
         <div class="gallery-modal__item"><img src="Gallery/Rohit Malla (73).jpg" alt="Rohit Malla 73" loading="lazy"></div>
         <div class="gallery-modal__item"><img src="Gallery/Rohit Malla (74).jpg" alt="Rohit Malla 74" loading="lazy"></div>
         <div class="gallery-modal__item"><img src="Gallery/Rohit Malla (75).jpg" alt="Rohit Malla 75" loading="lazy"></div>
         <div class="gallery-modal__item"><img src="Gallery/Rohit Malla (76).jpg" alt="Rohit Malla 76" loading="lazy"></div>
         <div class="gallery-modal__item"><img src="Gallery/Rohit Malla (77).jpg" alt="Rohit Malla 77" loading="lazy"></div>
+        <div class="gallery-modal__item"><img src="Gallery/Rohit Malla (78).jpg" alt="Rohit Malla 78" loading="lazy"></div>
         <div class="gallery-modal__item"><img src="Gallery/Rohit Malla (79).jpg" alt="Rohit Malla 79" loading="lazy"></div>
         <div class="gallery-modal__item"><img src="Gallery/Rohit Malla (80).jpg" alt="Rohit Malla 80" loading="lazy"></div>
         <div class="gallery-modal__item"><img src="Gallery/Rohit Malla (81).jpg" alt="Rohit Malla 81" loading="lazy"></div>
+        <div class="gallery-modal__item"><img src="Gallery/Rohit Malla (82).jpg" alt="Rohit Malla 82" loading="lazy"></div>
         <div class="gallery-modal__item"><img src="Gallery/Rohit Malla (83).jpg" alt="Rohit Malla 83" loading="lazy"></div>
         <div class="gallery-modal__item"><img src="Gallery/Rohit Malla (84).jpg" alt="Rohit Malla 84" loading="lazy"></div>
         <div class="gallery-modal__item"><img src="Gallery/Rohit Malla (85).jpg" alt="Rohit Malla 85" loading="lazy"></div>
         <div class="gallery-modal__item"><img src="Gallery/Rohit Malla (86).jpg" alt="Rohit Malla 86" loading="lazy"></div>
         <div class="gallery-modal__item"><img src="Gallery/Rohit Malla (87).jpg" alt="Rohit Malla 87" loading="lazy"></div>
+        <div class="gallery-modal__item"><img src="Gallery/Rohit Malla (88).jpg" alt="Rohit Malla 88" loading="lazy"></div>
         <div class="gallery-modal__item"><img src="Gallery/Rohit Malla (89).jpg" alt="Rohit Malla 89" loading="lazy"></div>
         <div class="gallery-modal__item"><img src="Gallery/Rohit Malla (90).jpg" alt="Rohit Malla 90" loading="lazy"></div>
         <div class="gallery-modal__item"><img src="Gallery/Rohit Malla (91).jpg" alt="Rohit Malla 91" loading="lazy"></div>
         <div class="gallery-modal__item"><img src="Gallery/Rohit Malla (92).jpg" alt="Rohit Malla 92" loading="lazy"></div>
         <div class="gallery-modal__item"><img src="Gallery/Rohit Malla (93).jpg" alt="Rohit Malla 93" loading="lazy"></div>
         <div class="gallery-modal__item"><img src="Gallery/Rohit Malla (94).jpg" alt="Rohit Malla 94" loading="lazy"></div>
+        <div class="gallery-modal__item"><img src="Gallery/Rohit Malla (95).jpg" alt="Rohit Malla 95" loading="lazy"></div>
         <div class="gallery-modal__item"><img src="Gallery/Rohit Malla (96).jpg" alt="Rohit Malla 96" loading="lazy"></div>
         <div class="gallery-modal__item"><img src="Gallery/Rohit Malla (97).jpg" alt="Rohit Malla 97" loading="lazy"></div>
         <div class="gallery-modal__item"><img src="Gallery/Rohit Malla (98).jpg" alt="Rohit Malla 98" loading="lazy"></div>
@@ -817,29 +884,14 @@
         <div class="gallery-modal__item"><img src="Gallery/Rohit Malla (106).jpg" alt="Rohit Malla 106" loading="lazy"></div>
         <div class="gallery-modal__item"><img src="Gallery/Rohit Malla (107).jpg" alt="Rohit Malla 107" loading="lazy"></div>
         <div class="gallery-modal__item"><img src="Gallery/Rohit Malla (108).jpg" alt="Rohit Malla 108" loading="lazy"></div>
+        <div class="gallery-modal__item"><img src="Gallery/Rohit Malla (109).jpg" alt="Rohit Malla 109" loading="lazy"></div>
+        <div class="gallery-modal__item"><img src="Gallery/Rohit Malla (110).jpg" alt="Rohit Malla 110" loading="lazy"></div>
         <div class="gallery-modal__item"><img src="Gallery/Rohit Malla (111).jpg" alt="Rohit Malla 111" loading="lazy"></div>
         <div class="gallery-modal__item"><img src="Gallery/Rohit Malla (112).jpg" alt="Rohit Malla 112" loading="lazy"></div>
         <div class="gallery-modal__item"><img src="Gallery/Rohit Malla (113).jpg" alt="Rohit Malla 113" loading="lazy"></div>
         <div class="gallery-modal__item"><img src="Gallery/Rohit Malla (114).jpg" alt="Rohit Malla 114" loading="lazy"></div>
         <div class="gallery-modal__item"><img src="Gallery/Rohit Malla (115).jpg" alt="Rohit Malla 115" loading="lazy"></div>
         <div class="gallery-modal__item"><img src="Gallery/Rohit Malla (116).jpg" alt="Rohit Malla 116" loading="lazy"></div>
-
-        <div class="gallery-modal__item"><img src="Gallery/Rohit Malla 2.jpg" alt="Rohit Malla 2" loading="lazy"></div>
-<div class="gallery-modal__item"><img src="Gallery/Rohit Malla 3.jpg" alt="Rohit Malla 3" loading="lazy"></div>
-<div class="gallery-modal__item"><img src="Gallery/Rohit Malla 4.jpg" alt="Rohit Malla 4" loading="lazy"></div>
-<div class="gallery-modal__item"><img src="Gallery/Rohit Malla 5.jpg" alt="Rohit Malla 5" loading="lazy"></div>
-<div class="gallery-modal__item"><img src="Gallery/Rohit Malla 6.jpg" alt="Rohit Malla 6" loading="lazy"></div>
-<div class="gallery-modal__item"><img src="Gallery/Rohit Malla 7.jpg" alt="Rohit Malla 7" loading="lazy"></div>
-<div class="gallery-modal__item"><img src="Gallery/Rohit Malla 8.jpg" alt="Rohit Malla 8" loading="lazy"></div>
-<div class="gallery-modal__item"><img src="Gallery/Rohit Malla 9.jpg" alt="Rohit Malla 9" loading="lazy"></div>
-<div class="gallery-modal__item"><img src="Gallery/Rohit Malla 11.jpg" alt="Rohit Malla 11" loading="lazy"></div>
-<div class="gallery-modal__item"><img src="Gallery/Rohit Malla 12.jpg" alt="Rohit Malla 12" loading="lazy"></div>
-<div class="gallery-modal__item"><img src="Gallery/Rohit Malla 13.jpg" alt="Rohit Malla 13" loading="lazy"></div>
-<div class="gallery-modal__item"><img src="Gallery/Rohit Malla 14.jpg" alt="Rohit Malla 14" loading="lazy"></div>
-<div class="gallery-modal__item"><img src="Gallery/Rohit Malla 15.jpg" alt="Rohit Malla 15" loading="lazy"></div>
-<div class="gallery-modal__item"><img src="Gallery/Rohit Malla 16.jpg" alt="Rohit Malla 16" loading="lazy"></div>
-<div class="gallery-modal__item"><img src="Gallery/Rohit Malla 18.jpg" alt="Rohit Malla 18" loading="lazy"></div>
-<div class="gallery-modal__item"><img src="Gallery/Rohit Malla 20.jpg" alt="Rohit Malla 20" loading="lazy"></div>
   </div>
 </div>
 
@@ -884,7 +936,7 @@
         </svg>
       </div>
       <div class="contact-email__text">
-        <span class="contact-email__label">Email Me</span>
+        <span class="contact-email__label">Email Me </span>
         <span class="contact-email__address">rohitmalla3@gmail.com</span>
       </div>
     </a>
