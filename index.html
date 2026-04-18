@@ -277,6 +277,129 @@
   .show-card__desc p { margin-bottom: 4px; }
   .show-card__desc p:last-child { color: rgba(109,191,94,0.45); margin-bottom: 0; }
 
+  /* ── GALLERY SECTION ── */
+  .gallery-section {
+    background: var(--dark);
+    padding: clamp(60px,8vw,120px) clamp(24px,6vw,80px);
+    border-top: 1px solid rgba(74,140,63,0.12);
+  }
+  .gallery-section .label { justify-content: center; }
+  .gallery-section h2.sec-title { color: #6dbf5e; }
+
+  .gallery-preview {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: clamp(10px, 1.5vw, 18px);
+    margin-bottom: clamp(28px, 4vw, 44px);
+  }
+  .gallery-thumb {
+    position: relative;
+    aspect-ratio: 1/1;
+    overflow: hidden;
+    border: 1px solid rgba(74,140,63,0.15);
+    cursor: none;
+    transition: border-color 0.4s, transform 0.4s;
+  }
+  .gallery-thumb:hover { border-color: var(--green-bright); transform: scale(1.03); }
+  .gallery-thumb img {
+    width: 100%; height: 100%;
+    object-fit: cover;
+    filter: brightness(0.6) saturate(0.75);
+    transition: filter 0.5s ease, transform 0.5s ease;
+    display: block;
+  }
+  .gallery-thumb:hover img { filter: brightness(0.85) saturate(1); transform: scale(1.08); }
+  .gallery-thumb__overlay {
+    position: absolute; inset: 0;
+    background: linear-gradient(to top, rgba(7,13,7,0.7) 0%, transparent 60%);
+    pointer-events: none;
+  }
+
+  .gallery-view-all {
+    display: flex;
+    justify-content: center;
+  }
+  .btn-view-all {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(0.75rem, 1.5vw, 0.9rem);
+    letter-spacing: 0.35em;
+    text-transform: uppercase;
+    color: var(--green-bright);
+    background: rgba(74,140,63,0.08);
+    border: 1.5px solid rgba(74,140,63,0.35);
+    padding: clamp(14px,2.5vw,18px) clamp(28px,4vw,44px);
+    text-decoration: none;
+    cursor: none;
+    transition: background 0.3s, border-color 0.3s, color 0.3s, transform 0.3s;
+  }
+  .btn-view-all:hover {
+    background: rgba(74,140,63,0.18);
+    border-color: var(--green-bright);
+    color: #ffffff;
+    transform: translateY(-3px);
+  }
+  .btn-view-all svg { width: 16px; height: 16px; transition: transform 0.3s; }
+  .btn-view-all:hover svg { transform: translateX(4px); }
+
+  /* ── LIGHTBOX / FULL GALLERY MODAL ── */
+  .gallery-modal {
+    display: none;
+    position: fixed; inset: 0; z-index: 9000;
+    background: rgba(7,13,7,0.97);
+    overflow-y: auto;
+    padding: clamp(24px,4vw,48px);
+  }
+  .gallery-modal.open { display: block; }
+  .gallery-modal__header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: clamp(24px,3vw,40px);
+    position: sticky; top: 0; z-index: 2;
+    background: rgba(7,13,7,0.95);
+    padding: 16px 0;
+    border-bottom: 1px solid rgba(74,140,63,0.2);
+  }
+  .gallery-modal__title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(1.4rem,3vw,2.2rem);
+    letter-spacing: 0.1em;
+    color: var(--green-bright);
+  }
+  .gallery-modal__close {
+    background: none; border: 1px solid rgba(74,140,63,0.4);
+    color: var(--green-bright); font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(0.65rem,1.2vw,0.8rem); letter-spacing: 0.3em;
+    text-transform: uppercase;
+    padding: 10px 20px; cursor: pointer;
+    transition: background 0.3s, border-color 0.3s, color 0.3s;
+  }
+  .gallery-modal__close:hover { background: rgba(74,140,63,0.15); border-color: var(--green-bright); color: #fff; }
+  .gallery-modal__grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(clamp(160px,20vw,240px), 1fr));
+    gap: clamp(8px,1.2vw,14px);
+  }
+  .gallery-modal__item {
+    aspect-ratio: 1/1;
+    overflow: hidden;
+    border: 1px solid rgba(74,140,63,0.12);
+    transition: border-color 0.3s, transform 0.3s;
+    cursor: zoom-in;
+  }
+  .gallery-modal__item:hover { border-color: var(--green-bright); transform: scale(1.02); }
+  .gallery-modal__item img {
+    width: 100%; height: 100%;
+    object-fit: cover;
+    filter: brightness(0.7) saturate(0.8);
+    transition: filter 0.4s, transform 0.4s;
+    display: block;
+  }
+  .gallery-modal__item:hover img { filter: brightness(0.9) saturate(1); transform: scale(1.06); }
+
   /* ── GET IN TOUCH ── */
   .contact-section {
     background: var(--green-deep);
@@ -294,7 +417,13 @@
     margin-bottom: clamp(28px, 4vw, 44px);
     font-weight: 300;
   }
-  .contact-phone {
+  .contact-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: clamp(14px, 2.5vw, 24px);
+  }
+  .contact-phone, .contact-email {
     display: inline-flex;
     align-items: center;
     gap: 16px;
@@ -306,7 +435,7 @@
     position: relative;
     overflow: hidden;
   }
-  .contact-phone::before {
+  .contact-phone::before, .contact-email::before {
     content: '';
     position: absolute;
     inset: 0;
@@ -314,9 +443,9 @@
     opacity: 0;
     transition: opacity 0.3s;
   }
-  .contact-phone:hover { background: rgba(74,140,63,0.15); border-color: var(--green-bright); transform: translateY(-3px); }
-  .contact-phone:hover::before { opacity: 1; }
-  .contact-phone__icon {
+  .contact-phone:hover, .contact-email:hover { background: rgba(74,140,63,0.15); border-color: var(--green-bright); transform: translateY(-3px); }
+  .contact-phone:hover::before, .contact-email:hover::before { opacity: 1; }
+  .contact-phone__icon, .contact-email__icon {
     width: clamp(36px,5vw,48px); height: clamp(36px,5vw,48px);
     border: 1px solid rgba(109,191,94,0.4);
     border-radius: 50%;
@@ -324,10 +453,11 @@
     flex-shrink: 0;
     transition: border-color 0.3s, background 0.3s;
   }
-  .contact-phone:hover .contact-phone__icon { border-color: var(--green-bright); background: rgba(109,191,94,0.1); }
-  .contact-phone__icon svg { width: 18px; height: 18px; }
-  .contact-phone__text { text-align: left; }
-  .contact-phone__label {
+  .contact-phone:hover .contact-phone__icon,
+  .contact-email:hover .contact-email__icon { border-color: var(--green-bright); background: rgba(109,191,94,0.1); }
+  .contact-phone__icon svg, .contact-email__icon svg { width: 18px; height: 18px; }
+  .contact-phone__text, .contact-email__text { text-align: left; }
+  .contact-phone__label, .contact-email__label {
     display: block;
     font-family: 'Bebas Neue', sans-serif;
     font-size: clamp(0.55rem, 1.1vw, 0.65rem);
@@ -336,16 +466,17 @@
     color: rgba(109,191,94,0.5);
     margin-bottom: 2px;
   }
-  .contact-phone__number {
+  .contact-phone__number, .contact-email__address {
     display: block;
     font-family: 'Bebas Neue', sans-serif;
-    font-size: clamp(1.6rem, 4vw, 2.6rem);
+    font-size: clamp(1.2rem, 3vw, 2rem);
     letter-spacing: 0.08em;
     color: var(--green-bright);
     line-height: 1;
     transition: color 0.3s;
   }
-  .contact-phone:hover .contact-phone__number { color: #ffffff; }
+  .contact-phone:hover .contact-phone__number,
+  .contact-email:hover .contact-email__address { color: #ffffff; }
 
   /* ── ICONS ── */
   .icons-bar { background:var(--green-deep); border-top:1px solid rgba(74,140,63,0.25); display:grid; grid-template-columns:repeat(3,1fr); padding:clamp(40px,5vw,70px) clamp(24px,6vw,80px); text-align:center; }
@@ -378,6 +509,7 @@
   /* ── MOBILE ── */
   @media (max-width:900px) {
     .shows-grid { grid-template-columns: repeat(2,1fr); }
+    .gallery-preview { grid-template-columns: repeat(2,1fr); }
   }
   @media (max-width:700px) {
     .stats { grid-template-columns:repeat(2,1fr); }
@@ -398,9 +530,14 @@
     .shows-section .sec-sub { text-align:left; margin-left:0; }
     .contact-section .label { justify-content:flex-start; }
     .contact-section h2.sec-title { text-align:left; }
+    .gallery-section .label { justify-content:flex-start; }
+    .gallery-section h2.sec-title { text-align:left; }
+    .gallery-section .sec-sub { text-align:left; margin-left:0; }
+    .contact-buttons { flex-direction: column; align-items: center; }
   }
   @media (max-width:560px) {
     .shows-grid { grid-template-columns: 1fr; }
+    .gallery-preview { grid-template-columns: repeat(2,1fr); }
   }
   @media (hover:none) {
     body,.slider-outer,.slide-card,.show-card { cursor:auto; }
@@ -542,6 +679,170 @@
   <div class="stat"><div class="stat-n">30+</div><div class="stat-l">Districts</div></div>
 </div>
 
+<!-- GALLERY -->
+<section class="gallery-section reveal">
+  <div class="label">Moments</div>
+  <h2 class="sec-title">Gallery</h2>
+  <p class="sec-sub">A glimpse into the journey — events, programs, and communities transformed across Nepal.</p>
+
+  <div class="gallery-preview">
+    <div class="gallery-thumb">
+      <img src="Gallery/Rohit Malla 1.jpg" alt="Rohit Malla Gallery 1">
+      <div class="gallery-thumb__overlay"></div>
+    </div>
+    <div class="gallery-thumb">
+      <img src="Gallery/Rohit Malla (2).jpg" alt="Rohit Malla Gallery 2">
+      <div class="gallery-thumb__overlay"></div>
+    </div>
+    <div class="gallery-thumb">
+      <img src="Gallery/Rohit Malla 10.jpg" alt="Rohit Malla Gallery 3">
+      <div class="gallery-thumb__overlay"></div>
+    </div>
+    <div class="gallery-thumb">alla
+      <img src="Gallery/Rohit Malla (4).jpg" alt="Rohit Malla Gallery 4">
+      <div class="gallery-thumb__overlay"></div>
+    </div>
+  </div>
+
+  <div class="gallery-view-all">
+    <a href="#" class="btn-view-all" id="openGalleryBtn">
+      View All Photos
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M5 12h14M12 5l7 7-7 7"/>
+      </svg>
+    </a>
+  </div>
+</section>
+
+<!-- FULL GALLERY MODAL -->
+<div class="gallery-modal" id="galleryModal">
+  <div class="gallery-modal__header">
+    <div class="gallery-modal__title">Full Gallery — Rohit Malla</div>
+    <button class="gallery-modal__close" id="closeGalleryBtn">✕ Close</button>
+  </div>
+  <div class="gallery-modal__grid" id="galleryGrid">
+        <div class="gallery-modal__item"><img src="Gallery/Rohit Malla (1).jpg" alt="Rohit Malla 1" loading="lazy"></div>
+        <div class="gallery-modal__item"><img src="Gallery/Rohit Malla (2).jpg" alt="Rohit Malla 2" loading="lazy"></div>
+        <div class="gallery-modal__item"><img src="Gallery/Rohit Malla (4).jpg" alt="Rohit Malla 4" loading="lazy"></div>
+        <div class="gallery-modal__item"><img src="Gallery/Rohit Malla (5).jpg" alt="Rohit Malla 5" loading="lazy"></div>
+        <div class="gallery-modal__item"><img src="Gallery/Rohit Malla (6).jpg" alt="Rohit Malla 6" loading="lazy"></div>
+        <div class="gallery-modal__item"><img src="Gallery/Rohit Malla (7).jpg" alt="Rohit Malla 7" loading="lazy"></div>
+        <div class="gallery-modal__item"><img src="Gallery/Rohit Malla (8).jpg" alt="Rohit Malla 8" loading="lazy"></div>
+        <div class="gallery-modal__item"><img src="Gallery/Rohit Malla (9).jpg" alt="Rohit Malla 9" loading="lazy"></div>
+        <div class="gallery-modal__item"><img src="Gallery/Rohit Malla (10).jpg" alt="Rohit Malla 10" loading="lazy"></div>
+        <div class="gallery-modal__item"><img src="Gallery/Rohit Malla (11).jpg" alt="Rohit Malla 11" loading="lazy"></div>
+        <div class="gallery-modal__item"><img src="Gallery/Rohit Malla (12).jpg" alt="Rohit Malla 12" loading="lazy"></div>
+        <div class="gallery-modal__item"><img src="Gallery/Rohit Malla (13).jpg" alt="Rohit Malla 13" loading="lazy"></div>
+        <div class="gallery-modal__item"><img src="Gallery/Rohit Malla (14).jpg" alt="Rohit Malla 14" loading="lazy"></div>
+        <div class="gallery-modal__item"><img src="Gallery/Rohit Malla (15).jpg" alt="Rohit Malla 15" loading="lazy"></div>
+        <div class="gallery-modal__item"><img src="Gallery/Rohit Malla (16).jpg" alt="Rohit Malla 16" loading="lazy"></div>
+        <div class="gallery-modal__item"><img src="Gallery/Rohit Malla (17).jpg" alt="Rohit Malla 17" loading="lazy"></div>
+        <div class="gallery-modal__item"><img src="Gallery/Rohit Malla (18).jpg" alt="Rohit Malla 18" loading="lazy"></div>
+        <div class="gallery-modal__item"><img src="Gallery/Rohit Malla (19).jpg" alt="Rohit Malla 19" loading="lazy"></div>
+        <div class="gallery-modal__item"><img src="Gallery/Rohit Malla (20).jpg" alt="Rohit Malla 20" loading="lazy"></div>
+        <div class="gallery-modal__item"><img src="Gallery/Rohit Malla (21).jpg" alt="Rohit Malla 21" loading="lazy"></div>
+        <div class="gallery-modal__item"><img src="Gallery/Rohit Malla (22).jpg" alt="Rohit Malla 22" loading="lazy"></div>
+        <div class="gallery-modal__item"><img src="Gallery/Rohit Malla (23).jpg" alt="Rohit Malla 23" loading="lazy"></div>
+        <div class="gallery-modal__item"><img src="Gallery/Rohit Malla (25).jpg" alt="Rohit Malla 25" loading="lazy"></div>
+        <div class="gallery-modal__item"><img src="Gallery/Rohit Malla (26).jpg" alt="Rohit Malla 26" loading="lazy"></div>
+        <div class="gallery-modal__item"><img src="Gallery/Rohit Malla (27).jpg" alt="Rohit Malla 27" loading="lazy"></div>
+        <div class="gallery-modal__item"><img src="Gallery/Rohit Malla (28).jpg" alt="Rohit Malla 28" loading="lazy"></div>
+        <div class="gallery-modal__item"><img src="Gallery/Rohit Malla (29).jpg" alt="Rohit Malla 29" loading="lazy"></div>
+        <div class="gallery-modal__item"><img src="Gallery/Rohit Malla (30).jpg" alt="Rohit Malla 30" loading="lazy"></div>
+        <div class="gallery-modal__item"><img src="Gallery/Rohit Malla (31).jpg" alt="Rohit Malla 31" loading="lazy"></div>
+        <div class="gallery-modal__item"><img src="Gallery/Rohit Malla (32).jpg" alt="Rohit Malla 32" loading="lazy"></div>
+        <div class="gallery-modal__item"><img src="Gallery/Rohit Malla (33).jpg" alt="Rohit Malla 33" loading="lazy"></div>
+        <div class="gallery-modal__item"><img src="Gallery/Rohit Malla (34).jpg" alt="Rohit Malla 34" loading="lazy"></div>
+        <div class="gallery-modal__item"><img src="Gallery/Rohit Malla (35).jpg" alt="Rohit Malla 35" loading="lazy"></div>
+        <div class="gallery-modal__item"><img src="Gallery/Rohit Malla (36).jpg" alt="Rohit Malla 36" loading="lazy"></div>
+        <div class="gallery-modal__item"><img src="Gallery/Rohit Malla (37).jpg" alt="Rohit Malla 37" loading="lazy"></div>
+        <div class="gallery-modal__item"><img src="Gallery/Rohit Malla (39).jpg" alt="Rohit Malla 39" loading="lazy"></div>
+        <div class="gallery-modal__item"><img src="Gallery/Rohit Malla (40).jpg" alt="Rohit Malla 40" loading="lazy"></div>
+        <div class="gallery-modal__item"><img src="Gallery/Rohit Malla (41).jpg" alt="Rohit Malla 41" loading="lazy"></div>
+        <div class="gallery-modal__item"><img src="Gallery/Rohit Malla (43).jpg" alt="Rohit Malla 43" loading="lazy"></div>
+        <div class="gallery-modal__item"><img src="Gallery/Rohit Malla (44).jpg" alt="Rohit Malla 44" loading="lazy"></div>
+        <div class="gallery-modal__item"><img src="Gallery/Rohit Malla (45).jpg" alt="Rohit Malla 45" loading="lazy"></div>
+        <div class="gallery-modal__item"><img src="Gallery/Rohit Malla (46).jpg" alt="Rohit Malla 46" loading="lazy"></div>
+        <div class="gallery-modal__item"><img src="Gallery/Rohit Malla (47).jpg" alt="Rohit Malla 47" loading="lazy"></div>
+        <div class="gallery-modal__item"><img src="Gallery/Rohit Malla (48).jpg" alt="Rohit Malla 48" loading="lazy"></div>
+        <div class="gallery-modal__item"><img src="Gallery/Rohit Malla (49).jpg" alt="Rohit Malla 49" loading="lazy"></div>
+        <div class="gallery-modal__item"><img src="Gallery/Rohit Malla (50).jpg" alt="Rohit Malla 50" loading="lazy"></div>
+        <div class="gallery-modal__item"><img src="Gallery/Rohit Malla (51).jpg" alt="Rohit Malla 51" loading="lazy"></div>
+        <div class="gallery-modal__item"><img src="Gallery/Rohit Malla (52).jpg" alt="Rohit Malla 52" loading="lazy"></div>
+        <div class="gallery-modal__item"><img src="Gallery/Rohit Malla (53).jpg" alt="Rohit Malla 53" loading="lazy"></div>
+        <div class="gallery-modal__item"><img src="Gallery/Rohit Malla (54).jpg" alt="Rohit Malla 54" loading="lazy"></div>
+        <div class="gallery-modal__item"><img src="Gallery/Rohit Malla (55).jpg" alt="Rohit Malla 55" loading="lazy"></div>
+        <div class="gallery-modal__item"><img src="Gallery/Rohit Malla (56).jpg" alt="Rohit Malla 56" loading="lazy"></div>
+        <div class="gallery-modal__item"><img src="Gallery/Rohit Malla (57).jpg" alt="Rohit Malla 57" loading="lazy"></div>
+        <div class="gallery-modal__item"><img src="Gallery/Rohit Malla (59).jpg" alt="Rohit Malla 59" loading="lazy"></div>
+        <div class="gallery-modal__item"><img src="Gallery/Rohit Malla (60).jpg" alt="Rohit Malla 60" loading="lazy"></div>
+        <div class="gallery-modal__item"><img src="Gallery/Rohit Malla (61).jpg" alt="Rohit Malla 61" loading="lazy"></div>
+        <div class="gallery-modal__item"><img src="Gallery/Rohit Malla (62).jpg" alt="Rohit Malla 62" loading="lazy"></div>
+        <div class="gallery-modal__item"><img src="Gallery/Rohit Malla (63).jpg" alt="Rohit Malla 63" loading="lazy"></div>
+        <div class="gallery-modal__item"><img src="Gallery/Rohit Malla (65).jpg" alt="Rohit Malla 65" loading="lazy"></div>
+        <div class="gallery-modal__item"><img src="Gallery/Rohit Malla (66).jpg" alt="Rohit Malla 66" loading="lazy"></div>
+        <div class="gallery-modal__item"><img src="Gallery/Rohit Malla (67).jpg" alt="Rohit Malla 67" loading="lazy"></div>
+        <div class="gallery-modal__item"><img src="Gallery/Rohit Malla (68).jpg" alt="Rohit Malla 68" loading="lazy"></div>
+        <div class="gallery-modal__item"><img src="Gallery/Rohit Malla (69).jpg" alt="Rohit Malla 69" loading="lazy"></div>
+        <div class="gallery-modal__item"><img src="Gallery/Rohit Malla (70).jpg" alt="Rohit Malla 70" loading="lazy"></div>
+        <div class="gallery-modal__item"><img src="Gallery/Rohit Malla (73).jpg" alt="Rohit Malla 73" loading="lazy"></div>
+        <div class="gallery-modal__item"><img src="Gallery/Rohit Malla (74).jpg" alt="Rohit Malla 74" loading="lazy"></div>
+        <div class="gallery-modal__item"><img src="Gallery/Rohit Malla (75).jpg" alt="Rohit Malla 75" loading="lazy"></div>
+        <div class="gallery-modal__item"><img src="Gallery/Rohit Malla (76).jpg" alt="Rohit Malla 76" loading="lazy"></div>
+        <div class="gallery-modal__item"><img src="Gallery/Rohit Malla (77).jpg" alt="Rohit Malla 77" loading="lazy"></div>
+        <div class="gallery-modal__item"><img src="Gallery/Rohit Malla (79).jpg" alt="Rohit Malla 79" loading="lazy"></div>
+        <div class="gallery-modal__item"><img src="Gallery/Rohit Malla (80).jpg" alt="Rohit Malla 80" loading="lazy"></div>
+        <div class="gallery-modal__item"><img src="Gallery/Rohit Malla (81).jpg" alt="Rohit Malla 81" loading="lazy"></div>
+        <div class="gallery-modal__item"><img src="Gallery/Rohit Malla (83).jpg" alt="Rohit Malla 83" loading="lazy"></div>
+        <div class="gallery-modal__item"><img src="Gallery/Rohit Malla (84).jpg" alt="Rohit Malla 84" loading="lazy"></div>
+        <div class="gallery-modal__item"><img src="Gallery/Rohit Malla (85).jpg" alt="Rohit Malla 85" loading="lazy"></div>
+        <div class="gallery-modal__item"><img src="Gallery/Rohit Malla (86).jpg" alt="Rohit Malla 86" loading="lazy"></div>
+        <div class="gallery-modal__item"><img src="Gallery/Rohit Malla (87).jpg" alt="Rohit Malla 87" loading="lazy"></div>
+        <div class="gallery-modal__item"><img src="Gallery/Rohit Malla (89).jpg" alt="Rohit Malla 89" loading="lazy"></div>
+        <div class="gallery-modal__item"><img src="Gallery/Rohit Malla (90).jpg" alt="Rohit Malla 90" loading="lazy"></div>
+        <div class="gallery-modal__item"><img src="Gallery/Rohit Malla (91).jpg" alt="Rohit Malla 91" loading="lazy"></div>
+        <div class="gallery-modal__item"><img src="Gallery/Rohit Malla (92).jpg" alt="Rohit Malla 92" loading="lazy"></div>
+        <div class="gallery-modal__item"><img src="Gallery/Rohit Malla (93).jpg" alt="Rohit Malla 93" loading="lazy"></div>
+        <div class="gallery-modal__item"><img src="Gallery/Rohit Malla (94).jpg" alt="Rohit Malla 94" loading="lazy"></div>
+        <div class="gallery-modal__item"><img src="Gallery/Rohit Malla (96).jpg" alt="Rohit Malla 96" loading="lazy"></div>
+        <div class="gallery-modal__item"><img src="Gallery/Rohit Malla (97).jpg" alt="Rohit Malla 97" loading="lazy"></div>
+        <div class="gallery-modal__item"><img src="Gallery/Rohit Malla (98).jpg" alt="Rohit Malla 98" loading="lazy"></div>
+        <div class="gallery-modal__item"><img src="Gallery/Rohit Malla (99).jpg" alt="Rohit Malla 99" loading="lazy"></div>
+        <div class="gallery-modal__item"><img src="Gallery/Rohit Malla (100).jpg" alt="Rohit Malla 100" loading="lazy"></div>
+        <div class="gallery-modal__item"><img src="Gallery/Rohit Malla (101).jpg" alt="Rohit Malla 101" loading="lazy"></div>
+        <div class="gallery-modal__item"><img src="Gallery/Rohit Malla (102).jpg" alt="Rohit Malla 102" loading="lazy"></div>
+        <div class="gallery-modal__item"><img src="Gallery/Rohit Malla (103).jpg" alt="Rohit Malla 103" loading="lazy"></div>
+        <div class="gallery-modal__item"><img src="Gallery/Rohit Malla (104).jpg" alt="Rohit Malla 104" loading="lazy"></div>
+        <div class="gallery-modal__item"><img src="Gallery/Rohit Malla (105).jpg" alt="Rohit Malla 105" loading="lazy"></div>
+        <div class="gallery-modal__item"><img src="Gallery/Rohit Malla (106).jpg" alt="Rohit Malla 106" loading="lazy"></div>
+        <div class="gallery-modal__item"><img src="Gallery/Rohit Malla (107).jpg" alt="Rohit Malla 107" loading="lazy"></div>
+        <div class="gallery-modal__item"><img src="Gallery/Rohit Malla (108).jpg" alt="Rohit Malla 108" loading="lazy"></div>
+        <div class="gallery-modal__item"><img src="Gallery/Rohit Malla (111).jpg" alt="Rohit Malla 111" loading="lazy"></div>
+        <div class="gallery-modal__item"><img src="Gallery/Rohit Malla (112).jpg" alt="Rohit Malla 112" loading="lazy"></div>
+        <div class="gallery-modal__item"><img src="Gallery/Rohit Malla (113).jpg" alt="Rohit Malla 113" loading="lazy"></div>
+        <div class="gallery-modal__item"><img src="Gallery/Rohit Malla (114).jpg" alt="Rohit Malla 114" loading="lazy"></div>
+        <div class="gallery-modal__item"><img src="Gallery/Rohit Malla (115).jpg" alt="Rohit Malla 115" loading="lazy"></div>
+        <div class="gallery-modal__item"><img src="Gallery/Rohit Malla (116).jpg" alt="Rohit Malla 116" loading="lazy"></div>
+
+        <div class="gallery-modal__item"><img src="Gallery/Rohit Malla 2.jpg" alt="Rohit Malla 2" loading="lazy"></div>
+<div class="gallery-modal__item"><img src="Gallery/Rohit Malla 3.jpg" alt="Rohit Malla 3" loading="lazy"></div>
+<div class="gallery-modal__item"><img src="Gallery/Rohit Malla 4.jpg" alt="Rohit Malla 4" loading="lazy"></div>
+<div class="gallery-modal__item"><img src="Gallery/Rohit Malla 5.jpg" alt="Rohit Malla 5" loading="lazy"></div>
+<div class="gallery-modal__item"><img src="Gallery/Rohit Malla 6.jpg" alt="Rohit Malla 6" loading="lazy"></div>
+<div class="gallery-modal__item"><img src="Gallery/Rohit Malla 7.jpg" alt="Rohit Malla 7" loading="lazy"></div>
+<div class="gallery-modal__item"><img src="Gallery/Rohit Malla 8.jpg" alt="Rohit Malla 8" loading="lazy"></div>
+<div class="gallery-modal__item"><img src="Gallery/Rohit Malla 9.jpg" alt="Rohit Malla 9" loading="lazy"></div>
+<div class="gallery-modal__item"><img src="Gallery/Rohit Malla 11.jpg" alt="Rohit Malla 11" loading="lazy"></div>
+<div class="gallery-modal__item"><img src="Gallery/Rohit Malla 12.jpg" alt="Rohit Malla 12" loading="lazy"></div>
+<div class="gallery-modal__item"><img src="Gallery/Rohit Malla 13.jpg" alt="Rohit Malla 13" loading="lazy"></div>
+<div class="gallery-modal__item"><img src="Gallery/Rohit Malla 14.jpg" alt="Rohit Malla 14" loading="lazy"></div>
+<div class="gallery-modal__item"><img src="Gallery/Rohit Malla 15.jpg" alt="Rohit Malla 15" loading="lazy"></div>
+<div class="gallery-modal__item"><img src="Gallery/Rohit Malla 16.jpg" alt="Rohit Malla 16" loading="lazy"></div>
+<div class="gallery-modal__item"><img src="Gallery/Rohit Malla 18.jpg" alt="Rohit Malla 18" loading="lazy"></div>
+<div class="gallery-modal__item"><img src="Gallery/Rohit Malla 20.jpg" alt="Rohit Malla 20" loading="lazy"></div>
+  </div>
+</div>
+
 <!-- ICONS -->
 <div class="icons-bar reveal">
   <div class="iitem">
@@ -563,17 +864,31 @@
   <div class="label">Contact</div>
   <h2 class="sec-title">Get In Touch</h2>
   <p class="contact-tagline">Ready to bring transformation to your school, institution, or event? Let's connect.</p>
-  <a href="tel:+9779813720099" class="contact-phone">
-    <div class="contact-phone__icon">
-      <svg viewBox="0 0 24 24" fill="none" stroke="#6dbf5e" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-        <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.42 2 2 0 0 1 3.58 1.25h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L7.91 8.8a16 16 0 0 0 6.29 6.29l1.91-1.91a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 15.5z"/>
-      </svg>
-    </div>
-    <div class="contact-phone__text">
-      <span class="contact-phone__label">Call Now</span>
-      <span class="contact-phone__number">+977 9813720099</span>
-    </div>
-  </a>
+  <div class="contact-buttons">
+    <a href="tel:+9779813720099" class="contact-phone">
+      <div class="contact-phone__icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#6dbf5e" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.42 2 2 0 0 1 3.58 1.25h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L7.91 8.8a16 16 0 0 0 6.29 6.29l1.91-1.91a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 15.5z"/>
+        </svg>
+      </div>
+      <div class="contact-phone__text">
+        <span class="contact-phone__label">Call Now</span>
+        <span class="contact-phone__number">+977 9813720099</span>
+      </div>
+    </a>
+    <a href="mailto:rohitmalla@rightpath.com.np" class="contact-email">
+      <div class="contact-email__icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#6dbf5e" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+          <polyline points="22,6 12,13 2,6"/>
+        </svg>
+      </div>
+      <div class="contact-email__text">
+        <span class="contact-email__label">Email Me</span>
+        <span class="contact-email__address">rohitmalla3@gmail.com</span>
+      </div>
+    </a>
+  </div>
 </section>
 
 <!-- SOCIAL MEDIA -->
@@ -602,6 +917,14 @@
       <div class="social-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#6dbf5e" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 12a4 4 0 1 0 4 4V4a5 5 0 0 0 5 5"/></svg></div>
       TikTok
     </a>
+    <a href="https://x.com/mallarohit01" target="_blank" rel="noopener" class="social-link">
+      <div class="social-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#6dbf5e" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M4 4l16 16M4 20L20 4" />
+        </svg>
+      </div>
+      X (Twitter)
+    </a>
   </div>
 </section>
 
@@ -628,7 +951,7 @@
     ring.style.left = rx + 'px'; ring.style.top = ry + 'px';
     requestAnimationFrame(loop);
   })();
-  document.querySelectorAll('a, button, .slide-card, .show-card, .iitem').forEach(el => {
+  document.querySelectorAll('a, button, .slide-card, .show-card, .iitem, .gallery-thumb, .gallery-modal__item').forEach(el => {
     el.addEventListener('mouseenter', () => { dot.classList.add('hovered'); ring.classList.add('hovered'); });
     el.addEventListener('mouseleave', () => { dot.classList.remove('hovered'); ring.classList.remove('hovered'); });
   });
@@ -693,6 +1016,31 @@ const obs = new IntersectionObserver(entries => {
   entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
 }, { threshold: 0.08 });
 document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+
+/* ══ 4. GALLERY MODAL ══ */
+(function() {
+  const modal   = document.getElementById('galleryModal');
+  const openBtn = document.getElementById('openGalleryBtn');
+  const closeBtn= document.getElementById('closeGalleryBtn');
+
+  openBtn.addEventListener('click', function(e) {
+    e.preventDefault();
+    modal.classList.add('open');
+    document.body.style.overflow = 'hidden';
+  });
+
+  closeBtn.addEventListener('click', function() {
+    modal.classList.remove('open');
+    document.body.style.overflow = '';
+  });
+
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape' && modal.classList.contains('open')) {
+      modal.classList.remove('open');
+      document.body.style.overflow = '';
+    }
+  });
+})();
 </script>
 </body>
 </html>
