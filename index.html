@@ -306,7 +306,6 @@
     background: linear-gradient(to top, rgba(7,13,7,0.92) 0%, transparent 60%);
     pointer-events: none;
   }
-  /* CHANGED: year badge larger */
   .show-card__year-badge {
     position: absolute;
     top: 14px; left: 14px;
@@ -404,6 +403,7 @@
   }
   .gallery-title { color: #6dbf5e; margin-bottom: clamp(28px,4vw,44px); }
   .contact-title { color: #6dbf5e; margin-bottom: clamp(28px,4vw,44px); }
+  .connect-title { color: #6dbf5e; margin-bottom: clamp(28px,4vw,44px); }
   .gallery-section .label { justify-content: center; }
   .gallery-section h2.sec-title { color: #6dbf5e; }
 
@@ -596,7 +596,6 @@
   .iitem { padding:20px; border-right:1px solid rgba(74,140,63,0.2); }
   .iitem:last-child { border-right:none; }
   .iitem svg { margin-bottom:14px; }
-  /* CHANGED: icon titles bigger */
   .iitem h4 { font-family:'Bebas Neue',sans-serif; font-size:clamp(1rem,2vw,1.3rem); letter-spacing:0.2em; text-transform:uppercase; color:var(--green-bright); margin-bottom:8px; }
   .iitem p { color:var(--grey); font-style:italic; font-size:clamp(0.8rem,1.5vw,0.9rem); }
 
@@ -682,10 +681,8 @@
     .shows-section .sec-sub { text-align:center; margin-left:auto; }
     .social-section .label { justify-content:center; }
     .social-section .sec-sub { text-align:center; }
-    /* CHANGED: mobile logo (rm-since year) slightly bigger */
     .rm-since__year { font-size: clamp(22px, 6vw, 32px); }
     .rm-since__label { font-size: clamp(8px, 1.6vw, 11px); }
-    /* Lined titles on mobile */
     .sec-title-lined::before,
     .sec-title-lined::after { max-width: 30px; }
   }
@@ -710,7 +707,6 @@
 
 <!-- POPULAR SHOWS -->
 <section class="shows-section reveal">
-  <!-- CHANGED: title with side lines -->
   <h2 class="sec-title-lined">Signature Programs</h2>
   <p class="sec-sub">Six landmark programs that defined a movement — and transformed a generation.</p>
 
@@ -1037,7 +1033,7 @@
 
 <!-- SOCIAL MEDIA -->
 <section class="social-section reveal">
-  <div class="label">Connect</div>
+  <h2 class="sec-title-lined connect-title">Connect</h2>
   <div class="social-links">
     <a href="https://www.facebook.com/Rohitmalla123" target="_blank" rel="noopener" class="social-link">
       <div class="social-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#6dbf5e" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg></div>
