@@ -91,25 +91,89 @@
 
   .rm-hero__content { position: relative; z-index: 5; padding: clamp(24px,5vw,40px) clamp(20px,6vw,80px); width: 100%; margin-top: 0; }
 
-  .rm-eyebrow { display:flex; align-items:center; gap:10px; margin-bottom:clamp(10px,2vw,16px); }
+  /* ══ HERO TEXT ANIMATIONS ══ */
+
+  /* Eyebrow fade + slide */
+  .rm-eyebrow {
+    display: flex; align-items: center; gap: 10px;
+    margin-bottom: clamp(10px,2vw,16px);
+    opacity: 0;
+    transform: translateX(-24px);
+    animation: heroSlideRight 0.7s cubic-bezier(0.22,1,0.36,1) 0.2s forwards;
+  }
+  @keyframes heroSlideRight {
+    to { opacity: 1; transform: translateX(0); }
+  }
+
   .rm-eyebrow__dot { width:clamp(6px,1vw,8px); height:clamp(6px,1vw,8px); border-radius:50%; background:var(--green-accent); flex-shrink:0; animation:rmpulse 2.2s ease-in-out infinite; }
   @keyframes rmpulse { 0%,100% { opacity:1; transform:scale(1); box-shadow:0 0 0 0 rgba(74,222,128,0.4); } 50% { opacity:0.5; transform:scale(1.4); box-shadow:0 0 10px 4px rgba(74,222,128,0.1); } }
   .rm-eyebrow__text { font-size:clamp(10px,2.2vw,12px); font-weight:500; letter-spacing:0.25em; text-transform:uppercase; color:var(--green-accent); line-height:1.2; }
-  .rm-name { font-family:'Bebas Neue',sans-serif; font-size:clamp(56px,15vw,120px); line-height:0.95; letter-spacing:0.02em; color:var(--white); margin-bottom:clamp(8px,1.5vw,12px); text-shadow:0 4px 24px rgba(0,0,0,0.6); }
-  .rm-name span { display:block; color:var(--gold-light); }
-  .rm-role { font-family:'Bebas Neue',sans-serif; font-size:clamp(15px,3.5vw,22px); letter-spacing:0.15em; color:var(--white-85); margin-bottom:clamp(16px,3vw,24px); text-transform:uppercase; }
-  .rm-divider { width:clamp(40px,8vw,60px); height:2px; background:linear-gradient(to right,var(--green-accent),transparent); margin-bottom:clamp(16px,3vw,24px); }
 
+  /* Name — clip reveal per word */
+  .rm-name {
+    font-family:'Bebas Neue',sans-serif;
+    font-size:clamp(56px,15vw,120px);
+    line-height:0.95; letter-spacing:0.02em;
+    color:var(--white);
+    margin-bottom:clamp(8px,1.5vw,12px);
+    text-shadow:0 4px 24px rgba(0,0,0,0.6);
+  }
+  .rm-name .word-wrap { overflow: hidden; display: block; }
+  .rm-name .word-inner {
+    display: block;
+    opacity: 0;
+    transform: translateY(110%);
+    animation: heroRevealUp 0.75s cubic-bezier(0.22,1,0.36,1) forwards;
+  }
+  .rm-name .word-wrap:nth-child(1) .word-inner { animation-delay: 0.35s; }
+  .rm-name .word-wrap:nth-child(2) .word-inner { animation-delay: 0.5s; color: var(--gold-light); }
+  @keyframes heroRevealUp {
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  /* Role — fade in */
+  .rm-role {
+    font-family:'Bebas Neue',sans-serif;
+    font-size:clamp(15px,3.5vw,22px);
+    letter-spacing:0.15em;
+    color:var(--white-85);
+    margin-bottom:clamp(16px,3vw,24px);
+    text-transform:uppercase;
+    opacity: 0;
+    animation: heroFadeIn 0.6s ease 0.75s forwards;
+  }
+  @keyframes heroFadeIn {
+    to { opacity: 1; }
+  }
+
+  /* Divider — width expand */
+  .rm-divider {
+    width: 0;
+    height: 2px;
+    background: linear-gradient(to right, var(--green-accent), transparent);
+    margin-bottom: clamp(16px,3vw,24px);
+    animation: heroDivider 0.7s cubic-bezier(0.22,1,0.36,1) 0.9s forwards;
+  }
+  @keyframes heroDivider {
+    to { width: clamp(40px,8vw,60px); }
+  }
+
+  /* Quote block — fade + slight rise */
   .rm-quote-block {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
     gap: clamp(14px, 2vw, 22px);
     max-width: min(100%, 480px);
+    opacity: 0;
+    transform: translateY(18px);
+    animation: heroFadeRise 0.7s ease 1.1s forwards;
   }
-  .rm-quote {
-    width: 100%;
+  @keyframes heroFadeRise {
+    to { opacity: 1; transform: translateY(0); }
   }
+
+  .rm-quote { width: 100%; }
   .rm-quote__text {
     font-size: clamp(14px,2.6vw,17px);
     line-height: 1.6;
@@ -127,6 +191,16 @@
     mix-blend-mode: screen;
     filter: drop-shadow(0 0 6px rgba(255,255,255,0.25));
     margin-left: clamp(14px,2vw,20px);
+  }
+
+  /* Since badge — fade in from top */
+  .rm-since {
+    opacity: 0;
+    animation: heroFadeDown 0.6s ease 0.15s forwards;
+  }
+  @keyframes heroFadeDown {
+    from { opacity: 0; transform: translateY(-12px); }
+    to   { opacity: 1; transform: translateY(0); }
   }
 
   @media (max-width:480px) { .rm-scroll { display:none; } .rm-signature { width: clamp(140px, 40vw, 200px); } }
@@ -178,7 +252,10 @@
   </div>
   <div class="rm-hero__content">
     <div class="rm-eyebrow"><div class="rm-eyebrow__dot"></div><span class="rm-eyebrow__text">Creating Leaders Across Nepal</span></div>
-    <h1 class="rm-name">Rohit<span>Malla</span></h1>
+    <h1 class="rm-name">
+      <span class="word-wrap"><span class="word-inner">Rohit</span></span>
+      <span class="word-wrap"><span class="word-inner">Malla</span></span>
+    </h1>
     <p class="rm-role">Youth · Policy · Leadership</p>
     <div class="rm-divider"></div>
     <div class="rm-quote-block">
@@ -230,6 +307,7 @@
     font-weight: 400;
     line-height: 1;
     color: #c9a84c;
+    transition: color 0.2s;
   }
   .stat-l {
     font-family: 'Bebas Neue', sans-serif;
@@ -379,7 +457,6 @@
     padding: clamp(60px,8vw,120px) clamp(24px,6vw,80px);
     border-top: 1px solid rgba(74,140,63,0.12);
   }
-  /* Lined title — shared style for Gallery and Get In Touch */
   .sec-title-lined {
     font-family: 'Bebas Neue', sans-serif;
     font-size: clamp(1.6rem,4vw,3rem);
@@ -831,10 +908,22 @@
 
 <!-- STATS -->
 <div class="stats">
-  <div class="stat"><div class="stat-n">9+</div><div class="stat-l">Years of Journey</div></div>
-  <div class="stat"><div class="stat-n">200+</div><div class="stat-l">Programs</div></div>
-  <div class="stat"><div class="stat-n">100K+</div><div class="stat-l">Youths Connected</div></div>
-  <div class="stat"><div class="stat-n">40+</div><div class="stat-l">Districts</div></div>
+  <div class="stat">
+    <div class="stat-n" data-target="9" data-suffix="+">0+</div>
+    <div class="stat-l">Years of Journey</div>
+  </div>
+  <div class="stat">
+    <div class="stat-n" data-target="200" data-suffix="+">0+</div>
+    <div class="stat-l">Programs</div>
+  </div>
+  <div class="stat">
+    <div class="stat-n" data-target="100" data-suffix="K+">0K+</div>
+    <div class="stat-l">Youths Connected</div>
+  </div>
+  <div class="stat">
+    <div class="stat-n" data-target="40" data-suffix="+">0+</div>
+    <div class="stat-l">Districts</div>
+  </div>
 </div>
 
 <!-- GALLERY -->
@@ -1383,6 +1472,44 @@ document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
       document.body.style.overflow = '';
     }
   });
+})();
+
+/* ══ 5. STATS COUNTER ANIMATION ══ */
+(function() {
+  const statEls = document.querySelectorAll('.stat-n[data-target]');
+  if (!statEls.length) return;
+
+  function easeOutExpo(t) {
+    return t === 1 ? 1 : 1 - Math.pow(2, -10 * t);
+  }
+
+  function animateCounter(el) {
+    const target = parseInt(el.dataset.target, 10);
+    const suffix = el.dataset.suffix || '';
+    const duration = 1800;
+    const startTime = performance.now();
+
+    function update(now) {
+      const elapsed = now - startTime;
+      const progress = Math.min(elapsed / duration, 1);
+      const eased = easeOutExpo(progress);
+      const current = Math.round(eased * target);
+      el.textContent = current + suffix;
+      if (progress < 1) requestAnimationFrame(update);
+    }
+    requestAnimationFrame(update);
+  }
+
+  const statsObs = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        animateCounter(entry.target);
+        statsObs.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.4 });
+
+  statEls.forEach(el => statsObs.observe(el));
 })();
 </script>
 </body>
