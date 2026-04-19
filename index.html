@@ -61,7 +61,6 @@
   }
   .rm-ov-top { position: absolute; top: 0; left: 0; right: 0; height: 28%; background: linear-gradient(to bottom, var(--green-900) 0%, transparent 100%); z-index: 1; }
 
-  /* CHANGED: ultra-smooth bottom overlay — many stops, no perceptible edge */
   .rm-ov-bottom {
     position: absolute; bottom: 0; left: 0; right: 0; height: 100%;
     background: linear-gradient(
@@ -90,7 +89,6 @@
   @keyframes rmscroll { 0%,100% { opacity:0; transform:scaleY(0); transform-origin:top; } 40%,65% { opacity:1; transform:scaleY(1); } }
   .rm-scroll__text { font-size:8px; letter-spacing:0.25em; text-transform:uppercase; color:var(--white); writing-mode:vertical-lr; transform:rotate(180deg); }
 
-  /* CHANGED: reduced margin-top to push content higher */
   .rm-hero__content { position: relative; z-index: 5; padding: clamp(24px,5vw,40px) clamp(20px,6vw,80px); width: 100%; margin-top: 0; }
 
   .rm-eyebrow { display:flex; align-items:center; gap:10px; margin-bottom:clamp(10px,2vw,16px); }
@@ -102,7 +100,6 @@
   .rm-role { font-family:'Bebas Neue',sans-serif; font-size:clamp(15px,3.5vw,22px); letter-spacing:0.15em; color:var(--white-85); margin-bottom:clamp(16px,3vw,24px); text-transform:uppercase; }
   .rm-divider { width:clamp(40px,8vw,60px); height:2px; background:linear-gradient(to right,var(--green-accent),transparent); margin-bottom:clamp(16px,3vw,24px); }
 
-  /* ══ QUOTE + SIGNATURE BLOCK — CHANGED: stacked column layout ══ */
   .rm-quote-block {
     display: flex;
     flex-direction: column;
@@ -124,13 +121,12 @@
     padding-left: clamp(14px,2vw,20px);
     border-left: 2px solid var(--green-accent);
   }
-  /* CHANGED: signature now below quote, aligned left, no translateY offset */
   .rm-signature {
     width: clamp(80px, 14vw, 130px);
     opacity: 0.82;
     mix-blend-mode: screen;
     filter: drop-shadow(0 0 6px rgba(255,255,255,0.25));
-    margin-left: clamp(14px,2vw,20px); /* align with quote text (matches padding-left) */
+    margin-left: clamp(14px,2vw,20px);
   }
 
   @media (max-width:480px) { .rm-scroll { display:none; } }
@@ -140,7 +136,6 @@
     .rm-hero__content { max-width:680px; }
     .rm-quote__text { font-size:16px; line-height:1.75; }
     .rm-scroll { display:flex; }
-    /* CHANGED: desktop bottom overlay — also ultra-smooth, no sharp band */
     .rm-ov-bottom {
       background:
         linear-gradient(
@@ -186,7 +181,6 @@
     <h1 class="rm-name">Rohit<span>Malla</span></h1>
     <p class="rm-role">Youth · Policy · Leadership</p>
     <div class="rm-divider"></div>
-    <!-- CHANGED: quote on top, signature stacked below -->
     <div class="rm-quote-block">
       <div class="rm-quote">
         <p class="rm-quote__text">
@@ -206,7 +200,7 @@
     --dark: #070d07;
     --dark2: #0d150d;
     --green-deep: #162416;
-    --green-accent: #162416;
+    --green-accent: #4a8c3f;
     --green-bright: #6dbf5e;
     --gold: #c9a84c;
     --white: #4a8c3f;
@@ -215,11 +209,37 @@
   html { scroll-behavior:smooth; }
   body { background:var(--dark); color:var(--white); font-size:18px; line-height:1.6; }
 
-  .stats { background:var(--white); color:var(--dark); display:grid; grid-template-columns:repeat(4,1fr); }
-  .stat { padding:clamp(24px,4vw,44px) clamp(16px,2vw,30px); text-align:center; border-right:1px solid #ddd; }
-  .stat:last-child { border-right:none; }
-  .stat-n { font-family:'Bebas Neue',sans-serif; font-size:clamp(1.8rem,5vw,3.5rem); font-weight:400; line-height:1; color:var(--dark); }
-  .stat-l { font-family:'Bebas Neue',sans-serif; font-size:clamp(1rem,1.2vw,0.7rem); letter-spacing:0.2em; text-transform:uppercase; color:#000; margin-top:4px; }
+  /* ── STATS — uniform dark bg with border separators + golden text ── */
+  .stats {
+    background: var(--dark2);
+    color: var(--dark);
+    display: grid;
+    grid-template-columns: repeat(4,1fr);
+    border-top: 1px solid rgba(201,168,76,0.25);
+    border-bottom: 1px solid rgba(201,168,76,0.25);
+  }
+  .stat {
+    padding: clamp(24px,4vw,44px) clamp(16px,2vw,30px);
+    text-align: center;
+    border-right: 1px solid rgba(201,168,76,0.2);
+  }
+  .stat:last-child { border-right: none; }
+  .stat-n {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(1.8rem,5vw,3.5rem);
+    font-weight: 400;
+    line-height: 1;
+    color: #c9a84c;
+  }
+  .stat-l {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(1rem,1.2vw,0.7rem);
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: #c9a84c;
+    opacity: 0.75;
+    margin-top: 4px;
+  }
 
   section { padding:clamp(60px,8vw,120px) clamp(24px,6vw,80px); }
   .label { font-family:'Bebas Neue',sans-serif; font-size:clamp(0.6rem,1.5vw,0.75rem); letter-spacing:0.4em; text-transform:uppercase; color:var(--green-bright); display:flex; align-items:center; gap:16px; margin-bottom:16px; }
@@ -252,6 +272,28 @@
   .shows-section {
     background: var(--dark2);
     padding: clamp(60px,8vw,120px) clamp(24px,6vw,80px);
+  }
+  /* Signature Programs title gets side lines like .label */
+  .shows-section .sec-title-lined {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(1.6rem,4vw,3rem);
+    font-weight: 400;
+    text-align: center;
+    margin-bottom: 12px;
+    line-height: 1.1;
+    letter-spacing: 0.05em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+  }
+  .shows-section .sec-title-lined::before,
+  .shows-section .sec-title-lined::after {
+    content: '';
+    flex: 1;
+    max-width: 80px;
+    height: 1px;
+    background: var(--green-bright);
   }
   .shows-section .label { justify-content: center; }
   .shows-grid {
@@ -286,16 +328,17 @@
     background: linear-gradient(to top, rgba(7,13,7,0.92) 0%, transparent 60%);
     pointer-events: none;
   }
+  /* CHANGED: year badge larger */
   .show-card__year-badge {
     position: absolute;
     top: 14px; left: 14px;
     font-family: 'Bebas Neue', sans-serif;
-    font-size: clamp(0.7rem, 1.5vw, 0.85rem);
+    font-size: clamp(0.95rem, 2vw, 1.15rem);
     letter-spacing: 0.3em;
     color: var(--gold);
     background: rgba(7,13,7,0.75);
     border: 1px solid rgba(201,168,76,0.35);
-    padding: 4px 10px;
+    padding: 6px 14px;
     backdrop-filter: blur(6px);
   }
   .show-card__body {
@@ -488,14 +531,6 @@
     border-bottom: 1px solid rgba(74,140,63,0.2);
   }
   .contact-section .label { justify-content: center; }
-  .contact-tagline {
-    font-family: 'Inter', sans-serif;
-    font-size: clamp(0.9rem, 2vw, 1.05rem);
-    font-style: italic;
-    color: rgba(109,191,94,0.65);
-    margin-bottom: clamp(28px, 4vw, 44px);
-    font-weight: 300;
-  }
   .contact-buttons {
     display: flex;
     flex-wrap: wrap;
@@ -562,7 +597,8 @@
   .iitem { padding:20px; border-right:1px solid rgba(74,140,63,0.2); }
   .iitem:last-child { border-right:none; }
   .iitem svg { margin-bottom:14px; }
-  .iitem h4 { font-family:'Bebas Neue',sans-serif; font-size:clamp(0.65rem,1.5vw,0.85rem); letter-spacing:0.2em; text-transform:uppercase; color:var(--green-bright); margin-bottom:8px; }
+  /* CHANGED: icon titles bigger */
+  .iitem h4 { font-family:'Bebas Neue',sans-serif; font-size:clamp(1rem,2vw,1.3rem); letter-spacing:0.2em; text-transform:uppercase; color:var(--green-bright); margin-bottom:8px; }
   .iitem p { color:var(--grey); font-style:italic; font-size:clamp(0.8rem,1.5vw,0.9rem); }
 
   /* ── SOCIAL ── */
@@ -593,7 +629,7 @@
   @media (max-width:700px) {
     .stats { grid-template-columns:repeat(2,1fr); }
     .stat:nth-child(2) { border-right:none; }
-    .stat:nth-child(3) { border-top:1px solid #ddd; }
+    .stat:nth-child(3) { border-top:1px solid rgba(201,168,76,0.2); }
     .icons-bar { grid-template-columns:1fr; }
     .iitem { border-right:none; border-bottom:1px solid rgba(74,140,63,0.2); }
     .iitem:last-child { border-bottom:none; }
@@ -648,10 +684,15 @@
     .shows-section .sec-sub { text-align:center; margin-left:auto; }
     .contact-section .label { justify-content:center; }
     .contact-section h2.sec-title { text-align:center; }
-    .contact-tagline { text-align:center; }
     .social-section .label { justify-content:center; }
     .social-section h2.sec-title { text-align:center; }
     .social-section .sec-sub { text-align:center; }
+    /* CHANGED: mobile logo (rm-since year) slightly bigger */
+    .rm-since__year { font-size: clamp(22px, 6vw, 32px); }
+    .rm-since__label { font-size: clamp(8px, 1.6vw, 11px); }
+    /* Signature Programs lined title on mobile */
+    .shows-section .sec-title-lined::before,
+    .shows-section .sec-title-lined::after { max-width: 30px; }
   }
   @media (max-width:420px) {
     .shows-grid { grid-template-columns: 1fr; }
@@ -674,7 +715,8 @@
 
 <!-- POPULAR SHOWS -->
 <section class="shows-section reveal">
-  <h2 class="sec-title">Signature Programs</h2>
+  <!-- CHANGED: title with side lines -->
+  <h2 class="sec-title-lined">Signature Programs</h2>
   <p class="sec-sub">Six landmark programs that defined a movement — and transformed a generation.</p>
 
   <div class="shows-grid">
@@ -974,7 +1016,6 @@
 <section class="contact-section reveal">
   <div class="label">Contact</div>
   <h2 class="sec-title">Get In Touch</h2>
-  <p class="contact-tagline">Ready to bring transformation to your school, institution, or event? Let's connect.</p>
   <div class="contact-buttons">
     <a href="tel:+9779813720099" class="contact-phone">
       <div class="contact-phone__icon">
@@ -987,7 +1028,7 @@
         <span class="contact-phone__number">+977 9813720099</span>
       </div>
     </a>
-    <a href="mailto:rohitmalla@rightpath.com.np" class="contact-email">
+    <a href="mailto:rohitmallam@rightpath.com.np" class="contact-email">
       <div class="contact-email__icon">
         <svg viewBox="0 0 24 24" fill="none" stroke="#6dbf5e" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
           <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
@@ -1006,7 +1047,6 @@
 <section class="social-section reveal">
   <div class="label">Connect</div>
   <h2 class="sec-title">Follow the Journey</h2>
-  <p class="sec-sub">Stay inspired — follow Rohit Malla on social media for daily motivation, program updates, and leadership insights.</p>
   <div class="social-links">
     <a href="https://www.facebook.com/Rohitmalla123" target="_blank" rel="noopener" class="social-link">
       <div class="social-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#6dbf5e" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg></div>
