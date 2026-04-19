@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Rohit Malla — Motivational Speaker</title>
-<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@300;400;500;600&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
   *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 
@@ -273,28 +273,6 @@
     background: var(--dark2);
     padding: clamp(60px,8vw,120px) clamp(24px,6vw,80px);
   }
-  /* Signature Programs title gets side lines like .label */
-  .shows-section .sec-title-lined {
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: clamp(1.6rem,4vw,3rem);
-    font-weight: 400;
-    text-align: center;
-    margin-bottom: 12px;
-    line-height: 1.1;
-    letter-spacing: 0.05em;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 20px;
-  }
-  .shows-section .sec-title-lined::before,
-  .shows-section .sec-title-lined::after {
-    content: '';
-    flex: 1;
-    max-width: 80px;
-    height: 1px;
-    background: var(--green-bright);
-  }
   .shows-section .label { justify-content: center; }
   .shows-grid {
     display: grid;
@@ -356,11 +334,12 @@
   }
   .show-card:hover .show-card__name { color: #ffffff; }
   .show-card__venue {
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: clamp(0.55rem, 1.1vw, 0.68rem);
-    letter-spacing: 0.22em;
-    text-transform: uppercase;
-    color: rgba(109,191,94,0.6);
+    font-family: 'Poppins', sans-serif;
+    font-size: clamp(0.55rem, 1.1vw, 0.72rem);
+    font-weight: 400;
+    letter-spacing: 0.04em;
+    text-transform: none;
+    color: rgba(109,191,94,0.7);
     margin-bottom: 10px;
     line-height: 1.5;
   }
@@ -383,12 +362,8 @@
     opacity: 0.6;
   }
   .show-card__divider {
-    width: 28px; height: 1px;
-    background: rgba(109,191,94,0.3);
-    margin-bottom: 12px;
-    transition: width 0.4s;
+    display: none;
   }
-  .show-card:hover .show-card__divider { width: 48px; }
   .show-card__desc {
     font-family: 'Inter', sans-serif;
     font-size: clamp(0.78rem, 1.4vw, 0.88rem);
@@ -405,6 +380,30 @@
     padding: clamp(60px,8vw,120px) clamp(24px,6vw,80px);
     border-top: 1px solid rgba(74,140,63,0.12);
   }
+  /* Lined title — shared style for Gallery and Get In Touch */
+  .sec-title-lined {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(1.6rem,4vw,3rem);
+    font-weight: 400;
+    text-align: center;
+    margin-bottom: 12px;
+    line-height: 1.1;
+    letter-spacing: 0.05em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+  }
+  .sec-title-lined::before,
+  .sec-title-lined::after {
+    content: '';
+    flex: 1;
+    max-width: 80px;
+    height: 1px;
+    background: var(--green-bright);
+  }
+  .gallery-title { color: #6dbf5e; margin-bottom: clamp(28px,4vw,44px); }
+  .contact-title { color: #6dbf5e; margin-bottom: clamp(28px,4vw,44px); }
   .gallery-section .label { justify-content: center; }
   .gallery-section h2.sec-title { color: #6dbf5e; }
 
@@ -413,6 +412,7 @@
     grid-template-columns: repeat(4, 1fr);
     gap: clamp(10px, 1.5vw, 18px);
     margin-bottom: clamp(28px, 4vw, 44px);
+    margin-top: 0;
   }
   .gallery-thumb {
     position: relative;
@@ -530,7 +530,6 @@
     border-top: 1px solid rgba(74,140,63,0.2);
     border-bottom: 1px solid rgba(74,140,63,0.2);
   }
-  .contact-section .label { justify-content: center; }
   .contact-buttons {
     display: flex;
     flex-wrap: wrap;
@@ -629,7 +628,7 @@
   @media (max-width:700px) {
     .stats { grid-template-columns:repeat(2,1fr); }
     .stat:nth-child(2) { border-right:none; }
-    .stat:nth-child(3) { border-top:1px solid rgba(201,168,76,0.2); }
+    .stat:nth-child(3) { border-top:1px solid rgba(201,168,76,0.2); border-right: 1px solid rgba(201,168,76,0.2); }
     .icons-bar { grid-template-columns:1fr; }
     .iitem { border-right:none; border-bottom:1px solid rgba(74,140,63,0.2); }
     .iitem:last-child { border-bottom:none; }
@@ -676,23 +675,17 @@
       width: 42px; height: 42px;
     }
     .social-icon svg { width: 18px; height: 18px; }
-    .gallery-section .label { justify-content:center; }
     .gallery-section h2.sec-title { text-align:center; }
-    .gallery-section .sec-sub { text-align:center; margin-left:auto; }
-    .shows-section .label { justify-content:center; }
     .shows-section h2.sec-title { text-align:center; }
     .shows-section .sec-sub { text-align:center; margin-left:auto; }
-    .contact-section .label { justify-content:center; }
-    .contact-section h2.sec-title { text-align:center; }
     .social-section .label { justify-content:center; }
-    .social-section h2.sec-title { text-align:center; }
     .social-section .sec-sub { text-align:center; }
     /* CHANGED: mobile logo (rm-since year) slightly bigger */
     .rm-since__year { font-size: clamp(22px, 6vw, 32px); }
     .rm-since__label { font-size: clamp(8px, 1.6vw, 11px); }
-    /* Signature Programs lined title on mobile */
-    .shows-section .sec-title-lined::before,
-    .shows-section .sec-title-lined::after { max-width: 30px; }
+    /* Lined titles on mobile */
+    .sec-title-lined::before,
+    .sec-title-lined::after { max-width: 30px; }
   }
   @media (max-width:420px) {
     .shows-grid { grid-template-columns: 1fr; }
@@ -848,9 +841,7 @@
 
 <!-- GALLERY -->
 <section class="gallery-section reveal">
-  <div class="label">Moments</div>
-  <h2 class="sec-title">Gallery</h2>
-  <p class="sec-sub">A glimpse into the journey — events, programs, and communities transformed across Nepal.</p>
+  <h2 class="sec-title-lined gallery-title">Gallery</h2>
 
   <div class="gallery-preview">
     <div class="gallery-thumb">
@@ -1014,8 +1005,7 @@
 
 <!-- GET IN TOUCH -->
 <section class="contact-section reveal">
-  <div class="label">Contact</div>
-  <h2 class="sec-title">Get In Touch</h2>
+  <h2 class="sec-title-lined contact-title">Get In Touch</h2>
   <div class="contact-buttons">
     <a href="tel:+9779813720099" class="contact-phone">
       <div class="contact-phone__icon">
@@ -1046,7 +1036,6 @@
 <!-- SOCIAL MEDIA -->
 <section class="social-section reveal">
   <div class="label">Connect</div>
-  <h2 class="sec-title">Follow the Journey</h2>
   <div class="social-links">
     <a href="https://www.facebook.com/Rohitmalla123" target="_blank" rel="noopener" class="social-link">
       <div class="social-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#6dbf5e" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg></div>
