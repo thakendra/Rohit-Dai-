@@ -92,8 +92,6 @@
   .rm-hero__content { position: relative; z-index: 5; padding: clamp(24px,5vw,40px) clamp(20px,6vw,80px); width: 100%; margin-top: 0; }
 
   /* ══ HERO TEXT ANIMATIONS ══ */
-
-  /* Eyebrow fade + slide */
   .rm-eyebrow {
     display: flex; align-items: center; gap: 10px;
     margin-bottom: clamp(10px,2vw,16px);
@@ -101,15 +99,12 @@
     transform: translateX(-24px);
     animation: heroSlideRight 0.7s cubic-bezier(0.22,1,0.36,1) 0.2s forwards;
   }
-  @keyframes heroSlideRight {
-    to { opacity: 1; transform: translateX(0); }
-  }
+  @keyframes heroSlideRight { to { opacity: 1; transform: translateX(0); } }
 
   .rm-eyebrow__dot { width:clamp(6px,1vw,8px); height:clamp(6px,1vw,8px); border-radius:50%; background:var(--green-accent); flex-shrink:0; animation:rmpulse 2.2s ease-in-out infinite; }
   @keyframes rmpulse { 0%,100% { opacity:1; transform:scale(1); box-shadow:0 0 0 0 rgba(74,222,128,0.4); } 50% { opacity:0.5; transform:scale(1.4); box-shadow:0 0 10px 4px rgba(74,222,128,0.1); } }
   .rm-eyebrow__text { font-size:clamp(10px,2.2vw,12px); font-weight:500; letter-spacing:0.25em; text-transform:uppercase; color:var(--green-accent); line-height:1.2; }
 
-  /* Name — clip reveal per word */
   .rm-name {
     font-family:'Bebas Neue',sans-serif;
     font-size:clamp(56px,15vw,120px);
@@ -127,11 +122,8 @@
   }
   .rm-name .word-wrap:nth-child(1) .word-inner { animation-delay: 0.35s; }
   .rm-name .word-wrap:nth-child(2) .word-inner { animation-delay: 0.5s; color: var(--gold-light); }
-  @keyframes heroRevealUp {
-    to { opacity: 1; transform: translateY(0); }
-  }
+  @keyframes heroRevealUp { to { opacity: 1; transform: translateY(0); } }
 
-  /* Role — fade in */
   .rm-role {
     font-family:'Bebas Neue',sans-serif;
     font-size:clamp(15px,3.5vw,22px);
@@ -142,11 +134,8 @@
     opacity: 0;
     animation: heroFadeIn 0.6s ease 0.75s forwards;
   }
-  @keyframes heroFadeIn {
-    to { opacity: 1; }
-  }
+  @keyframes heroFadeIn { to { opacity: 1; } }
 
-  /* Divider — width expand */
   .rm-divider {
     width: 0;
     height: 2px;
@@ -154,11 +143,8 @@
     margin-bottom: clamp(16px,3vw,24px);
     animation: heroDivider 0.7s cubic-bezier(0.22,1,0.36,1) 0.9s forwards;
   }
-  @keyframes heroDivider {
-    to { width: clamp(40px,8vw,60px); }
-  }
+  @keyframes heroDivider { to { width: clamp(40px,8vw,60px); } }
 
-  /* Quote block — fade + slight rise */
   .rm-quote-block {
     display: flex;
     flex-direction: column;
@@ -169,9 +155,7 @@
     transform: translateY(18px);
     animation: heroFadeRise 0.7s ease 1.1s forwards;
   }
-  @keyframes heroFadeRise {
-    to { opacity: 1; transform: translateY(0); }
-  }
+  @keyframes heroFadeRise { to { opacity: 1; transform: translateY(0); } }
 
   .rm-quote { width: 100%; }
   .rm-quote__text {
@@ -193,7 +177,6 @@
     margin-left: clamp(14px,2vw,20px);
   }
 
-  /* Since badge — fade in from top */
   .rm-since {
     opacity: 0;
     animation: heroFadeDown 0.6s ease 0.15s forwards;
@@ -273,23 +256,23 @@
 
 
 <style>
+  /* ══ GLOBAL SECTION VARIABLES (separate from hero) ══ */
   :root {
     --dark: #070d07;
     --dark2: #0d150d;
     --green-deep: #162416;
-    --green-accent: #4a8c3f;
+    --green-accent-main: #4a8c3f;
     --green-bright: #6dbf5e;
     --gold: #c9a84c;
-    --white: #4a8c3f;
-    --grey: #6dbf5e;
+    --text-main: #6dbf5e;
+    --text-muted: rgba(109,191,94,0.6);
   }
   html { scroll-behavior:smooth; }
-  body { background:var(--dark); color:var(--white); font-size:18px; line-height:1.6; }
+  body { background:var(--dark); color:#6dbf5e; font-size:18px; line-height:1.6; }
 
-  /* ── STATS — uniform dark bg with border separators + golden text ── */
+  /* ── STATS ── */
   .stats {
     background: var(--dark2);
-    color: var(--dark);
     display: grid;
     grid-template-columns: repeat(4,1fr);
     border-top: 1px solid rgba(201,168,76,0.25);
@@ -311,7 +294,7 @@
   }
   .stat-l {
     font-family: 'Bebas Neue', sans-serif;
-    font-size: clamp(1rem,1.2vw,0.7rem);
+    font-size: clamp(0.6rem,1.2vw,0.7rem);
     letter-spacing: 0.2em;
     text-transform: uppercase;
     color: #c9a84c;
@@ -323,7 +306,7 @@
   .label { font-family:'Bebas Neue',sans-serif; font-size:clamp(0.6rem,1.5vw,0.75rem); letter-spacing:0.4em; text-transform:uppercase; color:var(--green-bright); display:flex; align-items:center; gap:16px; margin-bottom:16px; }
   .label::before,.label::after { content:''; flex:1; max-width:50px; height:1px; background:var(--green-bright); }
   h2.sec-title { font-family:'Bebas Neue',sans-serif; font-size:clamp(1.6rem,4vw,3rem); font-weight:400; text-align:center; margin-bottom:12px; line-height:1.1; letter-spacing:0.05em; }
-  .sec-sub { text-align:center; color:var(--grey); font-style:italic; max-width:560px; margin:0 auto clamp(40px,5vw,70px); font-size:clamp(0.95rem,2vw,1.1rem); }
+  .sec-sub { text-align:center; color:var(--text-muted); font-style:italic; max-width:560px; margin:0 auto clamp(40px,5vw,70px); font-size:clamp(0.95rem,2vw,1.1rem); }
 
   /* ── JOURNEY SLIDER ── */
   .journey-section { background:var(--dark); padding:clamp(60px,8vw,120px) 0; overflow:hidden; }
@@ -336,15 +319,15 @@
   .slider-track.is-dragging, .slider-track:hover { animation-play-state:paused; }
   @keyframes scrollLeft { 0% { transform:translateX(0); } 100% { transform:translateX(-50%); } }
   .slide-card { position:relative; flex-shrink:0; width:clamp(260px,30vw,380px); aspect-ratio:3/4; overflow:hidden; cursor:none; border:1px solid rgba(74,140,63,0.15); transition:border-color 0.4s; }
-  .slide-card:hover { border-color:var(--green-accent); }
+  .slide-card:hover { border-color:var(--green-accent-main); }
   .slide-card img { width:100%; height:100%; object-fit:cover; filter:brightness(0.55) saturate(0.7); transition:filter 0.6s ease,transform 0.6s ease; display:block; pointer-events:none; -webkit-user-drag:none; user-select:none; }
   .slide-card:hover img { filter:brightness(0.75) saturate(1); transform:scale(1.05); }
   .slide-overlay { position:absolute; inset:0; background:linear-gradient(to top,rgba(7,13,7,0.95) 0%,rgba(7,13,7,0.3) 50%,transparent 100%); display:flex; flex-direction:column; justify-content:flex-end; padding:clamp(16px,3vw,28px); pointer-events:none; }
   .slide-year { font-family:'Bebas Neue',sans-serif; font-size:clamp(2rem,5vw,3.2rem); font-weight:400; color:var(--green-bright); line-height:1; margin-bottom:6px; letter-spacing:0.05em; text-shadow:0 0 40px rgba(109,191,94,0.4); transition:color 0.4s; }
-  .slide-card:hover .slide-year { color:var(--white); }
+  .slide-card:hover .slide-year { color:#ffffff; }
   .slide-line { width:30px; height:1px; background:var(--green-bright); margin-bottom:10px; transition:width 0.4s; }
   .slide-card:hover .slide-line { width:50px; }
-  .slide-caption { font-family:'Bebas Neue',sans-serif; font-size:clamp(0.55rem,1.2vw,0.7rem); letter-spacing:0.25em; text-transform:uppercase; color:var(--grey); line-height:1.5; }
+  .slide-caption { font-family:'Bebas Neue',sans-serif; font-size:clamp(0.55rem,1.2vw,0.7rem); letter-spacing:0.25em; text-transform:uppercase; color:var(--text-muted); line-height:1.5; }
 
   /* ── POPULAR SHOWS ── */
   .shows-section {
@@ -438,9 +421,7 @@
     background: var(--gold);
     opacity: 0.6;
   }
-  .show-card__divider {
-    display: none;
-  }
+  .show-card__divider { display: none; }
   .show-card__desc {
     font-family: 'Inter', sans-serif;
     font-size: clamp(0.78rem, 1.4vw, 0.88rem);
@@ -614,7 +595,6 @@
     justify-content: center;
     gap: clamp(14px, 2.5vw, 24px);
   }
-  /* ── FIX: Both buttons equal size ── */
   .contact-phone, .contact-email {
     display: inline-flex;
     align-items: center;
@@ -626,7 +606,6 @@
     transition: background 0.3s, border-color 0.3s, transform 0.3s;
     position: relative;
     overflow: hidden;
-    /* Equal sizing */
     flex: 1;
     min-width: 260px;
     max-width: 420px;
@@ -634,8 +613,7 @@
   }
   .contact-phone::before, .contact-email::before {
     content: '';
-    position: absolute;
-    inset: 0;
+    position: absolute; inset: 0;
     background: linear-gradient(135deg, rgba(109,191,94,0.06), transparent);
     opacity: 0;
     transition: opacity 0.3s;
@@ -672,7 +650,6 @@
     line-height: 1;
     transition: color 0.3s;
   }
-  /* ── FIX: Email address — Poppins font, lowercase ── */
   .contact-email__address {
     display: block;
     font-family: 'Poppins', sans-serif;
@@ -693,13 +670,13 @@
   .iitem:last-child { border-right:none; }
   .iitem svg { margin-bottom:14px; }
   .iitem h4 { font-family:'Bebas Neue',sans-serif; font-size:clamp(1rem,2vw,1.3rem); letter-spacing:0.2em; text-transform:uppercase; color:var(--green-bright); margin-bottom:8px; }
-  .iitem p { color:var(--grey); font-style:italic; font-size:clamp(0.8rem,1.5vw,0.9rem); }
+  .iitem p { color:var(--text-muted); font-style:italic; font-size:clamp(0.8rem,1.5vw,0.9rem); }
 
   /* ── SOCIAL ── */
   .social-section { background:var(--dark2); padding:clamp(60px,8vw,100px) clamp(24px,6vw,80px); text-align:center; border-top:1px solid rgba(74,140,63,0.15); }
   .social-section .label { justify-content:center; }
   .social-links { display:flex; justify-content:center; align-items:center; gap:clamp(16px,4vw,40px); flex-wrap:wrap; margin-top:clamp(32px,4vw,56px); }
-  .social-link { display:flex; flex-direction:column; align-items:center; gap:12px; text-decoration:none; color:var(--grey); font-family:'Bebas Neue',sans-serif; font-size:clamp(0.6rem,1.2vw,0.75rem); letter-spacing:0.3em; text-transform:uppercase; transition:color 0.3s,transform 0.3s; }
+  .social-link { display:flex; flex-direction:column; align-items:center; gap:12px; text-decoration:none; color:var(--text-muted); font-family:'Bebas Neue',sans-serif; font-size:clamp(0.6rem,1.2vw,0.75rem); letter-spacing:0.3em; text-transform:uppercase; transition:color 0.3s,transform 0.3s; }
   .social-link:hover { color:var(--green-bright); transform:translateY(-4px); }
   .social-icon { width:clamp(52px,8vw,72px); height:clamp(52px,8vw,72px); border:1px solid rgba(74,140,63,0.3); border-radius:50%; display:flex; align-items:center; justify-content:center; transition:border-color 0.3s,background 0.3s; }
   .social-link:hover .social-icon { border-color:var(--green-bright); background:rgba(109,191,94,0.08); }
@@ -751,28 +728,14 @@
       gap: 8px;
       justify-content: center;
     }
-    .contact-phone__icon, .contact-email__icon {
-      width: 32px; height: 32px;
-      flex-shrink: 0;
-    }
+    .contact-phone__icon, .contact-email__icon { width: 32px; height: 32px; flex-shrink: 0; }
     .contact-phone__icon svg, .contact-email__icon svg { width: 14px; height: 14px; }
     .contact-phone__label, .contact-email__label { font-size: 0.5rem; letter-spacing: 0.2em; }
     .contact-phone__number { font-size: 0.75rem; letter-spacing: 0.04em; }
     .contact-email__address { font-size: 0.65rem; }
-    .social-links {
-      display: grid;
-      grid-template-columns: repeat(6, 1fr);
-      gap: 8px;
-      margin-top: 24px;
-    }
-    .social-link {
-      gap: 6px;
-      font-size: 0.45rem;
-      letter-spacing: 0.15em;
-    }
-    .social-icon {
-      width: 42px; height: 42px;
-    }
+    .social-links { display: grid; grid-template-columns: repeat(6, 1fr); gap: 8px; margin-top: 24px; }
+    .social-link { gap: 6px; font-size: 0.45rem; letter-spacing: 0.15em; }
+    .social-icon { width: 42px; height: 42px; }
     .social-icon svg { width: 18px; height: 18px; }
     .gallery-section h2.sec-title { text-align:center; }
     .shows-section h2.sec-title { text-align:center; }
@@ -781,8 +744,7 @@
     .social-section .sec-sub { text-align:center; }
     .rm-since__year { font-size: clamp(22px, 6vw, 32px); }
     .rm-since__label { font-size: clamp(8px, 1.6vw, 11px); }
-    .sec-title-lined::before,
-    .sec-title-lined::after { max-width: 30px; }
+    .sec-title-lined::before, .sec-title-lined::after { max-width: 30px; }
   }
   @media (max-width:420px) {
     .shows-grid { grid-template-columns: 1fr; }
@@ -815,8 +777,7 @@
 }
 .intro-video-section::before {
   content: '';
-  position: absolute;
-  inset: 0;
+  position: absolute; inset: 0;
   background: radial-gradient(ellipse at 50% 80%, rgba(74,140,63,0.07) 0%, transparent 65%);
   pointer-events: none;
 }
@@ -827,11 +788,9 @@
   margin: 0 auto;
 }
 .video-glow {
-  position: absolute;
-  inset: -30px;
+  position: absolute; inset: -30px;
   background: radial-gradient(ellipse at center, rgba(74,140,63,0.12) 0%, transparent 65%);
-  pointer-events: none;
-  z-index: 0;
+  pointer-events: none; z-index: 0;
 }
 .video-frame {
   position: relative;
@@ -843,57 +802,38 @@
   z-index: 1;
 }
 .video-frame iframe {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  border: none;
-  display: block;
+  position: absolute; inset: 0;
+  width: 100%; height: 100%;
+  border: none; display: block;
 }
 .video-corner {
   position: absolute;
-  width: 24px;
-  height: 24px;
-  border-color: #6dbf5e;
-  border-style: solid;
-  opacity: 0.7;
-  z-index: 2;
-  pointer-events: none;
+  width: 24px; height: 24px;
+  border-color: #6dbf5e; border-style: solid;
+  opacity: 0.7; z-index: 2; pointer-events: none;
 }
 .video-corner.tl { top: -1px; left: -1px; border-width: 2px 0 0 2px; }
 .video-corner.tr { top: -1px; right: -1px; border-width: 2px 2px 0 0; }
 .video-corner.bl { bottom: -1px; left: -1px; border-width: 0 0 2px 2px; }
 .video-corner.br { bottom: -1px; right: -1px; border-width: 0 2px 2px 0; }
 .video-meta {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  margin-top: 16px;
-  padding: 0 4px;
+  display: flex; align-items: center; justify-content: space-between;
+  margin-top: 16px; padding: 0 4px;
 }
 .video-tag {
   font-family: 'Bebas Neue', sans-serif;
-  font-size: 0.65rem;
-  letter-spacing: 0.3em;
-  text-transform: uppercase;
-  color: rgba(109,191,94,0.45);
+  font-size: 0.65rem; letter-spacing: 0.3em;
+  text-transform: uppercase; color: rgba(109,191,94,0.45);
 }
 .video-live-dot {
-  width: 6px;
-  height: 6px;
-  border-radius: 50%;
-  background: #6dbf5e;
-  opacity: 0.6;
+  width: 6px; height: 6px; border-radius: 50%;
+  background: #6dbf5e; opacity: 0.6;
   animation: vidpulse 2s ease-in-out infinite;
 }
-@keyframes vidpulse {
-  0%, 100% { opacity: 0.6; transform: scale(1); }
-  50%       { opacity: 1;   transform: scale(1.3); }
-}
+@keyframes vidpulse { 0%, 100% { opacity: 0.6; transform: scale(1); } 50% { opacity: 1; transform: scale(1.3); } }
 </style>
 
 <section class="intro-video-section reveal">
-  <!-- FIX: "A Glimpse" title now uses sec-title-lined style matching other sections -->
   <h2 class="sec-title-lined glimpse-title">A Glimpse</h2>
   <div class="video-wrapper">
     <div class="video-glow"></div>
@@ -924,7 +864,6 @@
 
   <div class="shows-grid">
 
-    <!-- Struggle -->
     <div class="show-card">
       <div class="show-card__img">
         <img src="pictures/Struggle .png" alt="Struggle">
@@ -943,7 +882,6 @@
       </div>
     </div>
 
-    <!-- Possible -->
     <div class="show-card">
       <div class="show-card__img">
         <img src="pictures/Possible .png" alt="Possible">
@@ -962,7 +900,6 @@
       </div>
     </div>
 
-    <!-- Focus For Future -->
     <div class="show-card">
       <div class="show-card__img">
         <img src="pictures/Focus For Future.png" alt="Focus For Future">
@@ -981,7 +918,6 @@
       </div>
     </div>
 
-    <!-- Fearless -->
     <div class="show-card">
       <div class="show-card__img">
         <img src="pictures/Fearless.png" alt="Fearless">
@@ -1000,7 +936,6 @@
       </div>
     </div>
 
-    <!-- Hustle -->
     <div class="show-card">
       <div class="show-card__img">
         <img src="pictures/Hustle.png" alt="Hustle">
@@ -1019,7 +954,6 @@
       </div>
     </div>
 
-    <!-- Breakthrough -->
     <div class="show-card">
       <div class="show-card__img">
         <img src="pictures/Breakthrough.png" alt="Breakthrough">
@@ -1040,8 +974,6 @@
 
   </div>
 </section>
-
-
 
 <!-- STATS -->
 <div class="stats">
@@ -1066,26 +998,12 @@
 <!-- GALLERY -->
 <section class="gallery-section reveal">
   <h2 class="sec-title-lined gallery-title">Gallery</h2>
-
   <div class="gallery-preview">
-    <div class="gallery-thumb">
-      <img src="Gallery/Rohit Malla 1.jpg" alt="Rohit Malla Gallery 1">
-      <div class="gallery-thumb__overlay"></div>
-    </div>
-    <div class="gallery-thumb">
-      <img src="Gallery/Rohit Malla (2).jpg" alt="Rohit Malla Gallery 2">
-      <div class="gallery-thumb__overlay"></div>
-    </div>
-    <div class="gallery-thumb">
-      <img src="Gallery/Rohit Malla 10.jpg" alt="Rohit Malla Gallery 3">
-      <div class="gallery-thumb__overlay"></div>
-    </div>
-    <div class="gallery-thumb">
-      <img src="Gallery/Rohit Malla (4).jpg" alt="Rohit Malla Gallery 4">
-      <div class="gallery-thumb__overlay"></div>
-    </div>
+    <div class="gallery-thumb"><img src="Gallery/Rohit Malla 1.jpg" alt="Rohit Malla Gallery 1"><div class="gallery-thumb__overlay"></div></div>
+    <div class="gallery-thumb"><img src="Gallery/Rohit Malla (2).jpg" alt="Rohit Malla Gallery 2"><div class="gallery-thumb__overlay"></div></div>
+    <div class="gallery-thumb"><img src="Gallery/Rohit Malla 10.jpg" alt="Rohit Malla Gallery 3"><div class="gallery-thumb__overlay"></div></div>
+    <div class="gallery-thumb"><img src="Gallery/Rohit Malla (4).jpg" alt="Rohit Malla Gallery 4"><div class="gallery-thumb__overlay"></div></div>
   </div>
-
   <div class="gallery-view-all">
     <a href="#" class="btn-view-all" id="openGalleryBtn">
       View All Photos
@@ -1103,161 +1021,255 @@
     <button class="gallery-modal__close" id="closeGalleryBtn">✕ Close</button>
   </div>
   <div class="gallery-modal__grid" id="galleryGrid">
-        <div class="gallery-modal__item"><img src="Gallery/Rohit Malla (1).jpg" alt="Rohit Malla 1" loading="lazy"></div>
-        <div class="gallery-modal__item"><img src="Gallery/Rohit Malla (2).jpg" alt="Rohit Malla 2" loading="lazy"></div>
-        <div class="gallery-modal__item"><img src="Gallery/Rohit Malla (4).jpg" alt="Rohit Malla 4" loading="lazy"></div>
-        <div class="gallery-modal__item"><img src="Gallery/Rohit Malla (5).jpg" alt="Rohit Malla 5" loading="lazy"></div>
-        <div class="gallery-modal__item"><img src="Gallery/Rohit Malla (6).jpg" alt="Rohit Malla 6" loading="lazy"></div>
-        <div class="gallery-modal__item"><img src="Gallery/Rohit Malla (7).jpg" alt="Rohit Malla 7" loading="lazy"></div>
-        <div class="gallery-modal__item"><img src="Gallery/Rohit Malla (8).jpg" alt="Rohit Malla 8" loading="lazy"></div>
-        <div class="gallery-modal__item"><img src="Gallery/Rohit Malla (9).jpg" alt="Rohit Malla 9" loading="lazy"></div>
-        <div class="gallery-modal__item"><img src="Gallery/Rohit Malla (10).jpg" alt="Rohit Malla 10" loading="lazy"></div>
-        <div class="gallery-modal__item"><img src="Gallery/Rohit Malla (11).jpg" alt="Rohit Malla 11" loading="lazy"></div>
-        <div class="gallery-modal__item"><img src="Gallery/Rohit Malla (12).jpg" alt="Rohit Malla 12" loading="lazy"></div>
-        <div class="gallery-modal__item"><img src="Gallery/Rohit Malla (13).jpg" alt="Rohit Malla 13" loading="lazy"></div>
-        <div class="gallery-modal__item"><img src="Gallery/Rohit Malla (14).jpg" alt="Rohit Malla 14" loading="lazy"></div>
-        <div class="gallery-modal__item"><img src="Gallery/Rohit Malla (15).jpg" alt="Rohit Malla 15" loading="lazy"></div>
-        <div class="gallery-modal__item"><img src="Gallery/Rohit Malla (16).jpg" alt="Rohit Malla 16" loading="lazy"></div>
-        <div class="gallery-modal__item"><img src="Gallery/Rohit Malla (17).jpg" alt="Rohit Malla 17" loading="lazy"></div>
-        <div class="gallery-modal__item"><img src="Gallery/Rohit Malla (18).jpg" alt="Rohit Malla 18" loading="lazy"></div>
-        <div class="gallery-modal__item"><img src="Gallery/Rohit Malla (19).jpg" alt="Rohit Malla 19" loading="lazy"></div>
-        <div class="gallery-modal__item"><img src="Gallery/Rohit Malla (20).jpg" alt="Rohit Malla 20" loading="lazy"></div>
-        <div class="gallery-modal__item"><img src="Gallery/Rohit Malla (21).jpg" alt="Rohit Malla 21" loading="lazy"></div>
-        <div class="gallery-modal__item"><img src="Gallery/Rohit Malla (22).jpg" alt="Rohit Malla 22" loading="lazy"></div>
-        <div class="gallery-modal__item"><img src="Gallery/Rohit Malla (23).jpg" alt="Rohit Malla 23" loading="lazy"></div>
-        <div class="gallery-modal__item"><img src="Gallery/Rohit Malla (24).jpg" alt="Rohit Malla 24" loading="lazy"></div>
-        <div class="gallery-modal__item"><img src="Gallery/Rohit Malla (25).jpg" alt="Rohit Malla 25" loading="lazy"></div>
-        <div class="gallery-modal__item"><img src="Gallery/Rohit Malla (26).jpg" alt="Rohit Malla 26" loading="lazy"></div>
-        <div class="gallery-modal__item"><img src="Gallery/Rohit Malla (27).jpg" alt="Rohit Malla 27" loading="lazy"></div>
-        <div class="gallery-modal__item"><img src="Gallery/Rohit Malla (28).jpg" alt="Rohit Malla 28" loading="lazy"></div>
-        <div class="gallery-modal__item"><img src="Gallery/Rohit Malla (29).jpg" alt="Rohit Malla 29" loading="lazy"></div>
-        <div class="gallery-modal__item"><img src="Gallery/Rohit Malla (30).jpg" alt="Rohit Malla 30" loading="lazy"></div>
-        <div class="gallery-modal__item"><img src="Gallery/Rohit Malla (31).jpg" alt="Rohit Malla 31" loading="lazy"></div>
-        <div class="gallery-modal__item"><img src="Gallery/Rohit Malla (32).jpg" alt="Rohit Malla 32" loading="lazy"></div>
-        <div class="gallery-modal__item"><img src="Gallery/Rohit Malla (33).jpg" alt="Rohit Malla 33" loading="lazy"></div>
-        <div class="gallery-modal__item"><img src="Gallery/Rohit Malla (34).jpg" alt="Rohit Malla 34" loading="lazy"></div>
-        <div class="gallery-modal__item"><img src="Gallery/Rohit Malla (35).jpg" alt="Rohit Malla 35" loading="lazy"></div>
-        <div class="gallery-modal__item"><img src="Gallery/Rohit Malla (36).jpg" alt="Rohit Malla 36" loading="lazy"></div>
-        <div class="gallery-modal__item"><img src="Gallery/Rohit Malla (37).jpg" alt="Rohit Malla 37" loading="lazy"></div>
-        <div class="gallery-modal__item"><img src="Gallery/Rohit Malla (38).jpg" alt="Rohit Malla 38" loading="lazy"></div>
-        <div class="gallery-modal__item"><img src="Gallery/Rohit Malla (39).jpg" alt="Rohit Malla 39" loading="lazy"></div>
-        <div class="gallery-modal__item"><img src="Gallery/Rohit Malla (41).jpg" alt="Rohit Malla 41" loading="lazy"></div>
-        <div class="gallery-modal__item"><img src="Gallery/Rohit Malla (42).jpg" alt="Rohit Malla 42" loading="lazy"></div>
-        <div class="gallery-modal__item"><img src="Gallery/Rohit Malla (43).jpg" alt="Rohit Malla 43" loading="lazy"></div>
-        <div class="gallery-modal__item"><img src="Gallery/Rohit Malla (44).jpg" alt="Rohit Malla 44" loading="lazy"></div>
-        <div class="gallery-modal__item"><img src="Gallery/Rohit Malla (45).jpg" alt="Rohit Malla 45" loading="lazy"></div>
-        <div class="gallery-modal__item"><img src="Gallery/Rohit Malla (46).jpg" alt="Rohit Malla 46" loading="lazy"></div>
-        <div class="gallery-modal__item"><img src="Gallery/Rohit Malla (47).jpg" alt="Rohit Malla 47" loading="lazy"></div>
-        <div class="gallery-modal__item"><img src="Gallery/Rohit Malla (48).jpg" alt="Rohit Malla 48" loading="lazy"></div>
-        <div class="gallery-modal__item"><img src="Gallery/Rohit Malla (49).jpg" alt="Rohit Malla 49" loading="lazy"></div>
-        <div class="gallery-modal__item"><img src="Gallery/Rohit Malla (50).jpg" alt="Rohit Malla 50" loading="lazy"></div>
-        <div class="gallery-modal__item"><img src="Gallery/Rohit Malla (51).jpg" alt="Rohit Malla 51" loading="lazy"></div>
-        <div class="gallery-modal__item"><img src="Gallery/Rohit Malla (52).jpg" alt="Rohit Malla 52" loading="lazy"></div>
-        <div class="gallery-modal__item"><img src="Gallery/Rohit Malla (53).jpg" alt="Rohit Malla 53" loading="lazy"></div>
-        <div class="gallery-modal__item"><img src="Gallery/Rohit Malla (54).jpg" alt="Rohit Malla 54" loading="lazy"></div>
-        <div class="gallery-modal__item"><img src="Gallery/Rohit Malla (55).jpg" alt="Rohit Malla 55" loading="lazy"></div>
-        <div class="gallery-modal__item"><img src="Gallery/Rohit Malla (56).jpg" alt="Rohit Malla 56" loading="lazy"></div>
-        <div class="gallery-modal__item"><img src="Gallery/Rohit Malla (57).jpg" alt="Rohit Malla 57" loading="lazy"></div>
-        <div class="gallery-modal__item"><img src="Gallery/Rohit Malla (59).jpg" alt="Rohit Malla 59" loading="lazy"></div>
-        <div class="gallery-modal__item"><img src="Gallery/Rohit Malla (60).jpg" alt="Rohit Malla 60" loading="lazy"></div>
-        <div class="gallery-modal__item"><img src="Gallery/Rohit Malla (61).jpg" alt="Rohit Malla 61" loading="lazy"></div>
-        <div class="gallery-modal__item"><img src="Gallery/Rohit Malla (62).jpg" alt="Rohit Malla 62" loading="lazy"></div>
-        <div class="gallery-modal__item"><img src="Gallery/Rohit Malla (63).jpg" alt="Rohit Malla 63" loading="lazy"></div>
-        <div class="gallery-modal__item"><img src="Gallery/Rohit Malla (65).jpg" alt="Rohit Malla 65" loading="lazy"></div>
-        <div class="gallery-modal__item"><img src="Gallery/Rohit Malla (66).jpg" alt="Rohit Malla 66" loading="lazy"></div>
-        <div class="gallery-modal__item"><img src="Gallery/Rohit Malla (67).jpg" alt="Rohit Malla 67" loading="lazy"></div>
-        <div class="gallery-modal__item"><img src="Gallery/Rohit Malla (68).jpg" alt="Rohit Malla 68" loading="lazy"></div>
-        <div class="gallery-modal__item"><img src="Gallery/Rohit Malla (69).jpg" alt="Rohit Malla 69" loading="lazy"></div>
-        <div class="gallery-modal__item"><img src="Gallery/Rohit Malla (70).jpg" alt="Rohit Malla 70" loading="lazy"></div>
-        <div class="gallery-modal__item"><img src="Gallery/Rohit Malla (72).jpg" alt="Rohit Malla 72" loading="lazy"></div>
-        <div class="gallery-modal__item"><img src="Gallery/Rohit Malla (73).jpg" alt="Rohit Malla 73" loading="lazy"></div>
-        <div class="gallery-modal__item"><img src="Gallery/Rohit Malla (74).jpg" alt="Rohit Malla 74" loading="lazy"></div>
-        <div class="gallery-modal__item"><img src="Gallery/Rohit Malla (75).jpg" alt="Rohit Malla 75" loading="lazy"></div>
-        <div class="gallery-modal__item"><img src="Gallery/Rohit Malla (76).jpg" alt="Rohit Malla 76" loading="lazy"></div>
-        <div class="gallery-modal__item"><img src="Gallery/Rohit Malla (77).jpg" alt="Rohit Malla 77" loading="lazy"></div>
-        <div class="gallery-modal__item"><img src="Gallery/Rohit Malla (79).jpg" alt="Rohit Malla 79" loading="lazy"></div>
-        <div class="gallery-modal__item"><img src="Gallery/Rohit Malla (80).jpg" alt="Rohit Malla 80" loading="lazy"></div>
-        <div class="gallery-modal__item"><img src="Gallery/Rohit Malla (82).jpg" alt="Rohit Malla 82" loading="lazy"></div>
-        <div class="gallery-modal__item"><img src="Gallery/Rohit Malla (83).jpg" alt="Rohit Malla 83" loading="lazy"></div>
-        <div class="gallery-modal__item"><img src="Gallery/Rohit Malla (84).jpg" alt="Rohit Malla 84" loading="lazy"></div>
-        <div class="gallery-modal__item"><img src="Gallery/Rohit Malla (85).jpg" alt="Rohit Malla 85" loading="lazy"></div>
-        <div class="gallery-modal__item"><img src="Gallery/Rohit Malla (86).jpg" alt="Rohit Malla 86" loading="lazy"></div>
-        <div class="gallery-modal__item"><img src="Gallery/Rohit Malla (87).jpg" alt="Rohit Malla 87" loading="lazy"></div>
-        <div class="gallery-modal__item"><img src="Gallery/Rohit Malla (89).jpg" alt="Rohit Malla 89" loading="lazy"></div>
-        <div class="gallery-modal__item"><img src="Gallery/Rohit Malla (90).jpg" alt="Rohit Malla 90" loading="lazy"></div>
-        <div class="gallery-modal__item"><img src="Gallery/Rohit Malla (91).jpg" alt="Rohit Malla 91" loading="lazy"></div>
-        <div class="gallery-modal__item"><img src="Gallery/Rohit Malla (92).jpg" alt="Rohit Malla 92" loading="lazy"></div>
-        <div class="gallery-modal__item"><img src="Gallery/Rohit Malla (93).jpg" alt="Rohit Malla 93" loading="lazy"></div>
-        <div class="gallery-modal__item"><img src="Gallery/Rohit Malla (94).jpg" alt="Rohit Malla 94" loading="lazy"></div>
-        <div class="gallery-modal__item"><img src="Gallery/Rohit Malla (96).jpg" alt="Rohit Malla 96" loading="lazy"></div>
-        <div class="gallery-modal__item"><img src="Gallery/Rohit Malla (97).jpg" alt="Rohit Malla 97" loading="lazy"></div>
-        <div class="gallery-modal__item"><img src="Gallery/Rohit Malla (98).jpg" alt="Rohit Malla 98" loading="lazy"></div>
-        <div class="gallery-modal__item"><img src="Gallery/Rohit Malla (99).jpg" alt="Rohit Malla 99" loading="lazy"></div>
-        <div class="gallery-modal__item"><img src="Gallery/Rohit Malla (100).jpg" alt="Rohit Malla 100" loading="lazy"></div>
-        <div class="gallery-modal__item"><img src="Gallery/Rohit Malla (101).jpg" alt="Rohit Malla 101" loading="lazy"></div>
-        <div class="gallery-modal__item"><img src="Gallery/Rohit Malla (102).jpg" alt="Rohit Malla 102" loading="lazy"></div>
-        <div class="gallery-modal__item"><img src="Gallery/Rohit Malla (103).jpg" alt="Rohit Malla 103" loading="lazy"></div>
-        <div class="gallery-modal__item"><img src="Gallery/Rohit Malla (104).jpg" alt="Rohit Malla 104" loading="lazy"></div>
-        <div class="gallery-modal__item"><img src="Gallery/Rohit Malla (105).jpg" alt="Rohit Malla 105" loading="lazy"></div>
-        <div class="gallery-modal__item"><img src="Gallery/Rohit Malla (106).jpg" alt="Rohit Malla 106" loading="lazy"></div>
-        <div class="gallery-modal__item"><img src="Gallery/Rohit Malla (107).jpg" alt="Rohit Malla 107" loading="lazy"></div>
-        <div class="gallery-modal__item"><img src="Gallery/Rohit Malla (108).jpg" alt="Rohit Malla 108" loading="lazy"></div>
-        <div class="gallery-modal__item"><img src="Gallery/Rohit Malla (111).jpg" alt="Rohit Malla 111" loading="lazy"></div>
-        <div class="gallery-modal__item"><img src="Gallery/Rohit Malla (112).jpg" alt="Rohit Malla 112" loading="lazy"></div>
-        <div class="gallery-modal__item"><img src="Gallery/Rohit Malla (113).jpg" alt="Rohit Malla 113" loading="lazy"></div>
-        <div class="gallery-modal__item"><img src="Gallery/Rohit Malla (114).jpg" alt="Rohit Malla 114" loading="lazy"></div>
-        <div class="gallery-modal__item"><img src="Gallery/Rohit Malla (115).jpg" alt="Rohit Malla 115" loading="lazy"></div>
-        <div class="gallery-modal__item"><img src="Gallery/Rohit Malla (116).jpg" alt="Rohit Malla 116" loading="lazy"></div>
+    <div class="gallery-modal__item"><img src="Gallery/Rohit Malla (1).jpg" alt="Rohit Malla 1" loading="lazy"></div>
+    <div class="gallery-modal__item"><img src="Gallery/Rohit Malla (2).jpg" alt="Rohit Malla 2" loading="lazy"></div>
+    <div class="gallery-modal__item"><img src="Gallery/Rohit Malla (4).jpg" alt="Rohit Malla 4" loading="lazy"></div>
+    <div class="gallery-modal__item"><img src="Gallery/Rohit Malla (5).jpg" alt="Rohit Malla 5" loading="lazy"></div>
+    <div class="gallery-modal__item"><img src="Gallery/Rohit Malla (6).jpg" alt="Rohit Malla 6" loading="lazy"></div>
+    <div class="gallery-modal__item"><img src="Gallery/Rohit Malla (7).jpg" alt="Rohit Malla 7" loading="lazy"></div>
+    <div class="gallery-modal__item"><img src="Gallery/Rohit Malla (8).jpg" alt="Rohit Malla 8" loading="lazy"></div>
+    <div class="gallery-modal__item"><img src="Gallery/Rohit Malla (9).jpg" alt="Rohit Malla 9" loading="lazy"></div>
+    <div class="gallery-modal__item"><img src="Gallery/Rohit Malla (10).jpg" alt="Rohit Malla 10" loading="lazy"></div>
+    <div class="gallery-modal__item"><img src="Gallery/Rohit Malla (11).jpg" alt="Rohit Malla 11" loading="lazy"></div>
+    <div class="gallery-modal__item"><img src="Gallery/Rohit Malla (12).jpg" alt="Rohit Malla 12" loading="lazy"></div>
+    <div class="gallery-modal__item"><img src="Gallery/Rohit Malla (13).jpg" alt="Rohit Malla 13" loading="lazy"></div>
+    <div class="gallery-modal__item"><img src="Gallery/Rohit Malla (14).jpg" alt="Rohit Malla 14" loading="lazy"></div>
+    <div class="gallery-modal__item"><img src="Gallery/Rohit Malla (15).jpg" alt="Rohit Malla 15" loading="lazy"></div>
+    <div class="gallery-modal__item"><img src="Gallery/Rohit Malla (16).jpg" alt="Rohit Malla 16" loading="lazy"></div>
+    <div class="gallery-modal__item"><img src="Gallery/Rohit Malla (17).jpg" alt="Rohit Malla 17" loading="lazy"></div>
+    <div class="gallery-modal__item"><img src="Gallery/Rohit Malla (18).jpg" alt="Rohit Malla 18" loading="lazy"></div>
+    <div class="gallery-modal__item"><img src="Gallery/Rohit Malla (19).jpg" alt="Rohit Malla 19" loading="lazy"></div>
+    <div class="gallery-modal__item"><img src="Gallery/Rohit Malla (20).jpg" alt="Rohit Malla 20" loading="lazy"></div>
+    <div class="gallery-modal__item"><img src="Gallery/Rohit Malla (21).jpg" alt="Rohit Malla 21" loading="lazy"></div>
+    <div class="gallery-modal__item"><img src="Gallery/Rohit Malla (22).jpg" alt="Rohit Malla 22" loading="lazy"></div>
+    <div class="gallery-modal__item"><img src="Gallery/Rohit Malla (23).jpg" alt="Rohit Malla 23" loading="lazy"></div>
+    <div class="gallery-modal__item"><img src="Gallery/Rohit Malla (24).jpg" alt="Rohit Malla 24" loading="lazy"></div>
+    <div class="gallery-modal__item"><img src="Gallery/Rohit Malla (25).jpg" alt="Rohit Malla 25" loading="lazy"></div>
+    <div class="gallery-modal__item"><img src="Gallery/Rohit Malla (26).jpg" alt="Rohit Malla 26" loading="lazy"></div>
+    <div class="gallery-modal__item"><img src="Gallery/Rohit Malla (27).jpg" alt="Rohit Malla 27" loading="lazy"></div>
+    <div class="gallery-modal__item"><img src="Gallery/Rohit Malla (28).jpg" alt="Rohit Malla 28" loading="lazy"></div>
+    <div class="gallery-modal__item"><img src="Gallery/Rohit Malla (29).jpg" alt="Rohit Malla 29" loading="lazy"></div>
+    <div class="gallery-modal__item"><img src="Gallery/Rohit Malla (30).jpg" alt="Rohit Malla 30" loading="lazy"></div>
+    <div class="gallery-modal__item"><img src="Gallery/Rohit Malla (31).jpg" alt="Rohit Malla 31" loading="lazy"></div>
+    <div class="gallery-modal__item"><img src="Gallery/Rohit Malla (32).jpg" alt="Rohit Malla 32" loading="lazy"></div>
+    <div class="gallery-modal__item"><img src="Gallery/Rohit Malla (33).jpg" alt="Rohit Malla 33" loading="lazy"></div>
+    <div class="gallery-modal__item"><img src="Gallery/Rohit Malla (34).jpg" alt="Rohit Malla 34" loading="lazy"></div>
+    <div class="gallery-modal__item"><img src="Gallery/Rohit Malla (35).jpg" alt="Rohit Malla 35" loading="lazy"></div>
+    <div class="gallery-modal__item"><img src="Gallery/Rohit Malla (36).jpg" alt="Rohit Malla 36" loading="lazy"></div>
+    <div class="gallery-modal__item"><img src="Gallery/Rohit Malla (37).jpg" alt="Rohit Malla 37" loading="lazy"></div>
+    <div class="gallery-modal__item"><img src="Gallery/Rohit Malla (38).jpg" alt="Rohit Malla 38" loading="lazy"></div>
+    <div class="gallery-modal__item"><img src="Gallery/Rohit Malla (39).jpg" alt="Rohit Malla 39" loading="lazy"></div>
+    <div class="gallery-modal__item"><img src="Gallery/Rohit Malla (41).jpg" alt="Rohit Malla 41" loading="lazy"></div>
+    <div class="gallery-modal__item"><img src="Gallery/Rohit Malla (42).jpg" alt="Rohit Malla 42" loading="lazy"></div>
+    <div class="gallery-modal__item"><img src="Gallery/Rohit Malla (43).jpg" alt="Rohit Malla 43" loading="lazy"></div>
+    <div class="gallery-modal__item"><img src="Gallery/Rohit Malla (44).jpg" alt="Rohit Malla 44" loading="lazy"></div>
+    <div class="gallery-modal__item"><img src="Gallery/Rohit Malla (45).jpg" alt="Rohit Malla 45" loading="lazy"></div>
+    <div class="gallery-modal__item"><img src="Gallery/Rohit Malla (46).jpg" alt="Rohit Malla 46" loading="lazy"></div>
+    <div class="gallery-modal__item"><img src="Gallery/Rohit Malla (47).jpg" alt="Rohit Malla 47" loading="lazy"></div>
+    <div class="gallery-modal__item"><img src="Gallery/Rohit Malla (48).jpg" alt="Rohit Malla 48" loading="lazy"></div>
+    <div class="gallery-modal__item"><img src="Gallery/Rohit Malla (49).jpg" alt="Rohit Malla 49" loading="lazy"></div>
+    <div class="gallery-modal__item"><img src="Gallery/Rohit Malla (50).jpg" alt="Rohit Malla 50" loading="lazy"></div>
+    <div class="gallery-modal__item"><img src="Gallery/Rohit Malla (51).jpg" alt="Rohit Malla 51" loading="lazy"></div>
+    <div class="gallery-modal__item"><img src="Gallery/Rohit Malla (52).jpg" alt="Rohit Malla 52" loading="lazy"></div>
+    <div class="gallery-modal__item"><img src="Gallery/Rohit Malla (53).jpg" alt="Rohit Malla 53" loading="lazy"></div>
+    <div class="gallery-modal__item"><img src="Gallery/Rohit Malla (54).jpg" alt="Rohit Malla 54" loading="lazy"></div>
+    <div class="gallery-modal__item"><img src="Gallery/Rohit Malla (55).jpg" alt="Rohit Malla 55" loading="lazy"></div>
+    <div class="gallery-modal__item"><img src="Gallery/Rohit Malla (56).jpg" alt="Rohit Malla 56" loading="lazy"></div>
+    <div class="gallery-modal__item"><img src="Gallery/Rohit Malla (57).jpg" alt="Rohit Malla 57" loading="lazy"></div>
+    <div class="gallery-modal__item"><img src="Gallery/Rohit Malla (59).jpg" alt="Rohit Malla 59" loading="lazy"></div>
+    <div class="gallery-modal__item"><img src="Gallery/Rohit Malla (60).jpg" alt="Rohit Malla 60" loading="lazy"></div>
+    <div class="gallery-modal__item"><img src="Gallery/Rohit Malla (61).jpg" alt="Rohit Malla 61" loading="lazy"></div>
+    <div class="gallery-modal__item"><img src="Gallery/Rohit Malla (62).jpg" alt="Rohit Malla 62" loading="lazy"></div>
+    <div class="gallery-modal__item"><img src="Gallery/Rohit Malla (63).jpg" alt="Rohit Malla 63" loading="lazy"></div>
+    <div class="gallery-modal__item"><img src="Gallery/Rohit Malla (65).jpg" alt="Rohit Malla 65" loading="lazy"></div>
+    <div class="gallery-modal__item"><img src="Gallery/Rohit Malla (66).jpg" alt="Rohit Malla 66" loading="lazy"></div>
+    <div class="gallery-modal__item"><img src="Gallery/Rohit Malla (67).jpg" alt="Rohit Malla 67" loading="lazy"></div>
+    <div class="gallery-modal__item"><img src="Gallery/Rohit Malla (68).jpg" alt="Rohit Malla 68" loading="lazy"></div>
+    <div class="gallery-modal__item"><img src="Gallery/Rohit Malla (69).jpg" alt="Rohit Malla 69" loading="lazy"></div>
+    <div class="gallery-modal__item"><img src="Gallery/Rohit Malla (70).jpg" alt="Rohit Malla 70" loading="lazy"></div>
+    <div class="gallery-modal__item"><img src="Gallery/Rohit Malla (72).jpg" alt="Rohit Malla 72" loading="lazy"></div>
+    <div class="gallery-modal__item"><img src="Gallery/Rohit Malla (73).jpg" alt="Rohit Malla 73" loading="lazy"></div>
+    <div class="gallery-modal__item"><img src="Gallery/Rohit Malla (74).jpg" alt="Rohit Malla 74" loading="lazy"></div>
+    <div class="gallery-modal__item"><img src="Gallery/Rohit Malla (75).jpg" alt="Rohit Malla 75" loading="lazy"></div>
+    <div class="gallery-modal__item"><img src="Gallery/Rohit Malla (76).jpg" alt="Rohit Malla 76" loading="lazy"></div>
+    <div class="gallery-modal__item"><img src="Gallery/Rohit Malla (77).jpg" alt="Rohit Malla 77" loading="lazy"></div>
+    <div class="gallery-modal__item"><img src="Gallery/Rohit Malla (79).jpg" alt="Rohit Malla 79" loading="lazy"></div>
+    <div class="gallery-modal__item"><img src="Gallery/Rohit Malla (80).jpg" alt="Rohit Malla 80" loading="lazy"></div>
+    <div class="gallery-modal__item"><img src="Gallery/Rohit Malla (82).jpg" alt="Rohit Malla 82" loading="lazy"></div>
+    <div class="gallery-modal__item"><img src="Gallery/Rohit Malla (83).jpg" alt="Rohit Malla 83" loading="lazy"></div>
+    <div class="gallery-modal__item"><img src="Gallery/Rohit Malla (84).jpg" alt="Rohit Malla 84" loading="lazy"></div>
+    <div class="gallery-modal__item"><img src="Gallery/Rohit Malla (85).jpg" alt="Rohit Malla 85" loading="lazy"></div>
+    <div class="gallery-modal__item"><img src="Gallery/Rohit Malla (86).jpg" alt="Rohit Malla 86" loading="lazy"></div>
+    <div class="gallery-modal__item"><img src="Gallery/Rohit Malla (87).jpg" alt="Rohit Malla 87" loading="lazy"></div>
+    <div class="gallery-modal__item"><img src="Gallery/Rohit Malla (89).jpg" alt="Rohit Malla 89" loading="lazy"></div>
+    <div class="gallery-modal__item"><img src="Gallery/Rohit Malla (90).jpg" alt="Rohit Malla 90" loading="lazy"></div>
+    <div class="gallery-modal__item"><img src="Gallery/Rohit Malla (91).jpg" alt="Rohit Malla 91" loading="lazy"></div>
+    <div class="gallery-modal__item"><img src="Gallery/Rohit Malla (92).jpg" alt="Rohit Malla 92" loading="lazy"></div>
+    <div class="gallery-modal__item"><img src="Gallery/Rohit Malla (93).jpg" alt="Rohit Malla 93" loading="lazy"></div>
+    <div class="gallery-modal__item"><img src="Gallery/Rohit Malla (94).jpg" alt="Rohit Malla 94" loading="lazy"></div>
+    <div class="gallery-modal__item"><img src="Gallery/Rohit Malla (96).jpg" alt="Rohit Malla 96" loading="lazy"></div>
+    <div class="gallery-modal__item"><img src="Gallery/Rohit Malla (97).jpg" alt="Rohit Malla 97" loading="lazy"></div>
+    <div class="gallery-modal__item"><img src="Gallery/Rohit Malla (98).jpg" alt="Rohit Malla 98" loading="lazy"></div>
+    <div class="gallery-modal__item"><img src="Gallery/Rohit Malla (99).jpg" alt="Rohit Malla 99" loading="lazy"></div>
+    <div class="gallery-modal__item"><img src="Gallery/Rohit Malla (100).jpg" alt="Rohit Malla 100" loading="lazy"></div>
+    <div class="gallery-modal__item"><img src="Gallery/Rohit Malla (101).jpg" alt="Rohit Malla 101" loading="lazy"></div>
+    <div class="gallery-modal__item"><img src="Gallery/Rohit Malla (102).jpg" alt="Rohit Malla 102" loading="lazy"></div>
+    <div class="gallery-modal__item"><img src="Gallery/Rohit Malla (103).jpg" alt="Rohit Malla 103" loading="lazy"></div>
+    <div class="gallery-modal__item"><img src="Gallery/Rohit Malla (104).jpg" alt="Rohit Malla 104" loading="lazy"></div>
+    <div class="gallery-modal__item"><img src="Gallery/Rohit Malla (105).jpg" alt="Rohit Malla 105" loading="lazy"></div>
+    <div class="gallery-modal__item"><img src="Gallery/Rohit Malla (106).jpg" alt="Rohit Malla 106" loading="lazy"></div>
+    <div class="gallery-modal__item"><img src="Gallery/Rohit Malla (107).jpg" alt="Rohit Malla 107" loading="lazy"></div>
+    <div class="gallery-modal__item"><img src="Gallery/Rohit Malla (108).jpg" alt="Rohit Malla 108" loading="lazy"></div>
+    <div class="gallery-modal__item"><img src="Gallery/Rohit Malla (111).jpg" alt="Rohit Malla 111" loading="lazy"></div>
+    <div class="gallery-modal__item"><img src="Gallery/Rohit Malla (112).jpg" alt="Rohit Malla 112" loading="lazy"></div>
+    <div class="gallery-modal__item"><img src="Gallery/Rohit Malla (113).jpg" alt="Rohit Malla 113" loading="lazy"></div>
+    <div class="gallery-modal__item"><img src="Gallery/Rohit Malla (114).jpg" alt="Rohit Malla 114" loading="lazy"></div>
+    <div class="gallery-modal__item"><img src="Gallery/Rohit Malla (115).jpg" alt="Rohit Malla 115" loading="lazy"></div>
+    <div class="gallery-modal__item"><img src="Gallery/Rohit Malla (116).jpg" alt="Rohit Malla 116" loading="lazy"></div>
   </div>
 </div>
 
 <!-- ══ REELS SECTION ══ -->
 <style>
-.wall{background:#060b06;padding:clamp(48px,7vw,90px) 0 clamp(56px,8vw,100px);overflow:hidden;font-family:'Segoe UI',system-ui,sans-serif;}
-.wall-head{text-align:center;margin-bottom:clamp(28px,4vw,48px);}
-.wall-eyebrow{font-size:11px;letter-spacing:.3em;text-transform:uppercase;color:#4a8c3f;margin-bottom:8px;}
-.wall-title{font-family:'Bebas Neue',Georgia,serif;font-size:clamp(2rem,5vw,3rem);color:#6dbf5e;letter-spacing:.06em;line-height:1;}
-.wall-sub{font-size:13px;color:rgba(109,191,94,.5);margin-top:8px;letter-spacing:.05em;}
+/* ══ VIDEO MODAL — FULLY FIXED & CENTERED ══ */
+.wall {
+  background: #060b06;
+  padding: clamp(48px,7vw,90px) 0 clamp(56px,8vw,100px);
+  overflow: hidden;
+  font-family: 'Segoe UI', system-ui, sans-serif;
+}
+.wall-head { text-align: center; margin-bottom: clamp(28px,4vw,48px); }
+.wall-eyebrow { font-size: 11px; letter-spacing: .3em; text-transform: uppercase; color: #4a8c3f; margin-bottom: 8px; }
+.wall-title { font-family: 'Bebas Neue', Georgia, serif; font-size: clamp(2rem,5vw,3rem); color: #6dbf5e; letter-spacing: .06em; line-height: 1; }
+.wall-sub { font-size: 13px; color: rgba(109,191,94,.5); margin-top: 8px; letter-spacing: .05em; }
 
-.lane{width:100%;overflow:hidden;position:relative;margin-bottom:14px;cursor:grab;touch-action:pan-y;user-select:none;}
-.lane:active{cursor:grabbing;}
-.lane::before,.lane::after{content:'';position:absolute;top:0;bottom:0;width:clamp(40px,6vw,100px);z-index:3;pointer-events:none;}
-.lane::before{left:0;background:linear-gradient(90deg,#060b06,transparent);}
-.lane::after{right:0;background:linear-gradient(-90deg,#060b06,transparent);}
-.lane-track{display:flex;gap:10px;padding:6px 0;pointer-events:none;}
+.lane { width: 100%; overflow: hidden; position: relative; margin-bottom: 14px; cursor: grab; touch-action: pan-y; user-select: none; }
+.lane:active { cursor: grabbing; }
+.lane::before, .lane::after { content: ''; position: absolute; top: 0; bottom: 0; width: clamp(40px,6vw,100px); z-index: 3; pointer-events: none; }
+.lane::before { left: 0; background: linear-gradient(90deg, #060b06, transparent); }
+.lane::after  { right: 0; background: linear-gradient(-90deg, #060b06, transparent); }
+.lane-track { display: flex; gap: 10px; padding: 6px 0; pointer-events: none; }
 
-.vcard{position:relative;flex-shrink:0;width:clamp(110px,14vw,145px);aspect-ratio:9/16;border-radius:12px;overflow:hidden;border:1.5px solid rgba(74,140,63,.18);transition:border-color .3s,transform .25s;pointer-events:all;cursor:pointer;}
-.vcard:hover{border-color:#6dbf5e;transform:scale(1.06) translateY(-4px);}
-.vcard img{width:100%;height:100%;object-fit:cover;display:block;filter:brightness(.5) saturate(.65);transition:filter .4s,transform .4s;pointer-events:none;-webkit-user-drag:none;}
-.vcard:hover img{filter:brightness(.8) saturate(1.05);transform:scale(1.08);}
-.vcard-grad{position:absolute;inset:0;background:linear-gradient(to top,rgba(6,11,6,.95) 0%,rgba(6,11,6,.08) 50%,transparent 100%);pointer-events:none;}
-.vcard-top{position:absolute;top:8px;right:8px;background:rgba(6,11,6,.75);border:1px solid rgba(109,191,94,.4);border-radius:6px;padding:2px 6px;font-size:10px;color:#6dbf5e;letter-spacing:.1em;pointer-events:none;}
-.vcard-play{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:46px;height:46px;border-radius:50%;background:rgba(6,11,6,.65);border:2px solid rgba(109,191,94,.8);display:flex;align-items:center;justify-content:center;transition:.25s;pointer-events:none;}
-.vcard:hover .vcard-play{background:rgba(109,191,94,.25);border-color:#6dbf5e;transform:translate(-50%,-50%) scale(1.15);}
-.vcard-play svg{width:15px;height:15px;fill:#6dbf5e;margin-left:3px;}
-.vcard-num{position:absolute;bottom:10px;left:10px;font-family:'Bebas Neue',Georgia,serif;font-size:1.5rem;color:#6dbf5e;line-height:1;pointer-events:none;}
-.vcard-tag{position:absolute;bottom:12px;right:8px;font-size:9px;letter-spacing:.15em;text-transform:uppercase;color:rgba(109,191,94,.55);pointer-events:none;}
+.vcard { position: relative; flex-shrink: 0; width: clamp(110px,14vw,145px); aspect-ratio: 9/16; border-radius: 12px; overflow: hidden; border: 1.5px solid rgba(74,140,63,.18); transition: border-color .3s, transform .25s; pointer-events: all; cursor: pointer; }
+.vcard:hover { border-color: #6dbf5e; transform: scale(1.06) translateY(-4px); }
+.vcard img { width: 100%; height: 100%; object-fit: cover; display: block; filter: brightness(.5) saturate(.65); transition: filter .4s, transform .4s; pointer-events: none; -webkit-user-drag: none; }
+.vcard:hover img { filter: brightness(.8) saturate(1.05); transform: scale(1.08); }
+.vcard-grad { position: absolute; inset: 0; background: linear-gradient(to top, rgba(6,11,6,.95) 0%, rgba(6,11,6,.08) 50%, transparent 100%); pointer-events: none; }
+.vcard-top { position: absolute; top: 8px; right: 8px; background: rgba(6,11,6,.75); border: 1px solid rgba(109,191,94,.4); border-radius: 6px; padding: 2px 6px; font-size: 10px; color: #6dbf5e; letter-spacing: .1em; pointer-events: none; }
+.vcard-play { position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%); width: 46px; height: 46px; border-radius: 50%; background: rgba(6,11,6,.65); border: 2px solid rgba(109,191,94,.8); display: flex; align-items: center; justify-content: center; transition: .25s; pointer-events: none; }
+.vcard:hover .vcard-play { background: rgba(109,191,94,.25); border-color: #6dbf5e; transform: translate(-50%,-50%) scale(1.15); }
+.vcard-play svg { width: 15px; height: 15px; fill: #6dbf5e; margin-left: 3px; }
+.vcard-num { position: absolute; bottom: 10px; left: 10px; font-family: 'Bebas Neue', Georgia, serif; font-size: 1.5rem; color: #6dbf5e; line-height: 1; pointer-events: none; }
+.vcard-tag { position: absolute; bottom: 12px; right: 8px; font-size: 9px; letter-spacing: .15em; text-transform: uppercase; color: rgba(109,191,94,.55); pointer-events: none; }
 
-.rm-overlay{display:none;position:fixed;inset:0;z-index:99999;background:rgba(3,7,3,.97);align-items:center;justify-content:center;flex-direction:column;gap:18px;}
-.rm-overlay.show{display:flex;}
-.pw{position:relative;width:min(360px,90vw);aspect-ratio:9/16;background:#000;border-radius:16px;overflow:hidden;border:1.5px solid rgba(109,191,94,.25);}
-.pw iframe{width:100%;height:100%;border:none;display:block;}
-.spin{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;background:#000;z-index:4;}
-.spin svg{animation:sp 1s linear infinite;}
-@keyframes sp{to{transform:rotate(360deg);}}
-.xbtn{position:absolute;top:-14px;right:-14px;width:36px;height:36px;background:#0a160a;border:1.5px solid rgba(109,191,94,.5);border-radius:50%;display:flex;align-items:center;justify-content:center;cursor:pointer;z-index:6;transition:.2s;}
-.xbtn:hover{background:rgba(74,140,63,.4);}
-.xbtn svg{width:14px;height:14px;stroke:#6dbf5e;stroke-width:2.5;fill:none;}
-.nav-row{display:flex;align-items:center;gap:14px;}
-.nbtn{width:46px;height:46px;border-radius:50%;background:rgba(10,22,10,.8);border:1.5px solid rgba(109,191,94,.4);display:flex;align-items:center;justify-content:center;cursor:pointer;transition:.2s;flex-shrink:0;}
-.nbtn:hover{background:rgba(74,140,63,.3);border-color:#6dbf5e;}
-.nbtn svg{width:17px;height:17px;stroke:#6dbf5e;stroke-width:2.5;fill:none;}
-.dotrow{display:flex;gap:5px;flex-wrap:wrap;justify-content:center;max-width:280px;}
-.dot{width:6px;height:6px;border-radius:50%;background:rgba(109,191,94,.18);cursor:pointer;transition:.25s;}
-.dot.on{background:#6dbf5e;transform:scale(1.35);}
-.now-bar{font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:rgba(109,191,94,.55);text-align:center;}
-.now-n{font-family:'Bebas Neue',Georgia,serif;font-size:1.2rem;color:#6dbf5e;margin-left:8px;}
-@media(max-width:540px){.pw{width:94vw;}.xbtn{top:-12px;right:-10px;}}
+/* ════════════════════════════════════════════
+   VIDEO MODAL — FIXED: full-center, no clip
+   ════════════════════════════════════════════ */
+.rm-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  z-index: 99999;
+  background: rgba(3,7,3,0.97);
+  /* KEY FIX: flex column, centered both axes, with padding so it never clips */
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 20px;
+  padding: 20px;
+  overflow-y: auto;
+}
+.rm-overlay.show { display: flex; }
+
+/* Player wrapper — constrained so it fits any viewport */
+.pw {
+  position: relative;
+  /* Width fills available space up to a nice max */
+  width: min(360px, calc(100vw - 40px));
+  /* Height = 16:9 of the width (9/16 = 56.25%) BUT also capped by viewport height */
+  aspect-ratio: 9/16;
+  max-height: calc(100vh - 160px); /* leave room for nav-row + now-bar + padding */
+  background: #000;
+  border-radius: 16px;
+  overflow: hidden;
+  border: 1.5px solid rgba(109,191,94,.25);
+  flex-shrink: 0;
+}
+
+/* When aspect-ratio + max-height conflict, make width follow height */
+@supports (aspect-ratio: 9/16) {
+  .pw {
+    /* If the height gets capped, recalculate width from that height */
+    width: min(360px, calc(100vw - 40px), calc((100vh - 160px) * 9 / 16));
+  }
+}
+
+.pw iframe {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border: none;
+  display: block;
+}
+.spin {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #000;
+  z-index: 4;
+  border-radius: 16px;
+}
+.spin svg { animation: sp 1s linear infinite; }
+@keyframes sp { to { transform: rotate(360deg); } }
+
+.xbtn {
+  position: absolute;
+  top: -14px; right: -14px;
+  width: 36px; height: 36px;
+  background: #0a160a;
+  border: 1.5px solid rgba(109,191,94,.5);
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  cursor: pointer; z-index: 6;
+  transition: .2s;
+}
+.xbtn:hover { background: rgba(74,140,63,.4); }
+.xbtn svg { width: 14px; height: 14px; stroke: #6dbf5e; stroke-width: 2.5; fill: none; }
+
+.nav-row { display: flex; align-items: center; gap: 14px; flex-shrink: 0; }
+.nbtn {
+  width: 46px; height: 46px;
+  border-radius: 50%;
+  background: rgba(10,22,10,.8);
+  border: 1.5px solid rgba(109,191,94,.4);
+  display: flex; align-items: center; justify-content: center;
+  cursor: pointer; transition: .2s; flex-shrink: 0;
+}
+.nbtn:hover { background: rgba(74,140,63,.3); border-color: #6dbf5e; }
+.nbtn svg { width: 17px; height: 17px; stroke: #6dbf5e; stroke-width: 2.5; fill: none; }
+.dotrow { display: flex; gap: 5px; flex-wrap: wrap; justify-content: center; max-width: 280px; }
+.dot { width: 6px; height: 6px; border-radius: 50%; background: rgba(109,191,94,.18); cursor: pointer; transition: .25s; }
+.dot.on { background: #6dbf5e; transform: scale(1.35); }
+.now-bar { font-size: 11px; letter-spacing: .2em; text-transform: uppercase; color: rgba(109,191,94,.55); text-align: center; flex-shrink: 0; }
+.now-n { font-family: 'Bebas Neue', Georgia, serif; font-size: 1.2rem; color: #6dbf5e; margin-left: 8px; }
+
+@media (max-width: 540px) {
+  .pw {
+    width: min(300px, calc(100vw - 32px), calc((100vh - 140px) * 9 / 16));
+    max-height: calc(100vh - 140px);
+  }
+  .xbtn { top: -12px; right: -10px; }
+  .rm-overlay { gap: 14px; padding: 16px; }
+}
+@media (max-height: 600px) {
+  .pw {
+    width: min(200px, calc(100vw - 40px), calc((100vh - 120px) * 9 / 16));
+    max-height: calc(100vh - 120px);
+  }
+}
 </style>
 
 <div id="fb-root"></div>
@@ -1324,7 +1336,6 @@ const spin=document.getElementById('spin');
 const dotrow=document.getElementById('dotrow');
 const nowN=document.getElementById('nowN');
 
-/* ── Build cards ── */
 function makeCard(v,gi){
   const el=document.createElement('div');
   el.className='vcard';
@@ -1337,14 +1348,11 @@ function makeCard(v,gi){
   return el;
 }
 
-/* Row A = videos 1-10, Row B = videos 11-20 */
 const trackA=document.getElementById('trackA');
 const trackB=document.getElementById('trackB');
-
 V.slice(0,10).forEach((v,i)=>trackA.appendChild(makeCard(v,i)));
 V.slice(10,20).forEach((v,i)=>trackB.appendChild(makeCard(v,10+i)));
 
-/* ── Modal player ── */
 function buildDots(){
   dotrow.innerHTML='';
   V.forEach((_,i)=>{
@@ -1354,6 +1362,7 @@ function buildDots(){
     dotrow.appendChild(d);
   });
 }
+
 function openV(i){
   cur=i;
   overlay.classList.add('show');
@@ -1364,17 +1373,19 @@ function openV(i){
   buildDots();
   const ifr=document.createElement('iframe');
   ifr.src=`https://www.facebook.com/plugins/video.php?href=${encodeURIComponent(V[i].u)}&show_text=false&autoplay=1&mute=0`;
-  ifr.style.cssText='width:100%;height:100%;border:none;display:block;';
+  ifr.style.cssText='position:absolute;inset:0;width:100%;height:100%;border:none;display:block;';
   ifr.allowFullscreen=true;
   ifr.allow='autoplay;clipboard-write;encrypted-media;picture-in-picture;web-share';
   ifr.onload=()=>{spin.style.display='none';};
   pframe.appendChild(ifr);
 }
+
 function closeV(){
   overlay.classList.remove('show');
   document.body.style.overflow='';
   pframe.innerHTML='';
 }
+
 document.getElementById('xbtn').addEventListener('click',closeV);
 overlay.addEventListener('click',e=>{if(e.target===overlay)closeV();});
 document.getElementById('btnPrev').addEventListener('click',()=>openV((cur-1+20)%20));
@@ -1386,94 +1397,51 @@ document.addEventListener('keydown',e=>{
   if(e.key==='ArrowRight')openV((cur+1)%20);
 });
 
-/* ── Scroll Engine ── */
 function initLane(laneEl, trackEl, startDir, globalOffset){
-  const SPEED      = 0.12;
-  const FRICTION   = 0.88;
-  const DRAG_THRESHOLD = 4;
+  const SPEED=0.12, FRICTION=0.88, DRAG_THRESHOLD=4;
+  let pos=0, dir=startDir, isDrag=false, didDrag=false;
+  let startX=0, startPos=0, vel=0, lastX=0, lastT=0;
+  let paused=false, pauseTimer=null;
 
-  let pos       = 0;
-  let dir       = startDir;
-  let isDrag    = false;
-  let didDrag   = false;
-  let startX    = 0;
-  let startPos  = 0;
-  let vel       = 0;
-  let lastX     = 0;
-  let lastT     = 0;
-  let paused    = false;
-  let pauseTimer= null;
-
-  function maxPos(){
-    return Math.max(0, trackEl.scrollWidth - laneEl.clientWidth);
-  }
+  function maxPos(){ return Math.max(0, trackEl.scrollWidth - laneEl.clientWidth); }
   function clamp(v){ return Math.max(0, Math.min(maxPos(), v)); }
-  function setPos(p){
-    pos = clamp(p);
-    trackEl.style.transform=`translateX(${-pos}px)`;
-  }
-  function pauseAuto(ms){
-    paused=true;
-    clearTimeout(pauseTimer);
-    pauseTimer=setTimeout(()=>{ paused=false; }, ms);
-  }
+  function setPos(p){ pos=clamp(p); trackEl.style.transform=`translateX(${-pos}px)`; }
+  function pauseAuto(ms){ paused=true; clearTimeout(pauseTimer); pauseTimer=setTimeout(()=>{ paused=false; }, ms); }
 
-  function onStart(x){
-    isDrag=true; didDrag=false;
-    startX=x; startPos=pos;
-    vel=0; lastX=x; lastT=performance.now();
-    pauseAuto(99999);
-  }
+  function onStart(x){ isDrag=true; didDrag=false; startX=x; startPos=pos; vel=0; lastX=x; lastT=performance.now(); pauseAuto(99999); }
   function onMove(x){
-    if(!isDrag) return;
-    const dx=startX-x;
-    if(Math.abs(dx)>DRAG_THRESHOLD) didDrag=true;
-    vel = (lastX-x)/(Math.max(1,performance.now()-lastT))*16;
-    lastX=x; lastT=performance.now();
-    setPos(startPos+dx);
+    if(!isDrag)return;
+    const now=performance.now();
+    vel=(lastX-x)/(Math.max(1,now-lastT))*16;
+    lastX=x; lastT=now;
+    if(Math.abs(startX-x)>DRAG_THRESHOLD) didDrag=true;
+    setPos(startPos+(x-startX)*-1);
   }
   function onEnd(){
-    if(!isDrag) return;
+    if(!isDrag)return;
     isDrag=false;
-    function coast(){
-      if(Math.abs(vel)>0.15){
-        vel*=FRICTION;
-        const np=pos+vel;
-        const m=maxPos();
-        if(np<=0){vel*=-0.3; setPos(0);}
-        else if(np>=m){vel*=-0.3; setPos(m);}
-        else setPos(np);
-        requestAnimationFrame(coast);
-      } else {
-        pauseAuto(1500);
-      }
-    }
+    function coast(){ if(Math.abs(vel)>0.15){ vel*=FRICTION; const np=pos+vel; const m=maxPos(); if(np<=0){vel*=-0.3;setPos(0);}else if(np>=m){vel*=-0.3;setPos(m);}else setPos(np); requestAnimationFrame(coast); } else { pauseAuto(1500); } }
     requestAnimationFrame(coast);
   }
 
   laneEl.addEventListener('mousedown',e=>{e.preventDefault();onStart(e.clientX);});
   window.addEventListener('mousemove',e=>{if(isDrag)onMove(e.clientX);});
   window.addEventListener('mouseup',()=>{if(isDrag)onEnd();});
-
   laneEl.addEventListener('touchstart',e=>onStart(e.touches[0].clientX),{passive:true});
   laneEl.addEventListener('touchmove', e=>onMove(e.touches[0].clientX),{passive:true});
   laneEl.addEventListener('touchend',  ()=>onEnd(),{passive:true});
 
-  laneEl.addEventListener('click', e=>{
-    if(didDrag){ e.stopPropagation(); e.preventDefault(); return; }
+  laneEl.addEventListener('click',e=>{
+    if(didDrag){e.stopPropagation();e.preventDefault();return;}
     const card=e.target.closest('.vcard');
-    if(card){
-      const idx=Array.from(trackEl.children).indexOf(card);
-      if(idx>=0) openV(globalOffset+idx);
-    }
-  }, true);
+    if(card){ const idx=Array.from(trackEl.children).indexOf(card); if(idx>=0)openV(globalOffset+idx); }
+  },true);
 
   function tick(){
-    if(!isDrag && !paused){
+    if(!isDrag&&!paused){
       const m=maxPos();
       pos+=SPEED*dir;
-      if(pos>=m){pos=m;dir=-1;}
-      else if(pos<=0){pos=0;dir=1;}
+      if(pos>=m){pos=m;dir=-1;}else if(pos<=0){pos=0;dir=1;}
       trackEl.style.transform=`translateX(${-pos}px)`;
     }
     requestAnimationFrame(tick);
@@ -1481,8 +1449,8 @@ function initLane(laneEl, trackEl, startDir, globalOffset){
   requestAnimationFrame(tick);
 }
 
-initLane(document.getElementById('laneA'), trackA,  1, 0);
-initLane(document.getElementById('laneB'), trackB, -1, 10);
+initLane(document.getElementById('laneA'),trackA, 1, 0);
+initLane(document.getElementById('laneB'),trackB,-1,10);
 </script>
 
 <!-- ICONS -->
@@ -1593,85 +1561,28 @@ initLane(document.getElementById('laneB'), trackB, -1, 10);
     el.addEventListener('mouseenter', () => { dot.classList.add('hovered'); ring.classList.add('hovered'); });
     el.addEventListener('mouseleave', () => { dot.classList.remove('hovered'); ring.classList.remove('hovered'); });
   });
-  const sliderOuter = document.getElementById('sliderOuter');
-  if (sliderOuter) {
-    sliderOuter.addEventListener('mousedown', () => { dot.classList.add('dragging'); ring.classList.add('dragging'); dot.classList.remove('hovered'); ring.classList.remove('hovered'); });
-    document.addEventListener('mouseup', () => { dot.classList.remove('dragging'); ring.classList.remove('dragging'); });
-  }
 })();
 
-/* ══ 2. DRAG-TO-SCROLL + TOUCH SLIDER ══ */
-(function() {
-  const outer = document.getElementById('sliderOuter');
-  const track = document.getElementById('sliderTrack');
-  if (!outer || !track) return;
-  let isDragging = false, startX = 0, startTX = 0, currentTX = 0;
-  let velocity = 0, lastX = 0, lastT = 0, raf;
-  function getTranslateX(el) { return new DOMMatrix(window.getComputedStyle(el).transform).m41; }
-  function setTX(x) {
-    const half = track.scrollWidth / 2;
-    if (x < -half) x += half;
-    if (x > 0)     x -= half;
-    currentTX = x;
-    track.style.transform = 'translateX(' + x + 'px)';
-  }
-  function freeze() {
-    const tx = getTranslateX(track);
-    track.style.animation = 'none';
-    track.style.transform = 'translateX(' + tx + 'px)';
-    currentTX = tx; return tx;
-  }
-  function startDrag(x) {
-    cancelAnimationFrame(raf); isDragging = true; startX = x;
-    startTX = freeze(); velocity = 0; lastX = x; lastT = Date.now();
-    track.classList.add('is-dragging');
-  }
-  function onMove(x) {
-    if (!isDragging) return;
-    const now = Date.now();
-    velocity = (x - lastX) / Math.max(now - lastT, 1);
-    lastX = x; lastT = now;
-    setTX(startTX + (x - startX));
-  }
-  function endDrag() {
-    if (!isDragging) return;
-    isDragging = false; track.classList.remove('is-dragging');
-    let v = velocity * 15;
-    function coast() { v *= 0.93; if (Math.abs(v) < 0.4) return; setTX(currentTX + v); raf = requestAnimationFrame(coast); }
-    coast();
-  }
-  outer.addEventListener('mousedown', e => { e.preventDefault(); startDrag(e.clientX); });
-  document.addEventListener('mousemove', e => { if (isDragging) onMove(e.clientX); });
-  document.addEventListener('mouseup', endDrag);
-  outer.addEventListener('touchstart', e => { startDrag(e.touches[0].clientX); }, { passive: true });
-  outer.addEventListener('touchmove',  e => { if (isDragging) onMove(e.touches[0].clientX); }, { passive: true });
-  outer.addEventListener('touchend', endDrag);
-  outer.addEventListener('touchcancel', endDrag);
-})();
-
-/* ══ 3. SCROLL REVEAL ══ */
+/* ══ 2. SCROLL REVEAL ══ */
 const obs = new IntersectionObserver(entries => {
   entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
 }, { threshold: 0.08 });
 document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
 
-/* ══ 4. GALLERY MODAL ══ */
+/* ══ 3. GALLERY MODAL ══ */
 (function() {
-  const modal   = document.getElementById('galleryModal');
-  const openBtn = document.getElementById('openGalleryBtn');
-  const closeBtn= document.getElementById('closeGalleryBtn');
-
+  const modal    = document.getElementById('galleryModal');
+  const openBtn  = document.getElementById('openGalleryBtn');
+  const closeBtn = document.getElementById('closeGalleryBtn');
   openBtn.addEventListener('click', function(e) {
     e.preventDefault();
     modal.classList.add('open');
     document.body.style.overflow = 'hidden';
   });
-
   closeBtn.addEventListener('click', function() {
     modal.classList.remove('open');
     document.body.style.overflow = '';
   });
-
   document.addEventListener('keydown', function(e) {
     if (e.key === 'Escape' && modal.classList.contains('open')) {
       modal.classList.remove('open');
@@ -1680,41 +1591,30 @@ document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
   });
 })();
 
-/* ══ 5. STATS COUNTER ANIMATION ══ */
+/* ══ 4. STATS COUNTER ANIMATION ══ */
 (function() {
   const statEls = document.querySelectorAll('.stat-n[data-target]');
   if (!statEls.length) return;
-
-  function easeOutExpo(t) {
-    return t === 1 ? 1 : 1 - Math.pow(2, -10 * t);
-  }
-
+  function easeOutExpo(t) { return t === 1 ? 1 : 1 - Math.pow(2, -10 * t); }
   function animateCounter(el) {
     const target = parseInt(el.dataset.target, 10);
     const suffix = el.dataset.suffix || '';
     const duration = 1800;
     const startTime = performance.now();
-
     function update(now) {
       const elapsed = now - startTime;
       const progress = Math.min(elapsed / duration, 1);
-      const eased = easeOutExpo(progress);
-      const current = Math.round(eased * target);
+      const current = Math.round(easeOutExpo(progress) * target);
       el.textContent = current + suffix;
       if (progress < 1) requestAnimationFrame(update);
     }
     requestAnimationFrame(update);
   }
-
   const statsObs = new IntersectionObserver(entries => {
     entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        animateCounter(entry.target);
-        statsObs.unobserve(entry.target);
-      }
+      if (entry.isIntersecting) { animateCounter(entry.target); statsObs.unobserve(entry.target); }
     });
   }, { threshold: 0.4 });
-
   statEls.forEach(el => statsObs.observe(el));
 })();
 </script>
